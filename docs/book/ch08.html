@@ -75,20 +75,461 @@
 </ul></div></details></div>
 <p>글쓰기에서 가장 어려운 것은 흔히 첫 문장이라고 한다. 언어 모델은 그 첫 문장을 무한히 만들어 준다. 그러나 무한한 초고가 좋은 작품을 보장하지는 않는다. 이 장에서는 AI를 ’대신 써 주는 기계’가 아니라 ’함께 궁리하는 상대’로 쓰는 법을 익히고, 무엇보다 AI가 쓴 글의 특유한 무난함을 알아보고 깨는 훈련을 한다.</p>
 <h2 id="sec1">8.1 언어 모델을 창작 파트너로</h2>
-<div class="stub"><span class="chip">집필 예정</span>대신 쓰게 하기와 함께 쓰기의 차이. 후자가 왜 결과가 좋은지. 작업 단위를 쪼개는 방법(전체 소설이 아니라 한 장면씩). 대화를 이어 가며 문맥을 쌓는 요령과, 문맥이 흐려졌을 때 다시 잡는 방법. 4장 프롬프트 기법의 창작 분야 적용.</div>
+<p>글쓰기에서 인공지능을 쓰는 방식은 크게 둘로 갈린다. <strong>대신 쓰게 하기</strong>와 <strong>함께 쓰기</strong>. 결과의 차이가 매우 크므로 이 절에서 그 차이부터 확실히 해 둔다.</p>
+<h3>대신 쓰게 하면 왜 안 되는가</h3>
+<p><em>학과를 소개하는 글을 써 줘</em>라고 한 번 던지고 나온 결과를 그대로 쓰는 것이 대신 쓰게 하기다. 세 가지 문제가 생긴다.</p>
+<p>첫째, <strong>평균적인 글이 나온다.</strong> 3.1절에서 보았듯 모델은 그럴듯함을 좇는다. 지시가 헐거우면 가장 무난한 지점으로 간다.</p>
+<p>둘째, <strong>내가 하려던 말이 사라진다.</strong> 글을 쓰는 과정에서 생각이 정리되는 법인데, 그 과정을 건너뛰면 무엇을 말하려 했는지도 흐려진다.</p>
+<p>셋째, <strong>고칠 수가 없다.</strong> 자기가 쓰지 않은 글은 어디가 잘못됐는지 짚기 어렵다. 결국 통째로 다시 시키게 되고, 다시 평균으로 간다.</p>
+<div class="box keypoint"><span class="chip">요점</span><p>좋은 결과는 대개 <strong>서너 번 주고받은 끝</strong>에 나온다. 4.1절에서 말한 것과 같다. 첫 답변은 정답이 아니라 <em>어디까지 통하는지 보는</em> 재료다.</p></div>
+<h3>함께 쓰기의 네 가지 자리</h3>
+<p>인공지능을 붙일 자리는 글쓰기 과정 전체가 아니라 특정 지점들이다.</p>
+<div class="table-wrap"><div class="table-caption">표 8.1: 글쓰기 과정에서 AI를 붙이는 자리</div><table><tr><th> 단계</th><th> AI에게 맡기기 좋은 일</th><th> 사람이 해야 할 일</th></tr><tr><td>발상</td><td>갈래를 스무 개 벌리기</td><td>무엇을 말할지 정하기</td></tr><tr><td>구성</td><td>정한 틀에 살 붙이기</td><td>구조를 정하기</td></tr><tr><td>초고</td><td>한 장면씩 채우기</td><td>인물의 동기와 태도</td></tr><tr><td>퇴고</td><td>약점 지적, 문장 다듬기</td><td>무엇을 남기고 버릴지</td></tr></table></div>
+<p>표 8.1의 오른쪽 열이 1.4절의 <em>의도</em>와 <em>선택</em>에 해당한다. 이 자리를 넘기면 글이 내 것이 아니게 된다.</p>
+<h3>작업 단위를 쪼갠다</h3>
+<p>가장 실질적인 요령이다. <strong>소설 한 편을 한 번에 시키지 않는다.</strong> 대신 이렇게 나눈다.</p>
+<div class="settingbox-wrap"><div class="setting-label">작업 단위 쪼개기</div><pre class="settingbox"><code>큰 덩어리 (X)  "단편소설 하나 써 줘"
+
+쪼갠 단위 (O)
+  1. 인물 설정 정하기        → 대화 1회
+  2. 사건의 뼈대 짜기         → 대화 1회
+  3. 첫 장면 초고            → 대화 1회
+  4. 첫 장면 대사 다듬기      → 같은 대화 이어서
+  5. 두 번째 장면 초고        → 대화 1회 (설정 문서 첨부)
+  ...</code></pre></div>
+<p>쪼개면 두 가지가 좋아진다. <strong>매 단계에서 개입할 수 있고</strong>, 3.1절에서 본 문맥 창 문제를 피할 수 있다.</p>
+<h3>문맥을 쌓고 다시 잡기</h3>
+<p>한 대화 안에서는 앞서 정한 것이 계속 반영된다. 이 성질을 활용해 <strong>설정을 먼저 쌓고 본문으로 들어가는</strong> 순서를 쓴다.</p>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://claude.ai" target="_blank" rel="noopener">Claude</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></div><pre class="prompt"><code>지금부터 짧은 이야기를 함께 만들 거야. 바로 쓰지 말고
+내가 확인할 때까지 단계별로 진행해 줘.
+
+먼저 인물부터 정하자. 주인공은 미술을 전공하는 대학교 2학년이고,
+자기 그림이 인공지능이 만든 것 같다는 말을 들은 뒤로
+붓을 들지 못하고 있어.
+
+이 인물에 대해 네가 궁금한 것 다섯 가지를 질문으로 던져 줘.
+답은 내가 할게.</code></pre><div class="listing-caption">프롬프트 8.1: 문맥을 쌓는 첫 대화</div></div>
+<p><strong>질문을 던지게 하는</strong> 방식이 핵심이다. 이렇게 하면 내가 미처 정하지 않은 부분이 드러나고, 그 답이 곧 설정이 된다. 8.2절에서 이 기법을 세계관 전체로 확장한다.</p>
+<p>문맥이 흐려졌다면 4.4절의 세 가지 대처를 쓴다. 특히 창작에서는 <strong>설정 문서</strong>가 중요하다.</p>
+<div class="settingbox-wrap"><div class="setting-label">설정 문서 (대화가 흐려질 때마다 다시 붙여넣는다)</div><pre class="settingbox"><code>[인물]
+  서린 / 20세 / 회화 전공 2학년
+  말버릇: 문장을 끝까지 맺지 않는다
+  숨기는 것: 사실 AI 도구를 써 본 적이 있다
+  변하는 지점: 남의 평가가 아니라 자기 판단으로 그리기로 함
+
+[규칙]
+  1인칭 현재형. 감정을 설명하지 말고 행동으로 보인다.
+  회상 장면은 넣지 않는다.</code></pre></div>
+<div class="box caution"><span class="chip">주의</span><p><strong>규칙</strong> 항목을 반드시 넣자. 모델은 대화가 길어지면 문체 규칙부터 잊는다. 설정 문서에 규칙을 적어 두면 붙여넣을 때마다 함께 복구된다.</p></div>
+<h3>한국어로 쓸 때</h3>
+<p>3.1절에서 한국어가 토큰을 더 많이 쓴다고 했다. 글쓰기에서는 몇 가지 실무적 영향이 있다.</p>
+<p><strong>긴 글은 나눠서.</strong> 같은 문맥 창에 담기는 한국어 분량이 영어보다 적다. 장편 작업이라면 장 단위로 대화를 나눈다.</p>
+<p><strong>번역체를 경계한다.</strong> 모델이 영어 문장 구조를 한국어로 옮긴 듯한 문장을 만들 때가 있다. <em>그것은 ––라고 할 수 있다</em>, <em>––함에 있어서</em> 같은 표현이 그렇다. 8.6절에서 이 징후를 다룬다.</p>
+<p><strong>존댓말과 반말을 명시한다.</strong> 지정하지 않으면 대화 중간에 말투가 바뀐다. 설정 문서의 규칙 항목에 적어 둔다.</p>
 <h2 id="sec2">8.2 아이디어 확장과 세계관 설정</h2>
-<div class="stub"><span class="chip">집필 예정</span>하나의 씨앗에서 스무 개의 갈래를 만들고 고르는 작업. ’더 이상한 것으로’, ’정반대로’, ’한 가지 조건만 바꿔서’ 같은 확장 지시어. 세계관 설정 문답 기법 — AI에게 질문을 던지게 해서 설정의 구멍을 찾는 방법. 설정 문서를 만들어 계속 참조시키기.</div>
+<p>인공지능이 가장 확실하게 사람을 앞지르는 지점이 있다. <strong>많이, 빨리 벌리는 일</strong>이다. 이 절에서는 그 능력을 제대로 쓰는 법을 익힌다.</p>
+<h3>하나에서 스무 개로</h3>
+<p>혼자 아이디어를 낼 때 우리는 대개 세 개쯤에서 멈춘다. 그리고 그 셋 중에 고른다. 문제는 처음 떠오른 셋이 대개 가장 뻔한 것이라는 데 있다.</p>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://claude.ai" target="_blank" rel="noopener">Claude</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></div><pre class="prompt"><code>'AI가 그림을 그려 주는 시대에 미대생이 겪는 갈등'을 소재로
+짧은 이야기를 만들 거야.
+
+이 소재로 가능한 이야기의 갈래를 20개 제시해 줘.
+각각 한 문장으로, 서로 최대한 다르게.
+뻔한 것부터 이상한 것까지 골고루 섞어 줘.</code></pre><div class="listing-caption">프롬프트 8.2: 한 씨앗에서 갈래 벌리기</div></div>
+<p>스무 개를 받으면 대개 앞의 다섯 개는 예상한 것이고, 뒤쪽에 뜻밖의 것이 있다. <strong>그 뜻밖의 것을 발견하는 것이 이 작업의 목적</strong>이다.</p>
+<div class="box keypoint"><span class="chip">요점</span><p>스무 개 중 하나를 고르는 것으로 끝내지 말자. <strong>두세 개를 합치는</strong> 편이 낫다. 3번의 설정에 17번의 반전을 붙이는 식으로. 이렇게 만든 조합은 목록 안에 없던 것이 된다.</p></div>
+<h3>확장 지시어</h3>
+<p>방향을 지정해 벌리는 말들이다. 하나씩 익혀 두면 막힐 때 꺼내 쓸 수 있다.</p>
+<div class="table-wrap"><div class="table-caption">표 8.2: 아이디어 확장 지시어</div><table><tr><th> 지시어</th><th> 효과</th></tr><tr><td>더 이상한 것으로</td><td>평균에서 멀어진다. 대개 절반은 못 쓰지만 하나가 건진다</td></tr><tr><td>정반대로</td><td>전제를 뒤집는다. <em>주인공이 AI를 싫어한다</em> → <em>너무 좋아한다</em></td></tr><tr><td>한 가지 조건만 바꿔서</td><td>배경·시대·인물의 나이 하나만 바꿔 본다</td></tr><tr><td>누구의 시점으로 바꾸면</td><td>조연이나 반대편의 시선에서 다시 본다</td></tr><tr><td>가장 작은 이야기로</td><td>규모를 줄인다. 세상이 아니라 한 사람의 하루로</td></tr><tr><td>이미 있는 것과 섞어서</td><td>다른 장르의 문법을 가져온다</td></tr><tr><td>결말부터 정하면</td><td>끝을 먼저 정하고 거꾸로 짠다</td></tr></table></div>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://claude.ai" target="_blank" rel="noopener">Claude</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></div><pre class="prompt"><code>방금 목록의 7번을 골랐어. 이걸 다음 세 방향으로 각각 변형해 줘.
+
+1. 훨씬 더 이상하게
+2. 전제를 정반대로
+3. 규모를 아주 작게 (한 사람의 하루 안에서 일어나는 일로)
+
+각각 세 문장 이내로.</code></pre><div class="listing-caption">프롬프트 8.3: 확장 지시어 쓰기</div></div>
+<h3>설정의 구멍을 찾게 하기</h3>
+<p>세계관을 만들 때 흔한 실패는 <strong>정한 것만 정하고 나머지를 비워 두는</strong> 것이다. 그러면 쓰다가 막힌다.</p>
+<p>8.1절에서 본 <em>질문을 던지게 하기</em>를 여기서 본격적으로 쓴다.</p>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://claude.ai" target="_blank" rel="noopener">Claude</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></div><pre class="prompt"><code>아래는 내가 정한 세계관 설정이야.
+
+[설정을 여기에 붙여넣기]
+
+이 설정으로 이야기를 쓰려면 반드시 정해야 하는데
+아직 정해지지 않은 것들을 질문 형태로 15개 뽑아 줘.
+중요한 것부터 순서대로. 답은 하지 말고 질문만 줘.</code></pre><div class="listing-caption">프롬프트 8.4: 설정 구멍 찾기</div></div>
+<p><em>답은 하지 말라</em>는 지시가 중요하다. 모델이 답까지 해 버리면 그것이 내 설정이 되어 버린다. <strong>질문은 기계가, 답은 사람이</strong>가 이 기법의 원칙이다.</p>
+<div class="box caution"><span class="chip">주의</span><p>받은 질문 열다섯 개에 다 답할 필요는 없다. 대여섯 개만 골라 답해도 충분하다. <strong>답하지 않기로 한 질문이 무엇인지 아는 것</strong>도 설정의 일부다. 설명하지 않고 남겨 두는 여백이 이야기를 살리는 경우가 많다.</p></div>
+<h3>설정 문서 만들기</h3>
+<p>정한 것을 한곳에 모은다. 8.1절에서 본 형식을 확장한 것이다.</p>
+<div class="settingbox-wrap"><div class="setting-label">설정 문서 양식</div><pre class="settingbox"><code>[한 줄 요약]
+  이 이야기는 ____________________에 대한 이야기다.
+
+[인물]
+  주인공: 이름 / 나이 / 처지 / 원하는 것 / 두려워하는 것
+  말버릇, 숨기는 것, 변하는 지점
+  (조연도 같은 형식으로)
+
+[세계]
+  시간과 장소
+  이 세계의 규칙 (현실과 다른 점)
+  정하지 않고 남겨 둘 것
+
+[규칙]
+  시점과 시제
+  문체 (예: 감정을 설명하지 않고 행동으로)
+  하지 않을 것 (예: 회상 장면 없음)
+
+[진행 상황]
+  완성한 장면: ____
+  다음에 쓸 장면: ____</code></pre></div>
+<p>마지막 <strong>진행 상황</strong> 항목이 실용적이다. 며칠 뒤 다시 작업할 때 이것만 보면 어디서 멈췄는지 바로 안다.</p>
+<div class="box note"><span class="chip">잠깐</span><span class="box-title">12장으로 가는 길</span><p>설정 문서를 매번 붙여넣는 일이 번거로워질 것이다. 12장에서 배울 커스텀 어시스턴트에 이 문서를 심어 두면, 대화를 새로 열어도 설정이 유지된다. 이 장에서 손으로 하는 일을 그 장에서 자동화하는 셈이니, 여기서 문서를 잘 만들어 두면 그대로 재료가 된다.</p></div>
+<h3>벌린 것을 버리는 연습</h3>
+<p>마지막으로 태도의 문제. 스무 개를 받으면 아까워서 다 쓰고 싶어진다. 그러면 이야기가 산만해진다.</p>
+<p>1.4절에서 말한 대로 <strong>선택이 병목</strong>이다. 다음 기준으로 걸러 보자.</p>
+<ul>
+<li>이 갈래를 고르면 <strong>내가 하고 싶은 말</strong>에 닿는가?</li>
+<li>이것을 <strong>내가 아는 것</strong>으로 쓸 수 있는가? (모르는 세계는 환각으로 채워진다)</li>
+<li>정해진 분량 안에 <strong>끝낼 수 있는가</strong>?</li>
+</ul>
+<p>세 번째가 학기 과제에서 가장 자주 걸린다. 8컷 웹툰에 대하소설을 넣으려 하면 반드시 실패한다.</p>
 <h2 id="sec3">8.3 이야기 구조 설계하기</h2>
-<div class="stub"><span class="chip">집필 예정</span>3막 구조, 기승전결, 영웅 서사 등 구조 틀을 사람이 정하고 AI에게 채우게 하는 방식. 왜 구조를 AI에게 맡기면 안 되는지(가장 평균적인 구조로 수렴한다). 웹툰형 콘텐츠에 맞는 짧은 구조(훅-전개-반전-마무리)를 9장으로 연결한다.</div>
+<p>이 절의 주장은 하나다. <strong>구조는 사람이 정하고 살은 기계가 붙인다.</strong> 이유를 먼저 보자.</p>
+<h3>구조를 맡기면 안 되는 이유</h3>
+<p><em>이 소재로 이야기를 짜 줘</em>라고 하면 대개 이런 것이 나온다. 주인공이 문제에 부딪히고, 좌절하고, 조력자를 만나고, 깨달음을 얻고, 성장한다.</p>
+<p>틀린 구조는 아니다. 다만 <strong>가장 평균적인 구조</strong>다. 3.1절의 원리 그대로다. 모델은 학습 데이터에서 가장 흔했던 배열을 재현한다.</p>
+<p>문제는 이야기에서 구조가 곧 <strong>말하려는 바</strong>라는 점이다. 무엇 다음에 무엇을 놓느냐가 그 이야기의 주장이다. 좌절 뒤에 깨달음을 놓으면 <em>노력하면 된다</em>는 이야기가 되고, 깨달음 뒤에 다시 좌절을 놓으면 전혀 다른 이야기가 된다. <strong>이 선택을 기계에 넘기면 내 이야기가 아니게 된다.</strong></p>
+<div class="box keypoint"><span class="chip">요점</span><p>따라서 순서는 이렇다. 사람이 <strong>구조를 정하고</strong>, 기계에게 <strong>그 칸을 채우게</strong> 한다. 기계에게 <em>구조를 짜 줘</em>가 아니라 <em>내가 짠 3번 칸을 채워 줘</em>라고 말하는 것이다.</p></div>
+<h3>쓸 만한 구조 틀</h3>
+<p>구조를 정하려면 선택지를 알아야 한다. 널리 쓰이는 틀 몇 가지다.</p>
+<div class="table-wrap"><div class="table-caption">표 8.3: 이야기 구조 틀</div><table><tr><th> 틀</th><th> 구성</th><th> 어울리는 것</th></tr><tr><td>3막</td><td>설정  —  대립  —  해결</td><td>영화, 장편</td></tr><tr><td>기승전결</td><td>시작  —  전개  —  전환  —  마무리</td><td>단편, 4컷</td></tr><tr><td>영웅 서사</td><td>떠남  —  시련  —  귀환</td><td>모험, 성장</td></tr><tr><td>훅 — 전개 — 반전 — 마무리</td><td>짧고 강한 시작, 빠른 전환</td><td><strong>웹툰, SNS 콘텐츠</strong></td></tr><tr><td>평행 구조</td><td>두 이야기를 번갈아</td><td>대비, 반전</td></tr><tr><td>액자 구조</td><td>이야기 속의 이야기</td><td>회상, 증언</td></tr></table></div>
+<h3>짧은 콘텐츠의 구조</h3>
+<p>표 8.3의 네 번째 틀이 9장 프로젝트의 기본이 된다. 8–12컷 분량에 맞춘 구조다.</p>
+<div class="settingbox-wrap"><div class="setting-label">훅-전개-반전-마무리 (8컷 기준)</div><pre class="settingbox"><code>1컷    훅       가장 강한 장면 또는 의문. 스크롤을 멈추게 한다
+2-3컷  상황     누가 어떤 처지에 있는지
+4-5컷  전개     문제가 커지거나 진행된다
+6컷    반전     예상과 다른 것이 드러난다
+7컷    깨달음   그래서 무엇이 달라졌는가
+8컷    마무리   여운 또는 행동 유도</code></pre></div>
+<p><strong>1컷이 전부</strong>라고 해도 과장이 아니다. SNS에서 첫 화면을 넘기지 않으면 나머지 일곱 컷은 없는 것과 같다. 그래서 첫 컷은 시간 순서상 첫 장면이 아니어도 된다. 가장 강한 장면을 앞으로 끌어와도 좋다.</p>
+<h3>칸을 채우게 하기</h3>
+<p>구조를 정했으면 이제 기계에 맡길 차례다.</p>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://claude.ai" target="_blank" rel="noopener">Claude</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></div><pre class="prompt"><code>아래 구조로 8컷 웹툰을 만들 거야. 구조는 내가 정했으니 바꾸지 말고,
+각 칸에 들어갈 내용만 제안해 줘.
+
+1컷 (훅)     : 주인공이 자기 그림을 지우고 있는 장면
+2-3컷 (상황) : [비어 있음 — 채워 줘]
+4-5컷 (전개) : [비어 있음 — 채워 줘]
+6컷 (반전)   : 지운 그림이 사실 AI가 아니라 본인이 그린 것이었다
+7컷 (깨달음) : [비어 있음 — 채워 줘]
+8컷 (마무리) : [비어 있음 — 채워 줘]
+
+설정은 첨부한 문서를 따라 줘.
+비어 있는 칸마다 세 가지 안을 제시해 줘.</code></pre><div class="listing-caption">프롬프트 8.5: 정한 구조의 칸 채우기</div></div>
+<p><strong>일부 칸을 미리 채워 두는</strong> 것이 요령이다. 훅과 반전처럼 이야기의 정체성이 걸린 칸은 내가 정하고, 그 사이를 잇는 부분을 맡긴다. 그리고 칸마다 <strong>세 가지 안</strong>을 요청해 고를 여지를 남긴다.</p>
+<h3>구조를 검토받기</h3>
+<p>반대로 구조 자체를 점검받는 것은 유용하다. 만들라고 하는 것과 검토받는 것은 다르다.</p>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://claude.ai" target="_blank" rel="noopener">Claude</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></div><pre class="prompt"><code>아래는 내가 짠 8컷 구성이야.
+
+[구성을 여기에 붙여넣기]
+
+편집자의 눈으로 다음을 지적해 줘. 고쳐 주지 말고 문제만 짚어 줘.
+1. 독자가 1컷에서 이탈할 가능성이 있다면 왜인지
+2. 이해가 안 될 만한 지점이 있다면 어디인지
+3. 반전이 예측 가능한지
+4. 마지막 컷이 앞의 내용을 제대로 받는지</code></pre><div class="listing-caption">프롬프트 8.6: 구조 검토 요청</div></div>
+<p><em>고쳐 주지 말고 문제만 짚어 달라</em>는 지시를 넣는 이유가 있다. 고쳐 주기 시작하면 모델의 평균적 구조로 끌려가기 때문이다. <strong>진단은 받되 처방은 내가 한다.</strong></p>
+<h3>분량을 지키는 법</h3>
+<p>학기 과제에서 가장 흔한 실패가 <strong>분량 초과</strong>다. 8컷으로 정했는데 이야기가 20컷짜리로 커진다.</p>
+<ul>
+<li><strong>인물을 둘 이하로.</strong> 셋이 넘으면 소개만으로 컷을 다 쓴다.</li>
+<li><strong>시간 범위를 좁힌다.</strong> 하루, 한 시간, 한 장면 안에서 끝낸다.</li>
+<li><strong>배경 설명을 넣지 않는다.</strong> 짧은 이야기에서 설명은 사치다. 독자는 생각보다 잘 따라온다.</li>
+<li><strong>한 가지만 말한다.</strong> 하고 싶은 말이 둘이면 하나를 버린다.</li>
+</ul>
+<p>8.2절에서 벌린 것을 버리라고 한 이야기가 여기서 구체화된다. <strong>좋은 아이디어를 버리는 능력</strong>이 분량을 지키는 유일한 방법이다.</p>
 <h2 id="sec4">8.4 대사와 문체</h2>
-<div class="stub"><span class="chip">집필 예정</span>인물마다 말투가 구분되게 만드는 방법 — 어휘 수준, 문장 길이, 말버릇, 회피하는 주제. 인물 카드를 만들어 지시에 포함시키기. 문체 지정 실습: 같은 장면을 세 문체로 써 보게 하기. AI가 잘 못하는 것: 침묵, 말줄임, 서브텍스트 — 이 부분이 사람의 몫으로 남는다.</div>
+<p>인물이 둘인데 말투가 똑같다면 독자는 누가 말하는지 헷갈린다. 이 절에서는 목소리를 구분하는 법과, 인공지능이 유독 못하는 영역을 다룬다.</p>
+<h3>말투를 만드는 네 가지</h3>
+<p>인물의 목소리는 다음 넷의 조합으로 만들어진다. <em>친근한 말투</em>처럼 뭉뚱그리면 아무 효과가 없으니, 항목별로 지정한다.</p>
+<div class="table-wrap"><div class="table-caption">표 8.4: 말투를 구분하는 네 항목</div><table><tr><th> 항목</th><th> 지정하는 방식</th></tr><tr><td>어휘 수준</td><td>쓰는 말의 종류. 전문어를 쓰는가, 유행어를 쓰는가, 옛말투인가</td></tr><tr><td>문장 길이</td><td>짧게 끊는가, 길게 이어 붙이는가</td></tr><tr><td>말버릇</td><td>반복하는 표현, 문장을 맺는 방식, 습관적인 군말</td></tr><tr><td>회피</td><td>절대 말하지 않는 주제. 이것이 인물을 가장 잘 드러낸다</td></tr></table></div>
+<p>네 번째가 특히 강력하다. 어떤 인물이 무엇을 말하지 않는지를 정해 두면, 그 침묵이 성격이 된다.</p>
+<h3>인물 카드</h3>
+<p>정한 것을 카드로 만들어 지시에 포함시킨다. 8.2절 설정 문서의 인물 부분을 확장한 형태다.</p>
+<div class="settingbox-wrap"><div class="setting-label">인물 카드</div><pre class="settingbox"><code>[서린]
+  어휘: 미술 용어를 자연스럽게 쓴다. 유행어는 안 쓴다
+  문장: 짧다. 대여섯 어절을 넘지 않는다
+  말버릇: 문장을 끝까지 맺지 않는다 ("그냥, 좀...")
+  회피: 자기 그림에 대한 칭찬. 화제를 돌린다
+
+[준호]
+  어휘: 쉬운 말. 비유를 자주 쓴다
+  문장: 길다. 접속사로 계속 이어 붙인다
+  말버릇: "근데" 로 문장을 시작한다
+  회피: 없음. 생각한 것을 다 말한다</code></pre></div>
+<p>이 카드를 프롬프트에 넣고 같은 상황의 대사를 요청하면 두 인물이 확실히 갈린다. <strong>대비가 뚜렷할수록 좋다.</strong> 위 예에서 한 사람은 말을 못 맺고 다른 사람은 너무 많이 말한다.</p>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://claude.ai" target="_blank" rel="noopener">Claude</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></div><pre class="prompt"><code>아래 인물 카드를 따라 대사를 써 줘.
+
+[인물 카드를 여기에 붙여넣기]
+
+상황: 서린이 그린 그림을 준호가 처음 본다.
+준호는 칭찬하고 싶고, 서린은 그 칭찬을 받고 싶지 않다.
+
+지문 없이 대사만, 여덟 줄 이내로.
+누가 말하는지는 말투로 구분되게 해 줘.</code></pre><div class="listing-caption">프롬프트 8.7: 인물 카드로 대사 쓰기</div></div>
+<p><em>지문 없이 대사만</em>이라는 제약이 중요하다. 지문을 허용하면 모델이 <em>그녀는 부끄러운 듯 말했다</em>처럼 감정을 설명해 버린다. 대사만으로 감정이 드러나야 좋은 대사다.</p>
+<h3>같은 장면을 세 문체로</h3>
+<p>문체 감각을 기르는 가장 빠른 연습이다.</p>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://claude.ai" target="_blank" rel="noopener">Claude</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></div><pre class="prompt"><code>같은 장면을 세 가지 문체로 각각 써 줘. 내용은 동일하게.
+
+장면: 늦은 밤 작업실에서 혼자 그림을 지우는 사람
+
+1. 짧은 문장, 감정 서술 없음, 행동과 사물만
+2. 긴 문장, 인물의 생각이 흘러가는 대로
+3. 다른 사람이 멀리서 관찰하며 서술</code></pre><div class="listing-caption">프롬프트 8.8: 문체 비교 실험</div></div>
+<p>세 결과를 나란히 놓으면 문체가 무엇을 바꾸는지 눈으로 보인다. 1번은 건조하고 긴장되며, 2번은 몰입되지만 늘어지고, 3번은 거리감이 생긴다. <strong>어느 것이 좋은가가 아니라 내 이야기에 무엇이 맞는가</strong>를 판단하는 연습이다.</p>
+<h3>인공지능이 못하는 것</h3>
+<p>여기서부터가 사람의 몫이다. 인공지능은 다음 셋에 특히 약하다.</p>
+<p><strong>침묵.</strong> 모델은 빈칸을 채우도록 만들어졌다. 그래서 말하지 않는 것을 잘 못 한다. 인물이 대답하지 않고 넘어가는 장면, 질문에 다른 말로 답하는 장면은 대개 사람이 넣어야 한다.</p>
+<p><strong>서브텍스트.</strong> 겉으로 하는 말과 속뜻이 다른 대사. 모델은 의도를 설명하려 들기 때문에 속뜻이 표면으로 올라온다. <em>괜찮아</em>라고 말하면서 전혀 괜찮지 않은 상태를 유지하는 일이 잘 안 된다.</p>
+<p><strong>말줄임과 어긋남.</strong> 실제 대화는 매끄럽지 않다. 말을 자르고, 딴소리를 하고, 앞의 말을 못 들은 척한다. 모델이 쓰는 대화는 너무 잘 이어진다.</p>
+<div class="box keypoint"><span class="chip">요점</span><p>이 셋의 공통점은 <strong>덜 말하는 기술</strong>이라는 점이다. 그리고 좋은 대사는 대개 덜 말한다. 그러니 인공지능이 쓴 대사를 다듬는 방향은 거의 언제나 <strong>빼는 쪽</strong>이다.</p></div>
+<h3>빼는 퇴고</h3>
+<p>실제로 해 볼 수 있는 절차다.</p>
+<ol>
+<li>인공지능이 쓴 대사에서 <strong>감정을 설명하는 문장</strong>을 전부 지운다</li>
+<li>지웠는데도 감정이 전해지면 그대로 둔다. 안 전해지면 <strong>행동</strong>으로 바꾼다</li>
+<li>대사 중 <strong>한 줄만 남긴다면 무엇인가</strong>를 정하고, 나머지를 줄인다</li>
+<li>마지막 대사를 지워 본다. 지워도 되는 경우가 많다</li>
+</ol>
+<p>4번이 특히 자주 통한다. 모델은 장면을 깔끔하게 닫으려 해서 마지막에 정리하는 대사를 붙이는 경향이 있다. 그것을 지우면 여운이 생긴다.</p>
+<div class="box caution"><span class="chip">주의</span><p>빼기만 하면 앙상해진다는 반론이 있을 수 있다. 맞다. 다만 <strong>인공지능이 쓴 초고에 한해서는</strong> 빼는 쪽이 거의 언제나 옳다. 모델은 부족하게 쓰는 실수보다 과하게 쓰는 실수를 훨씬 자주 한다. 8.6절에서 그 이유를 다룬다.</p></div>
 <h2 id="sec5">8.5 시 쓰기: 규칙과 파괴</h2>
-<div class="stub"><span class="chip">집필 예정</span>정형(운율·행수)을 지시하는 것은 AI가 잘한다. 반면 시의 핵심인 ’낯설게 하기’는 약하다. AI에게 재료(이미지·낱말·상황)를 만들게 하고 사람이 배치하는 방식을 제안한다. 수업의 시 창작·상호 평가 활동과 연결. 좋은 시와 그럴듯한 시를 구분하는 눈.</div>
+<p>시는 인공지능의 강점과 약점이 가장 선명하게 갈리는 장르다. 규칙은 잘 지키고, 규칙을 깨는 것은 잘 못 한다.</p>
+<h3>정형은 잘한다</h3>
+<p>행수, 음절 수, 각운, 반복 구조 같은 형식적 제약은 모델이 상당히 정확하게 지킨다.</p>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://claude.ai" target="_blank" rel="noopener">Claude</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></div><pre class="prompt"><code>다음 조건을 정확히 지켜 시를 써 줘.
+
+- 4행씩 3연, 총 12행
+- 각 행은 3~4어절
+- 각 연의 마지막 행에 '비'라는 낱말이 들어갈 것
+- 소재: 버스 정류장에서 누군가를 기다리는 사람</code></pre><div class="listing-caption">프롬프트 8.9: 정형 지정하기</div></div>
+<p>이런 요청은 잘 통한다. 시조나 하이쿠처럼 규칙이 엄격한 형식도 마찬가지다. <strong>한국어의 음절 수 세기는 완벽하지 않으니</strong> 결과를 세어 확인하는 편이 좋다.</p>
+<h3>낯설게 하기는 못한다</h3>
+<p>시의 핵심은 익숙한 것을 낯설게 보이게 하는 데 있다. 그런데 3.1절에서 보았듯 모델은 <strong>그럴듯한 것</strong>을 좇는다. 그럴듯함과 낯섦은 정반대 방향이다.</p>
+<p>그래서 인공지능이 쓴 시는 대체로 이렇게 된다. 형식은 맞고, 이미지는 아름답고, 어디서 본 것 같다. <em>시처럼 생긴 것</em>은 만들지만 <em>시</em>가 되기는 어렵다.</p>
+<div class="box keypoint"><span class="chip">요점</span><p>비유가 특히 그렇다. <em>시간은 강물처럼</em>, <em>마음이 무너진다</em> 같은 표현은 학습 데이터에 수없이 있었다. 모델은 이런 비유로 자연스럽게 수렴한다. <strong>익숙한 비유는 비유가 아니라 관용구</strong>이며, 시에서는 없느니만 못하다.</p></div>
+<h3>재료를 만들게 하고 배치는 사람이</h3>
+<p>그렇다면 시에서 인공지능은 쓸모가 없는가. 그렇지 않다. <strong>쓰는 방식을 바꾸면</strong> 된다.</p>
+<p>발상을 뒤집어 보자. 완성된 시를 요구하는 대신 <strong>재료</strong>를 요구한다.</p>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://claude.ai" target="_blank" rel="noopener">Claude</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></div><pre class="prompt"><code>'버스 정류장'과 관련된 것들을 다음 형식으로 뽑아 줘.
+시를 쓰지 말고 목록만 줘.
+
+1. 그곳에서 볼 수 있는 사물 20개 (아주 작은 것 위주로)
+2. 그곳에서 나는 소리 10개
+3. 그곳에서만 일어나는 행동 10개
+4. 그곳과 전혀 상관없는 낱말 20개 (무작위로)</code></pre><div class="listing-caption">프롬프트 8.10: 재료 뽑아내기</div></div>
+<p>이제 사람이 할 일이 생긴다. 1번 목록에서 하나, 4번 목록에서 하나를 골라 억지로 붙여 보는 것이다. <em>정류장 시간표</em>와 <em>냉장고</em>를 붙이면 어떤 이미지가 되는가. 대개는 아무것도 안 되지만, 열 번에 한 번은 뜻밖의 것이 나온다.</p>
+<p><strong>이것이 낯설게 하기의 기계적 대체물</strong>이다. 모델은 평균으로 가려 하지만, 무작위 목록에서 사람이 강제로 조합하면 평균 바깥으로 나갈 수 있다.</p>
+<h3>다듬는 데 쓰기</h3>
+<p>또 하나의 쓸모는 완성 단계에 있다.</p>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://claude.ai" target="_blank" rel="noopener">Claude</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></div><pre class="prompt"><code>아래는 내가 쓴 시야.
+
+[시를 여기에 붙여넣기]
+
+다음만 지적해 줘. 고쳐 주지는 마.
+1. 이미 흔하게 쓰이는 비유나 표현이 있는가
+2. 설명하고 있어서 시의 힘을 떨어뜨리는 행이 있는가
+3. 없어도 되는 행이 있는가
+4. 가장 좋은 행 하나와 그 이유</code></pre><div class="listing-caption">프롬프트 8.11: 시를 진단받기</div></div>
+<p>1번이 특히 유용하다. 자기가 쓴 표현이 얼마나 흔한지는 스스로 알기 어려운데, 모델은 흔한 것에 민감하다. <strong>모델의 약점을 진단 도구로 뒤집어 쓰는</strong> 셈이다.</p>
+<h3>좋은 시와 그럴듯한 시</h3>
+<p>수업의 상호 평가 활동을 위해, 구분하는 기준을 정리해 둔다.</p>
+<div class="table-wrap"><div class="table-caption">표 8.5: 그럴듯한 시와 좋은 시</div><table><tr><th> 그럴듯한 시</th><th> 좋은 시</th></tr><tr><td>아름다운 낱말이 많다</td><td>평범한 낱말이 낯설게 놓인다</td></tr><tr><td>감정을 이름 붙여 말한다 (슬픔, 그리움)</td><td>감정을 일으키는 장면만 있다</td></tr><tr><td>비유가 매끄럽다</td><td>비유가 처음에는 어긋나 보인다</td></tr><tr><td>마지막 행이 정리한다</td><td>마지막 행이 열어 둔다</td></tr><tr><td>누구의 경험이라도 될 수 있다</td><td>이 사람만의 구체가 있다</td></tr><tr><td>읽고 나면 기분이 좋다</td><td>읽고 나면 무언가 걸린다</td></tr></table></div>
+<p>표 8.5의 왼쪽은 정확히 인공지능이 잘 만드는 것이고, 오른쪽은 못 만드는 것이다. <strong>그러므로 이 표는 곧 사람이 할 일의 목록</strong>이기도 하다.</p>
+<div class="box caution"><span class="chip">주의</span><p>오해하지 말자. 오른쪽이 언제나 옳은 것은 아니다. 축하 카드에 들어갈 시라면 왼쪽이 맞다. 다만 <strong>습작에서 왼쪽에 머무르면 늘지 않는다</strong>. 수업에서 시를 쓰는 목적은 잘 읽히는 시를 만드는 것이 아니라 자기 눈을 기르는 것이다.</p></div>
+<h3>상호 평가하기</h3>
+<p>서로의 시를 평가할 때, <em>좋다·별로다</em>로는 아무도 배우지 못한다. 다음 형식을 권한다.</p>
+<div class="settingbox-wrap"><div class="setting-label">상호 평가 양식</div><pre class="settingbox"><code>1. 가장 강한 행: ____행
+   왜 강한가: ____________________
+
+2. 가장 약한 행: ____행
+   왜 약한가: ____________________
+   (흔한 표현 / 설명하고 있음 / 없어도 됨 중 하나를 고를 것)
+
+3. 이 시에서 한 행만 지운다면: ____행
+
+4. 이 시가 인공지능이 쓴 것 같은가?
+   □ 아니다  □ 일부  □ 그렇다
+   그렇게 느낀 근거: ____________________</code></pre></div>
+<p>4번 항목이 이 활동의 핵심이다. 서로의 글에서 <em>인공지능의 냄새</em>를 찾아내는 훈련이 곧 8.6절의 내용이며, 자기 글을 볼 때도 그대로 쓰인다.</p>
 <h2 id="sec6">8.6 AI가 쓴 글 비평하기</h2>
-<div class="stub"><span class="chip">집필 예정</span>AI 글의 전형적 징후: 균형 잡힌 결론, 과도한 부사, 반복되는 문형, 구체성의 부재, 감정 대신 감정을 설명하는 문장. 이를 찾아내 고치는 실습. AI에게 자기 글을 비평하게 하는 기법과 그 한계. 상호 평가 활동의 진행 방식.</div>
-<p><span id="labs"></span><div class="box lab"><div class="lab-title">이 장의 실습</div><div class="stub"><span class="chip">집필 예정</span>8장 실습 — 본문 집필 후 작성한다. 수업 주차별 과제와 대응시킬 것.</div></div></p>
-<details class="box summary" id="summary"><summary class="box-head">8장 요약</summary><div class="sum-body"><div class="stub"><span class="chip">집필 예정</span>8장 요약 — 본문 집필 후 작성한다. 각 절의 핵심을 항목 하나씩.</div></div></details>
-<details class="box exercise" id="exercises"><summary class="box-head">8장 연습문제</summary><div class="ex-body"><div class="stub"><span class="chip">집필 예정</span>8장 연습문제 — 본문 집필 후 작성한다. \ diffitem 난이도 1 3을 섞을 것.</div></div></details>
+<p>인공지능이 쓴 글에는 일정한 냄새가 있다. 그 냄새를 알아채는 것이 이 장에서 익힐 마지막 기술이며, 실은 가장 중요한 기술이다.</p>
+<h3>왜 그런 냄새가 나는가</h3>
+<p>2.3절에서 대화형 AI가 강화학습으로 다듬어졌다고 했다. 사람이 여러 답변을 놓고 더 나은 쪽을 골랐고, 그 선택이 모델의 성향이 되었다.</p>
+<p>그때 사람들이 고른 답은 대체로 <strong>친절하고, 균형 잡혀 있고, 빠짐없이 설명하는</strong> 답이었다. 평가 상황에서는 그런 답이 좋아 보이기 때문이다. 그 결과 모델은 창작에서도 그렇게 쓴다. 그리고 창작에서는 그것이 대개 약점이 된다.</p>
+<h3>일곱 가지 징후</h3>
+<div class="table-wrap"><div class="table-caption">표 8.6: 인공지능 글의 전형적 징후</div><table><tr><th> 징후</th><th> 어떻게 나타나는가</th><th> 고치는 법</th></tr><tr><td>균형 잡힌 결론</td><td>양쪽 다 일리가 있다는 식으로 닫는다</td><td>한쪽에 서게 한다</td></tr><tr><td>감정의 이름 부르기</td><td><em>그녀는 슬펐다</em>처럼 감정을 명명한다</td><td>행동과 사물로 바꾼다</td></tr><tr><td>과도한 부사</td><td><em>조용히</em>, <em>천천히</em>, <em>깊이</em>가 잦다</td><td>대부분 지운다</td></tr><tr><td>문형 반복</td><td>비슷한 길이의 문장이 이어진다</td><td>길이를 흐트러뜨린다</td></tr><tr><td>구체성 부재</td><td><em>어떤 카페</em>, <em>한 사람</em> 식으로 뭉뚱그린다</td><td>고유한 세부로 바꾼다</td></tr><tr><td>설명 과잉</td><td>독자가 알아챌 것을 다시 말해 준다</td><td>마지막 문장부터 지운다</td></tr><tr><td>번역체</td><td><em>––라 할 수 있다</em>, <em>––에 있어서</em></td><td>한국어 어순으로 다시 쓴다</td></tr></table></div>
+<p>표 8.6의 여섯 번째, <strong>설명 과잉</strong>이 가장 자주 나타난다. 8.4절에서 마지막 대사를 지워 보라고 한 것과 같은 이야기다.</p>
+<h3>직접 찾아보기</h3>
+<p>다음은 인공지능이 쓴 문단의 예다. 몇 개의 징후가 보이는지 세어 보자.</p>
+<pre class="airesp">서린은 조용히 붓을 내려놓았다. 그녀의 마음속에는 복잡한 감정이
+소용돌이치고 있었다. 자신의 그림이 과연 진정한 예술이라 할 수
+있을까 하는 의문이 깊이 자리 잡고 있었기 때문이다. 창밖으로는
+어느새 어둠이 천천히 내려앉고 있었고, 그것은 마치 그녀의 마음을
+대변하는 듯했다. 하지만 그녀는 알고 있었다. 답을 찾는 과정 자체가
+소중하다는 것을.</pre>
+<p>일곱 가지가 거의 다 들어 있다. <em>조용히</em>, <em>깊이</em>, <em>천천히</em>(부사 과잉). <em>복잡한 감정이 소용돌이쳤다</em>(감정 명명). <em>마음을 대변하는 듯했다</em>(흔한 비유 + 설명). 마지막 문장은 통째로 교훈적 정리다.</p>
+<p>같은 내용을 징후를 걷어내고 다시 쓰면 이렇게 된다.</p>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code>서린은 붓을 내려놓았다. 물통 안에서 물감이 풀리는 걸 한참 봤다.
+창밖이 어두워지는 동안 조명을 켜지 않았다.
+캔버스는 그대로 있었다.</code></pre></div>
+<div class="box keypoint"><span class="chip">요점</span><p>고친 쪽이 더 짧다는 점에 주목하자. <strong>퇴고의 방향은 거의 언제나 빼는 쪽</strong>이다. 8.4절에서 말한 것과 같으며, 이것이 인공지능 초고를 다룰 때의 기본 원칙이다.</p></div>
+<h3>AI에게 비평하게 하기</h3>
+<p>모델에게 자기 글을 비평하게 할 수 있다. 유용하지만 한계가 분명하다.</p>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://claude.ai" target="_blank" rel="noopener">Claude</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></div><pre class="prompt"><code>아래 글에서 다음을 찾아 지적해 줘. 고쳐 주지는 마.
+
+1. 감정을 직접 이름 붙여 말한 문장
+2. 없어도 뜻이 통하는 부사
+3. 독자가 이미 알아챘을 것을 다시 설명한 문장
+4. 흔하게 쓰이는 비유나 표현
+
+[글을 여기에 붙여넣기]</code></pre><div class="listing-caption">프롬프트 8.12: 비평 요청</div></div>
+<p><strong>항목을 지정해 물어야</strong> 쓸 만한 답이 온다. <em>비평해 줘</em>라고만 하면 칭찬 반, 일반론 반이 돌아온다.</p>
+<p>한계는 두 가지다. 첫째, 모델은 <strong>자기가 쓴 문장의 흔함을 잘 못 본다</strong>. 그것이 자기 기본값이기 때문이다. 둘째, <strong>좋은 것을 알아보지 못한다</strong>. 의도적으로 어긋나게 쓴 문장을 오류로 지적하는 일이 잦다.</p>
+<div class="box caution"><span class="chip">주의</span><p>그래서 AI 비평은 <strong>체크리스트 검사</strong>로만 쓰고, <strong>판단은 사람이</strong> 한다. 지적받은 것 중 무엇을 받아들일지 고르는 과정이 실은 퇴고의 본체다.</p></div>
+<h3>상호 평가로 눈 기르기</h3>
+<p>가장 확실한 훈련은 서로의 글을 보는 것이다. 자기 글의 냄새는 못 맡아도 남의 글의 냄새는 맡을 수 있고, 그 감각이 결국 자기 글로 돌아온다.</p>
+<div class="settingbox-wrap"><div class="setting-label">글 상호 평가 양식</div><pre class="settingbox"><code>1. 8.6절의 일곱 징후 중 이 글에서 발견한 것: ____________
+   해당 문장: ____________________
+
+2. 가장 좋았던 한 문장: ____________________
+   왜 좋은가: ____________________
+
+3. 이 글에서 한 문단을 지운다면: ____번째 문단
+
+4. 이 글의 인공지능 사용 정도를 추측하면?
+   □ 거의 안 씀  □ 초고만  □ 대부분
+   근거: ____________________
+
+5. 쓴 사람에게 물어보고 싶은 것 한 가지:
+   ____________________</code></pre></div>
+<p>4번의 추측을 실제 사용 정도와 맞춰 보는 것이 흥미롭다. <strong>많이 썼는데 티가 안 나는 글</strong>이 어떻게 만들어졌는지가 이 활동에서 배울 가장 값진 것이다. 대개 그런 글은 인공지능을 적게 쓴 글이 아니라, <strong>퇴고를 많이 한 글</strong>이다.</p>
+<h3>정리</h3>
+<p>이 절의 결론은 5.6절과 이어진다. 인공지능을 썼다는 사실이 문제가 아니다. <strong>쓰고 나서 아무것도 하지 않은 것</strong>이 문제다. 그리고 그것은 대개 결과물에 그대로 드러난다.</p>
+<p><span id="labs"></span><div class="box lab"><div class="lab-title">이 장의 실습</div><p>9주차 활동은 <strong>시나리오·시 창작과 상호 평가</strong>다. 실습 8-5와 8-6이 그 활동에 해당한다.</p>
+<h3>실습 8-1. 스무 개 벌리고 셋 고르기</h3>
+<p>자기 관심사에서 소재를 하나 정하고, 8.2절의 방식으로 갈래 20개를 받는다.</p>
+<div class="settingbox-wrap"><div class="setting-label">확장 기록</div><pre class="settingbox"><code>소재: ____________________
+
+받은 20개 중
+  가장 뻔한 것:   ____번
+  가장 이상한 것: ____번
+  가장 끌리는 것: ____번
+
+고른 셋: ____번, ____번, ____번
+셋을 합친 새 아이디어(한 문장):
+______________________________________________</code></pre></div>
+<p>마지막 칸이 목적이다. 목록에서 고르는 것이 아니라 <strong>합쳐서 목록에 없던 것을 만드는</strong> 연습이다.</p>
+<h3>실습 8-2. 설정의 구멍 메우기</h3>
+<p>실습 8-1에서 만든 아이디어로 세계관 설정을 시작한다. 8.2절의 방식대로 AI에게 질문 15개를 받고, 그중 여섯 개만 골라 답한다.</p>
+<div class="settingbox-wrap"><div class="setting-label">설정 문답</div><pre class="settingbox"><code>답하기로 한 질문 6개와 내 답:
+  Q1. ____________________  A. ____________________
+  Q2. ____________________  A. ____________________
+  (6개까지)
+
+답하지 않기로 한 질문 중 하나: ____________________
+왜 남겨 두는가: ____________________</code></pre></div>
+<p>마지막 칸을 반드시 채운다. <strong>설명하지 않기로 한 것</strong>이 무엇인지 아는 것도 설계다.</p>
+<h3>실습 8-3. 구조 짜고 칸 채우기</h3>
+<p>8.3절의 훅–전개–반전–마무리 구조로 8컷 구성을 짠다. 단, <strong>1컷과 6컷(반전)은 반드시 직접</strong> 정하고 나머지를 AI에게 채우게 한다.</p>
+<div class="settingbox-wrap"><div class="setting-label">8컷 구성표</div><pre class="settingbox"><code>1컷 (훅)     [내가 정함] ____________________
+2-3컷        [AI 제안 3개 중 선택] ____________________
+4-5컷        [AI 제안 3개 중 선택] ____________________
+6컷 (반전)   [내가 정함] ____________________
+7컷          [AI 제안 3개 중 선택] ____________________
+8컷          [AI 제안 3개 중 선택] ____________________</code></pre></div>
+<p>완성한 구성을 8.3절의 검토 요청 프롬프트로 진단받고, 지적 중 <strong>받아들일 것과 무시할 것</strong>을 나눈다. 무시한 이유도 적는다.</p>
+<h3>실습 8-4. 인물 둘의 목소리 갈라놓기</h3>
+<p>8.4절의 인물 카드를 두 인물에 대해 작성하고, 같은 상황의 대사를 생성한다.</p>
+<div class="settingbox-wrap"><div class="setting-label">인물 카드 작성</div><pre class="settingbox"><code>[인물 A]
+  어휘: ______________  문장 길이: ______________
+  말버릇: ____________  회피하는 것: ____________
+
+[인물 B]  (A와 최대한 대비되게)
+  어휘: ______________  문장 길이: ______________
+  말버릇: ____________  회피하는 것: ____________</code></pre></div>
+<p>생성한 대사에서 <strong>화자 표시를 지우고</strong> 옆 사람에게 보여 준다. 누가 누구인지 구분되는가? 구분되지 않는다면 어느 항목의 대비가 약했는지 찾는다.</p>
+<h3>실습 8-5. 시 창작 (9주차 활동)</h3>
+<p>8.5절의 재료 뽑기 방식으로 시를 쓴다.</p>
+<ol>
+<li>장소나 사물을 하나 정하고 네 종류의 목록을 받는다</li>
+<li>관련 목록에서 하나, <strong>무관한 목록에서 하나</strong>를 골라 억지로 붙인다</li>
+<li>이 조합을 다섯 번 반복해 다섯 개의 이미지를 만든다</li>
+<li>그중 셋을 골라 배치해 시를 쓴다 (<strong>여기서부터는 AI를 쓰지 않는다</strong>)</li>
+<li>완성한 시를 8.5절의 진단 프롬프트로 검토받고 고친다</li>
+</ol>
+<p>4번을 반드시 지킨다. 배치와 행갈이는 사람이 한다.</p>
+<h3>실습 8-6. 상호 평가 (9주차 활동)</h3>
+<p>작성한 시와 시나리오를 조원끼리 교환하고, 8.5절·8.6절의 평가 양식으로 서로 평가한다.</p>
+<p>평가가 끝난 뒤 다음을 공유한다.</p>
+<ul>
+<li>인공지능 사용 정도 추측이 실제와 맞았는가?</li>
+<li><strong>많이 썼는데 티가 안 난 글</strong>이 있었다면, 그 사람은 무엇을 했는가?</li>
+<li>자기 글에서 남이 지적한 징후 중 스스로는 못 봤던 것은?</li>
+</ul>
+<p>두 번째 항목이 이 활동의 핵심이다. 답은 대개 <em>퇴고를 많이 했다</em>로 모인다.</p>
+<h3>실습 8-7. 징후 걷어내기</h3>
+<p>인공지능에게 짧은 글(400자 내외)을 하나 쓰게 한 뒤, 8.6절의 일곱 징후를 모두 찾아 표시하고 고쳐 쓴다.</p>
+<div class="settingbox-wrap"><div class="setting-label">퇴고 기록</div><pre class="settingbox"><code>원문 글자 수: ______   고친 뒤: ______   (줄어야 정상)
+
+찾은 징후
+  □ 균형 잡힌 결론   해당 문장: ____________
+  □ 감정 이름 부르기 해당 문장: ____________
+  □ 과도한 부사      지운 개수: ____
+  □ 문형 반복        해당 부분: ____________
+  □ 구체성 부재      바꾼 부분: ____________
+  □ 설명 과잉        지운 문장: ____________
+  □ 번역체           해당 문장: ____________</code></pre></div>
+<p>원문과 고친 글을 나란히 제출한다.</p></div></p>
+<details class="box summary" id="summary"><summary class="box-head">8장 요약</summary><div class="sum-body"><ul>
+<li><strong>대신 쓰게 하기</strong>는 평균적인 글을 낳고, 내가 하려던 말을 지우고, 고칠 수도 없게 만든다. <strong>함께 쓰기</strong>가 원칙이며 좋은 결과는 서너 번 주고받은 끝에 나온다.</li>
+<li>AI를 붙일 자리는 발상의 <em>벌리기</em>, 구성의 <em>살 붙이기</em>, 초고의 <em>채우기</em>, 퇴고의 <em>지적</em>이다. <strong>무엇을 말할지와 무엇을 남길지는 사람의 몫</strong>이다.</li>
+<li>작업 단위를 쪼갠다. 소설 한 편이 아니라 한 장면씩. 쪼개면 매 단계 개입할 수 있고 문맥 창 문제도 피한다.</li>
+<li>문맥을 쌓을 때는 <strong>AI에게 질문을 던지게 한다</strong>. 내가 정하지 않은 부분이 드러나고 그 답이 설정이 된다. <strong>질문은 기계가, 답은 사람이.</strong></li>
+<li><strong class="term-ko">설정 문서</strong><sup class="term">story bible</sup>에 인물·세계·<strong>규칙</strong>·진행 상황을 적어 두고 흐려질 때마다 다시 붙여넣는다. 모델은 대화가 길어지면 문체 규칙부터 잊는다.</li>
+<li>아이디어는 <strong>스무 개로 벌린 뒤 두세 개를 합친다</strong>. 고르는 것으로 끝내면 목록 안에 머물고, 합치면 목록 밖으로 나간다. 확장 지시어(더 이상하게, 정반대로, 가장 작게 등)를 익혀 둔다.</li>
+<li><strong>구조는 사람이 정하고 살은 기계가 붙인다.</strong> 이야기에서 구조가 곧 말하려는 바이기 때문이다. 기계에게 구조를 맡기면 가장 평균적인 배열로 수렴한다.</li>
+<li>짧은 콘텐츠에는 <strong>훅–전개–반전–마무리</strong>가 맞는다. 1컷이 전부라 해도 과장이 아니며, 시간 순서상 첫 장면일 필요는 없다.</li>
+<li>분량을 지키려면 <strong>인물은 둘 이하, 시간은 좁게, 배경 설명은 없이, 하고 싶은 말은 하나만</strong>. 좋은 아이디어를 버리는 능력이 유일한 방법이다.</li>
+<li>말투는 <strong>어휘·문장 길이·말버릇·회피</strong>의 조합으로 만든다. 특히 <em>절대 말하지 않는 것</em>이 인물을 가장 잘 드러낸다. 인물 카드를 만들어 지시에 넣는다.</li>
+<li>인공지능이 유독 못하는 셋은 <strong>침묵, 서브텍스트, 말줄임</strong>이다. 공통점은 <em>덜 말하는 기술</em>이며, 그래서 AI 초고를 다듬는 방향은 거의 언제나 <strong>빼는 쪽</strong>이다.</li>
+<li>시에서 모델은 <strong>정형은 잘 지키고 낯설게 하기는 못한다</strong>. 완성된 시를 요구하는 대신 <strong>재료(목록)를 뽑게 하고 배치는 사람이</strong> 한다. 무관한 낱말을 억지로 붙이는 것이 평균 바깥으로 나가는 방법이다.</li>
+<li>AI 글의 일곱 징후는 <strong>균형 잡힌 결론, 감정 이름 부르기, 과도한 부사, 문형 반복, 구체성 부재, 설명 과잉, 번역체</strong>다. 가장 잦은 것은 설명 과잉이며, 마지막 문장부터 지워 보면 대개 해결된다.</li>
+<li>AI 비평은 <strong>항목을 지정해</strong> 요청하고 <strong>체크리스트 검사</strong>로만 쓴다. 모델은 자기 문장의 흔함을 못 보고, 의도적으로 어긋난 좋은 문장을 오류로 지적한다.</li>
+<li>결론은 5.6절과 이어진다. <strong>인공지능을 썼다는 사실이 문제가 아니라 쓰고 나서 아무것도 하지 않은 것이 문제</strong>이며, 그것은 결과물에 드러난다.</li>
+</ul></div></details>
+<details class="box exercise" id="exercises"><summary class="box-head">8장 연습문제</summary><div class="ex-body"><ol>
+<li class="ex-item" data-ex="1"><span class="diff"><span class="d1">★</span></span>  <em>대신 쓰게 하기</em>가 낳는 세 가지 문제를 쓰시오.</li>
+<li class="ex-item" data-ex="2"><span class="diff"><span class="d1">★</span></span>  글쓰기 네 단계(발상·구성·초고·퇴고)에서 <strong>사람이 반드시 해야 할 일</strong>을 각각 하나씩 쓰시오.</li>
+<li class="ex-item" data-ex="3"><span class="diff"><span class="d1">★</span></span>  다음 중 인공지능이 <strong>잘하는</strong> 것을 모두 고르시오.
+<ol type="a">
+<li>4행 3연의 정형시 형식 지키기</li>
+<li>아이디어를 스무 개로 벌리기</li>
+<li>인물이 말하지 않고 침묵하는 장면 쓰기</li>
+<li>설정의 빈 곳을 질문으로 뽑아내기</li>
+<li>처음 보는 낯선 비유 만들기</li>
+</ol></li>
+<li class="ex-item" data-ex="4"><span class="diff"><span class="d2">★★</span></span>  <em>구조는 사람이 정하고 살은 기계가 붙인다</em>는 원칙의 근거를, 3.1절의 언어 모델 원리와 <em>구조가 곧 주장</em>이라는 관점 두 가지로 설명하시오.</li>
+<li class="ex-item" data-ex="5"><span class="diff"><span class="d2">★★</span></span>  다음 대사를 8.4절의 기준으로 고쳐 쓰시오. 지문 없이 대사만 남기고, 감정을 설명하는 부분을 행동이나 침묵으로 바꿀 것.
+<blockquote class="plainquote"><p><em>“정말 슬프구나”라고 그녀는 눈물을 글썽이며 안타까운 목소리로 말했다. “네 마음을 충분히 이해해. 힘들었겠다.”</em></p></blockquote></li>
+<li class="ex-item" data-ex="6"><span class="diff"><span class="d2">★★</span></span>  8.6절의 일곱 징후 중 다섯 개 이상을 일부러 넣은 짧은 문단(200자 내외)을 직접 작성하고, 그것을 고친 문단을 함께 제출하시오.</li>
+<li class="ex-item" data-ex="7"><span class="diff"><span class="d2">★★</span></span>  시에서 <em>그럴듯함</em>과 <em>좋음</em>이 왜 반대 방향일 수 있는지, 3.1절의 원리로 설명하시오.</li>
+<li class="ex-item" data-ex="8"><span class="diff"><span class="d3">★★★</span></span>  설정 문서에서 <strong>답하지 않고 남겨 두는 항목</strong>이 왜 필요한지 서술하고, 자기 작업에서 남겨 둘 항목을 하나 정해 그 이유를 쓰시오.</li>
+<li class="ex-item" data-ex="9"><span class="diff"><span class="d3">★★★</span></span>  8컷 구성에서 <strong>1컷과 반전 컷만 직접 정하고 나머지를 AI에게 맡기는</strong> 방식의 장점과 위험을 각각 서술하시오. 위험을 줄이는 방법도 제시할 것.</li>
+<li class="ex-item" data-ex="10"><span class="diff"><span class="d3">★★★</span></span>  상호 평가에서 <em>많이 썼는데 티가 안 나는 글</em>을 만난 경우를 보고하시오. 그 글의 작성자가 무엇을 했는지 분석하고, 자기 작업에 적용할 점을 쓰시오. (그런 글을 만나지 못했다면, 자기 글 중 하나를 그렇게 만들기 위해 무엇을 더 해야 할지 서술할 것)</li>
+</ol></div></details>
 <div class="pager-row"><a class="pager prev" href="ch07.html">&larr; 7장</a><a class="pager next" href="ch09.html">9장 &rarr;</a></div>
 </main>
 </div>
