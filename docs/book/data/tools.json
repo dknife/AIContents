@@ -1,0 +1,120 @@
+{
+  "_comment": "부록 A 도구 비교표 데이터. 요금·한도는 자주 바뀌므로 이 파일만 고쳐 갱신한다. 원고(.tex)는 건드리지 않는다. price: free | freemium | credit | paid. cats: chat, image, edit, music, video, auto (여러 개 가능). ch: 이 책에서 주로 쓰는 장.",
+  "updated": "2026-07",
+  "tools": [
+    {
+      "name": "ChatGPT", "url": "https://chatgpt.com", "price": "freemium",
+      "cats": ["chat", "auto"], "ch": 1,
+      "free": "기본 모델 대화, 이미지 생성 소량",
+      "note": "커스텀 어시스턴트(GPTs) 제작 가능"
+    },
+    {
+      "name": "Claude", "url": "https://claude.ai", "price": "freemium",
+      "cats": ["chat", "auto"], "ch": 1,
+      "free": "하루 사용량 제한 안에서 대화",
+      "note": "긴 글 다루기와 파일 첨부에 강함"
+    },
+    {
+      "name": "Gemini", "url": "https://gemini.google.com", "price": "freemium",
+      "cats": ["chat", "image"], "ch": 1,
+      "free": "대화, 이미지 생성",
+      "note": "구글 계정과 문서·드라이브 연계"
+    },
+    {
+      "name": "Microsoft Copilot", "url": "https://copilot.microsoft.com", "price": "free",
+      "cats": ["chat", "image"], "ch": 6,
+      "free": "이미지 생성 (일일 부스트 한도)",
+      "note": "계정만 있으면 되어 수업 실습에 적합"
+    },
+    {
+      "name": "Google Labs (ImageFX 등)", "url": "https://labs.google/fx", "price": "free",
+      "cats": ["image"], "ch": 6,
+      "free": "이미지 생성, 실험 도구",
+      "note": "지역·계정에 따라 제공 범위가 다름"
+    },
+    {
+      "name": "Adobe Firefly", "url": "https://firefly.adobe.com", "price": "credit",
+      "cats": ["image", "edit"], "ch": 6,
+      "free": "월 생성 크레딧",
+      "note": "학습 데이터 출처를 밝힌 모델 — 상업 이용 부담이 적음"
+    },
+    {
+      "name": "Leonardo.ai", "url": "https://leonardo.ai", "price": "credit",
+      "cats": ["image"], "ch": 7,
+      "free": "매일 회복되는 토큰",
+      "note": "구조 제어와 캐릭터 참조 기능이 강함"
+    },
+    {
+      "name": "Krea", "url": "https://krea.ai", "price": "freemium",
+      "cats": ["image", "video"], "ch": 7,
+      "free": "실시간 생성 체험",
+      "note": "스케치를 즉시 이미지로 바꾸는 작업에 좋음"
+    },
+    {
+      "name": "Photopea", "url": "https://photopea.com", "price": "free",
+      "cats": ["edit"], "ch": 7,
+      "free": "전 기능 (광고 있음)",
+      "note": "설치 없는 포토샵 계열 편집기 — 생성 결과 마무리에 필수"
+    },
+    {
+      "name": "Canva", "url": "https://canva.com", "price": "freemium",
+      "cats": ["edit"], "ch": 9,
+      "free": "템플릿·레이아웃·글자 얹기",
+      "note": "말풍선과 타이포 작업, 배포용 규격 내보내기"
+    },
+    {
+      "name": "Suno", "url": "https://suno.com", "price": "credit",
+      "cats": ["music"], "ch": 10,
+      "free": "일일 크레딧으로 곡 생성",
+      "note": "무료 플랜 결과물은 상업 이용 제한 — 약관 확인 필수"
+    },
+    {
+      "name": "Udio", "url": "https://udio.com", "price": "credit",
+      "cats": ["music"], "ch": 10,
+      "free": "월 생성 횟수 제한",
+      "note": "구간 이어 붙이기와 확장에 강함"
+    },
+    {
+      "name": "ElevenLabs", "url": "https://elevenlabs.io", "price": "credit",
+      "cats": ["music"], "ch": 10,
+      "free": "월 음성 합성 글자 수 한도",
+      "note": "내레이션·더빙. 목소리 복제는 본인 동의 있는 경우만"
+    },
+    {
+      "name": "Runway", "url": "https://runwayml.com", "price": "credit",
+      "cats": ["video"], "ch": 11,
+      "free": "가입 시 일회성 크레딧",
+      "note": "영상 생성과 편집 도구가 한곳에"
+    },
+    {
+      "name": "Luma Dream Machine", "url": "https://lumalabs.ai", "price": "credit",
+      "cats": ["video"], "ch": 11,
+      "free": "월 생성 횟수 제한",
+      "note": "이미지를 움직이게 하는 작업에 무난"
+    },
+    {
+      "name": "Kling", "url": "https://klingai.com", "price": "credit",
+      "cats": ["video"], "ch": 11,
+      "free": "매일 회복되는 크레딧",
+      "note": "무료 한도가 비교적 넉넉한 편"
+    },
+    {
+      "name": "CapCut", "url": "https://capcut.com", "price": "freemium",
+      "cats": ["video", "edit"], "ch": 11,
+      "free": "컷 편집, 자동 자막, 음악 얹기",
+      "note": "생성한 클립을 이어 붙이는 마무리 단계용"
+    },
+    {
+      "name": "Zapier", "url": "https://zapier.com", "price": "freemium",
+      "cats": ["auto"], "ch": 12,
+      "free": "월 실행 횟수 제한, 2단계 워크플로",
+      "note": "코드 없이 서비스 사이를 잇는다"
+    },
+    {
+      "name": "Make", "url": "https://make.com", "price": "freemium",
+      "cats": ["auto"], "ch": 12,
+      "free": "월 작업 수 제한",
+      "note": "Zapier보다 분기·반복 설계가 자유롭다"
+    }
+  ]
+}

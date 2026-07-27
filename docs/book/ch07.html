@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7장 이미지 제어와 편집 — AI 크리에이티브</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="book.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+<script>MathJax = {tex: {inlineMath: [['\\(', '\\)']]}, svg: {fontCache: 'global'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="home" href="../index.html">&#8962; 홈</a>
+  <span class="book-title">AI 크리에이티브</span>
+  <span class="ch-indicator">7장 이미지 제어와 편집</span>
+  <button class="nav-toggle" onclick="document.body.classList.toggle('nav-open')">목차</button>
+</header>
+<div class="layout">
+<nav class="sidebar">
+<div class="nav-ch"><a class="nav-ch-link" href="front.html"><span class="nav-num">&#128214;</span> 표지·머릿말</a></div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch01.html"><span class="nav-num">01</span> AI와 디지털 아츠의 세계</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch02.html"><span class="nav-num">02</span> 기계는 어떻게 배우는가</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch03.html"><span class="nav-num">03</span> 생성형 AI는 어떻게 창작하는가</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch04.html"><span class="nav-num">04</span> 프롬프트 엔지니어링</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch05.html"><span class="nav-num">05</span> AI 윤리와 저작권</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch06.html"><span class="nav-num">06</span> AI 이미지 생성</a>
+</div>
+<div class="nav-ch current"><a class="nav-ch-link" href="ch07.html"><span class="nav-num">07</span> 이미지 제어와 편집</a>
+<div class="nav-secs"><a class="nav-sec" href="ch07.html#sec1">7.1 왜 제어가 필요한가</a><a class="nav-sec" href="ch07.html#sec2">7.2 이미지를 참조로 주기</a><a class="nav-sec" href="ch07.html#sec3">7.3 부분만 고치기</a><a class="nav-sec" href="ch07.html#sec4">7.4 구조를 지정하기</a><a class="nav-sec" href="ch07.html#sec5">7.5 캐릭터 일관성 확보하기</a><a class="nav-sec" href="ch07.html#sec6">7.6 후반 작업</a><a class="nav-sec" href="ch07.html#labs">실습을 통한 개념 정리</a><a class="nav-sec" href="ch07.html#summary">7장 요약</a><a class="nav-sec" href="ch07.html#exercises">연습문제</a></div>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch08.html"><span class="nav-num">08</span> AI 글쓰기와 스토리텔링</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch09.html"><span class="nav-num">09</span> 웹툰형 콘텐츠 프로젝트</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch10.html"><span class="nav-num">10</span> AI 음악과 사운드</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch11.html"><span class="nav-num">11</span> AI 영상 만들기</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch12.html"><span class="nav-num">12</span> AI 에이전트와 워크플로 자동화</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch13.html"><span class="nav-num">13</span> 기획·제작·발표·포트폴리오</a>
+</div>
+<div class="nav-part">부록</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">A</span> 무료·유료 도구 총정리</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxb.html"><span class="nav-num">B</span> 프롬프트 사전</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxc.html"><span class="nav-num">C</span> 저작권·이용약관 체크리스트</a>
+</div>
+<div class="nav-part">부가 자료</div>
+<div class="nav-ch"><a class="nav-ch-link" href="references.html"><span class="nav-num">&#128218;</span> 참고문헌</a></div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">&#128295;</span> 도구 비교표</a></div>
+</nav>
+<main class="content">
+<div class="chapter-head">
+  <div class="ch-label">CHAPTER 07</div>
+  <h1>이미지 제어와 편집</h1>
+</div>
+<div class="center"><details class="box goals"><summary class="box-head">이 장을 마치면</summary><div class="goals-body"><ul>
+<li>원하는 결과를 얻기 위해 참조 이미지를 활용할 수 있다.</li>
+<li>이미지의 일부만 지정해 고쳐 그릴 수 있다.</li>
+<li>포즈·구조·깊이를 지정해 구도를 통제할 수 있다.</li>
+<li>같은 캐릭터를 여러 장면에 일관되게 등장시킬 수 있다.</li>
+<li>생성 결과를 편집 도구로 마무리할 수 있다.</li>
+</ul></div></details></div>
+<p>6장에서 좋은 결과가 나올 때까지 여러 번 뽑는 법을 익혔다면, 이 장에서는 원하는 것을 지정해서 얻는 법을 배운다. 이 차이는 취미와 실무를 가르는 지점이다. 의뢰받은 작업에서는 ’이 인물이 이 포즈로 이 배경에’ 있어야 하지, 그럴듯한 무언가가 나오면 되는 것이 아니기 때문이다.</p>
+<h2 id="sec1">7.1 왜 제어가 필요한가</h2>
+<div class="stub"><span class="chip">집필 예정</span>프롬프트만으로 통제할 수 있는 것과 없는 것의 경계를 정리한다. 1장 실습 1-4에서 ’매번 달라진 요소’로 확인한 것들이 바로 프롬프트로 통제되지 않는 부분임을 상기시킨다. 제어 기법의 전체 지도를 먼저 제시하고 이후 절에서 하나씩 다룬다.</div>
+<h2 id="sec2">7.2 이미지를 참조로 주기</h2>
+<div class="stub"><span class="chip">집필 예정</span>image-to-image의 원리(3장 확산 과정의 중간에서 시작하기)와 강도 조절. 스타일 참조와 내용 참조의 구분. 자기 스케치를 넣어 완성시키는 작업 흐름 — 그림을 그릴 줄 아는 학생에게 가장 강력한 방법이므로 비중 있게 다룬다.</div>
+<h2 id="sec3">7.3 부분만 고치기</h2>
+<div class="stub"><span class="chip">집필 예정</span>인페인팅(안쪽 다시 그리기)과 아웃페인팅(바깥으로 확장). 마스크를 그리는 요령, 경계가 어색해지지 않게 하는 방법. 실무 사례: 손 고치기, 배경의 방해 요소 지우기, 포스터를 세로에서 가로로 확장하기.</div>
+<h2 id="sec4">7.4 구조를 지정하기</h2>
+<div class="stub"><span class="chip">집필 예정</span>포즈·윤곽선·깊이 등 구조 정보를 조건으로 주는 기법(ControlNet 계열)의 개념을 설명한다. 무료로 접근 가능한 방법을 우선 안내하고, 전문 도구는 발전 경로로 소개한다. 직접 찍은 사진의 포즈를 가져오는 실습.</div>
+<h2 id="sec5">7.5 캐릭터 일관성 확보하기</h2>
+<div class="stub"><span class="chip">집필 예정</span>이 장의 핵심이자 9장 웹툰 프로젝트의 전제. 여러 접근을 난이도 순으로 제시한다: 상세한 캐릭터 시트 프롬프트 고정, 참조 이미지 활용, 캐릭터 참조 기능, 시드 고정, 그리고 소량 학습(LoRA)의 개념 소개(직접 학습은 다루지 않되 존재와 원리는 알려 준다). 각 방법의 비용·품질·난이도를 표로 비교한다.</div>
+<h2 id="sec6">7.6 후반 작업</h2>
+<div class="stub"><span class="chip">집필 예정</span>생성으로 끝나지 않는다. Photopea/Canva로 자르기, 색 보정, 합성, 글자 얹기. 생성 이미지의 글자 문제를 편집으로 해결하는 것이 실무의 표준임을 알린다. 레이어 개념과 파일 형식(PNG/JPG/PSD), 인쇄용 내보내기.</div>
+<p><span id="labs"></span><div class="box lab"><div class="lab-title">이 장의 실습</div><div class="stub"><span class="chip">집필 예정</span>7장 실습 — 본문 집필 후 작성한다. 수업 주차별 과제와 대응시킬 것.</div></div></p>
+<details class="box summary" id="summary"><summary class="box-head">7장 요약</summary><div class="sum-body"><div class="stub"><span class="chip">집필 예정</span>7장 요약 — 본문 집필 후 작성한다. 각 절의 핵심을 항목 하나씩.</div></div></details>
+<details class="box exercise" id="exercises"><summary class="box-head">7장 연습문제</summary><div class="ex-body"><div class="stub"><span class="chip">집필 예정</span>7장 연습문제 — 본문 집필 후 작성한다. \ diffitem 난이도 1 3을 섞을 것.</div></div></details>
+<div class="pager-row"><a class="pager prev" href="ch06.html">&larr; 6장</a><a class="pager next" href="ch08.html">8장 &rarr;</a></div>
+</main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-c.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-glsl.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+<script src="book.js"></script>
+</body>
+</html>

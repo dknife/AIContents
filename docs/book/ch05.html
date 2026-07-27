@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5장 AI 윤리와 저작권 — AI 크리에이티브</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="book.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+<script>MathJax = {tex: {inlineMath: [['\\(', '\\)']]}, svg: {fontCache: 'global'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="home" href="../index.html">&#8962; 홈</a>
+  <span class="book-title">AI 크리에이티브</span>
+  <span class="ch-indicator">5장 AI 윤리와 저작권</span>
+  <button class="nav-toggle" onclick="document.body.classList.toggle('nav-open')">목차</button>
+</header>
+<div class="layout">
+<nav class="sidebar">
+<div class="nav-ch"><a class="nav-ch-link" href="front.html"><span class="nav-num">&#128214;</span> 표지·머릿말</a></div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch01.html"><span class="nav-num">01</span> AI와 디지털 아츠의 세계</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch02.html"><span class="nav-num">02</span> 기계는 어떻게 배우는가</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch03.html"><span class="nav-num">03</span> 생성형 AI는 어떻게 창작하는가</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch04.html"><span class="nav-num">04</span> 프롬프트 엔지니어링</a>
+</div>
+<div class="nav-ch current"><a class="nav-ch-link" href="ch05.html"><span class="nav-num">05</span> AI 윤리와 저작권</a>
+<div class="nav-secs"><a class="nav-sec" href="ch05.html#sec1">5.1 학습 데이터는 누구의 것인가</a><a class="nav-sec" href="ch05.html#sec2">5.2 AI가 만든 것의 저작권</a><a class="nav-sec" href="ch05.html#sec3">5.3 화풍을 흉내 내는 일</a><a class="nav-sec" href="ch05.html#sec4">5.4 딥페이크와 초상권</a><a class="nav-sec" href="ch05.html#sec5">5.5 편향, 그리고 만들지 않을 자유</a><a class="nav-sec" href="ch05.html#sec6">5.6 창작자를 위한 실천 지침</a><a class="nav-sec" href="ch05.html#labs">실습을 통한 개념 정리</a><a class="nav-sec" href="ch05.html#summary">5장 요약</a><a class="nav-sec" href="ch05.html#exercises">연습문제</a></div>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch06.html"><span class="nav-num">06</span> AI 이미지 생성</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch07.html"><span class="nav-num">07</span> 이미지 제어와 편집</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch08.html"><span class="nav-num">08</span> AI 글쓰기와 스토리텔링</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch09.html"><span class="nav-num">09</span> 웹툰형 콘텐츠 프로젝트</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch10.html"><span class="nav-num">10</span> AI 음악과 사운드</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch11.html"><span class="nav-num">11</span> AI 영상 만들기</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch12.html"><span class="nav-num">12</span> AI 에이전트와 워크플로 자동화</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch13.html"><span class="nav-num">13</span> 기획·제작·발표·포트폴리오</a>
+</div>
+<div class="nav-part">부록</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">A</span> 무료·유료 도구 총정리</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxb.html"><span class="nav-num">B</span> 프롬프트 사전</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxc.html"><span class="nav-num">C</span> 저작권·이용약관 체크리스트</a>
+</div>
+<div class="nav-part">부가 자료</div>
+<div class="nav-ch"><a class="nav-ch-link" href="references.html"><span class="nav-num">&#128218;</span> 참고문헌</a></div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">&#128295;</span> 도구 비교표</a></div>
+</nav>
+<main class="content">
+<div class="chapter-head">
+  <div class="ch-label">CHAPTER 05</div>
+  <h1>AI 윤리와 저작권</h1>
+</div>
+<div class="center"><details class="box goals"><summary class="box-head">이 장을 마치면</summary><div class="goals-body"><ul>
+<li>생성형 AI의 학습 데이터를 둘러싼 쟁점을 양쪽 입장에서 설명할 수 있다.</li>
+<li>AI가 만든 결과물의 저작권이 어떻게 다루어지는지 안다.</li>
+<li>특정 작가의 화풍을 흉내 내는 일의 법적·윤리적 경계를 판단할 수 있다.</li>
+<li>딥페이크와 초상권 침해의 위험을 인식하고 피할 수 있다.</li>
+<li>자기 작업에 적용할 실천 지침을 세울 수 있다.</li>
+</ul></div></details></div>
+<p>이 장은 실습이 없는 대신 토론이 있다. 여기서 다루는 문제들은 정답이 정해져 있지 않고, 지금 이 순간에도 법정과 의회에서 다투어지고 있다. 그러나 답이 없다는 것이 아무래도 좋다는 뜻은 아니다. 창작을 업으로 삼으려는 사람이라면 최소한 무엇이 쟁점인지는 알고 자기 입장을 가지고 있어야 한다.</p>
+<h2 id="sec1">5.1 학습 데이터는 누구의 것인가</h2>
+<div class="stub"><span class="chip">집필 예정</span>생성형 AI가 인터넷의 창작물을 학습 재료로 삼았다는 사실에서 출발한다. 창작자 측 주장 (동의 없이 사용되었고 결과물이 원작자와 경쟁한다)과 개발자 측 주장(학습은 복제가 아니라 통계적 추상화이며 사람이 배우는 것과 다르지 않다)을 각각 가장 강한 형태로 제시한다. 주요 소송과 각국의 대응 방향을 소개하되, 판결은 계속 바뀌므로 ’어떤 논리로 다투는가’에 초점을 둔다. 학습 거부(opt-out) 수단과 라이선스를 확보한 모델의 존재도 소개한다.</div>
+<h2 id="sec2">5.2 AI가 만든 것의 저작권</h2>
+<div class="stub"><span class="chip">집필 예정</span>저작권이 ’인간의 창작적 표현’을 보호한다는 원칙에서 출발해, 프롬프트만 입력한 결과물의 지위를 다룬다. 미국·한국의 현재 입장, ’인간의 기여가 충분한 경우’라는 기준. 실무적 함의: 내가 만든 AI 이미지를 남이 가져다 써도 막기 어려울 수 있다는 점. 상업적 이용 시 각 서비스 이용약관을 확인해야 하는 이유와 확인 방법.</div>
+<h2 id="sec3">5.3 화풍을 흉내 내는 일</h2>
+<div class="stub"><span class="chip">집필 예정</span>’화풍 자체는 저작권 보호 대상이 아니다’라는 법 원칙과, 그럼에도 생존 작가의 이름을 프롬프트에 넣는 일이 왜 문제가 되는지의 간극을 다룬다. 사망한 거장과 활동 중인 작가의 차이. 퍼블리시티권. 실천 지침: 이름 대신 특징을 묘사하는 방법(구체적 프롬프트 전환 예시 제시).</div>
+<h2 id="sec4">5.4 딥페이크와 초상권</h2>
+<div class="stub"><span class="chip">집필 예정</span>실존 인물의 얼굴·목소리를 생성하는 일의 위험. 한국의 관련 법(정보통신망법, 성폭력처벌법 등)과 형사 처벌 가능성을 명확히 알린다. 풍자·패러디의 경계. 친구 얼굴로 장난치는 것도 문제가 될 수 있음을 학생 눈높이에서 경고한다. 11장 아바타 실습의 전제가 되는 절.</div>
+<h2 id="sec5">5.5 편향, 그리고 만들지 않을 자유</h2>
+<div class="stub"><span class="chip">집필 예정</span>2.5절에서 확인한 편향이 작품에 실릴 때의 책임. 고정관념을 강화하는 이미지를 무심코 만들어 배포하는 일. 문화적 요소를 맥락 없이 가져다 쓰는 문제. 그리고 ’기술적으로 가능하지만 만들지 않기로 하는 것’도 창작자의 선택임을 다룬다.</div>
+<h2 id="sec6">5.6 창작자를 위한 실천 지침</h2>
+<div class="stub"><span class="chip">집필 예정</span>앞 절들을 실무 체크리스트로 정리한다. 표기(AI 사용 사실 명시) 방식, 상업 이용 전 확인 항목, 학습 데이터 출처가 밝혀진 도구 선택, 최종 결과물에 사람의 기여를 남기는 방법. 부록 C 체크리스트로 연결한다.</div>
+<p><span id="labs"></span><div class="box lab"><div class="lab-title">이 장의 실습</div><div class="stub"><span class="chip">집필 예정</span>5장 실습 — 본문 집필 후 작성한다. 수업 주차별 과제와 대응시킬 것.</div></div></p>
+<details class="box summary" id="summary"><summary class="box-head">5장 요약</summary><div class="sum-body"><div class="stub"><span class="chip">집필 예정</span>5장 요약 — 본문 집필 후 작성한다. 각 절의 핵심을 항목 하나씩.</div></div></details>
+<details class="box exercise" id="exercises"><summary class="box-head">5장 연습문제</summary><div class="ex-body"><div class="stub"><span class="chip">집필 예정</span>5장 연습문제 — 본문 집필 후 작성한다. \ diffitem 난이도 1 3을 섞을 것.</div></div></details>
+<div class="pager-row"><a class="pager prev" href="ch04.html">&larr; 4장</a><a class="pager next" href="ch06.html">6장 &rarr;</a></div>
+</main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-c.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-glsl.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+<script src="book.js"></script>
+</body>
+</html>

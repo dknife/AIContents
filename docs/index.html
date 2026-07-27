@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 크리에이티브 — 인공지능으로 만드는 이미지·글·음악·영상</title>
+  <meta name="description" content="예술을 전공하는 학생을 위한 인공지능 활용 교재. 무료 도구 우선, 코딩 없이, 프롬프트로 배웁니다.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <style>
+    /* ===== Sutera 디자인 시스템 (알짜파이썬/DESIGN.md) ===== */
+    :root {
+      --bg: #F8F8F8;
+      --bg-2: #EDEDED;
+      --white: #FFFFFF;
+      --text: #222222;
+      --text-2: #313131;
+      --text-light: #767676;
+      --accent: #FA5D29;
+      --cyan: #0693E3;
+      --mint: #7BDCB5;
+      --yellow: #FFF083;
+      --border: #E4E4E4;
+      --btn: #222222;
+      --btn-hover: #383838;
+      --radius: 8px;
+      --radius-lg: 16px;
+      --ease: cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter Tight', 'Pretendard', 'Noto Sans KR',
+        -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ---- fixed header ---- */
+    .header {
+      position: fixed; top: 0; left: 0; right: 0; height: 54px;
+      display: flex; align-items: center; gap: 1.6rem;
+      padding: 0 2rem;
+      background: rgba(248,248,248,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+    }
+    .header .logo {
+      font-weight: 800; font-size: 1.05rem; letter-spacing: -0.02em;
+      color: var(--text); text-decoration: none;
+    }
+    .header .logo em { color: var(--accent); font-style: normal; }
+    .header nav { margin-left: auto; display: flex; gap: 1.4rem; align-items: center; }
+    .header nav a {
+      color: var(--text-2); text-decoration: none; font-size: 0.88rem;
+      font-weight: 500; transition: color 0.3s ease;
+    }
+    .header nav a:hover { color: var(--accent); }
+    .header nav a.gh {
+      background: var(--btn); color: #fff;
+      padding: 0.35rem 1rem; border-radius: var(--radius);
+      transition: background 0.3s ease;
+    }
+    .header nav a.gh:hover { background: var(--btn-hover); color: #fff; }
+
+    /* ---- hero ---- */
+    .hero {
+      padding: 150px 2rem 60px;
+      max-width: 1300px; margin: 0 auto;
+    }
+    .hero-grid {
+      display: flex; gap: 3.5rem; align-items: center;
+      justify-content: space-between; flex-wrap: wrap;
+    }
+    .hero-text { flex: 1 1 480px; min-width: 0; }
+    .hero-cover { flex: 0 1 340px; max-width: 340px; }
+    .hero-cover img {
+      display: block; width: 100%; border-radius: 6px;
+      box-shadow: 18px 22px 44px rgba(0,0,0,0.22), 0 2px 8px rgba(0,0,0,0.10);
+      transition: transform 0.4s var(--ease), box-shadow 0.4s ease;
+    }
+    .hero-cover img:hover {
+      transform: translateY(-6px) rotate(-1deg);
+      box-shadow: 20px 28px 56px rgba(0,0,0,0.26), 0 2px 8px rgba(0,0,0,0.10);
+    }
+    .hero .eyebrow {
+      font-size: 0.85rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+    .hero h1 {
+      font-size: clamp(42px, 7vw, 96px);
+      font-weight: 800; line-height: 1.08; letter-spacing: -0.04em;
+    }
+    .hero h1 .accent { color: var(--accent); }
+    .hero .subtitle {
+      font-size: clamp(16px, 2vw, 20px); color: var(--text-light);
+      margin: 1.4rem 0 0.9rem;
+    }
+    .hero .authors { font-size: 1.02rem; color: var(--text-2); margin-bottom: 1.6rem; }
+    .hero .authors strong { font-weight: 700; }
+    .hero .badges { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2.2rem; }
+    .hero .badge {
+      font-size: 0.8rem; font-weight: 600; color: var(--text-2);
+      background: var(--bg-2); border-radius: 20px; padding: 0.3rem 0.95rem;
+    }
+    .cta-row { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+    .cta {
+      display: inline-flex; align-items: center; height: 48px; padding: 0 24px;
+      border-radius: var(--radius); font-weight: 600; font-size: 0.95rem;
+      text-decoration: none; transition: all 0.3s ease;
+    }
+    .cta.primary { background: var(--btn); color: #fff; }
+    .cta.primary:hover { background: var(--btn-hover); }
+    .cta.orange { background: var(--accent); color: #fff; }
+    .cta.orange:hover { filter: brightness(0.92); }
+    .cta.ghost { border: 1.5px solid var(--border); color: var(--text-2); background: var(--white); }
+    .cta.ghost:hover { border-color: var(--text); color: var(--text); }
+
+    /* ---- features ---- */
+    .section { max-width: 1300px; margin: 0 auto; padding: 60px 2rem; }
+    .section h2 {
+      font-size: clamp(26px, 3.5vw, 40px); font-weight: 800;
+      letter-spacing: -0.03em; margin-bottom: 2rem;
+    }
+    .section h2 em { color: var(--accent); font-style: normal; }
+    .feat-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .feat {
+      background: var(--white); border-radius: var(--radius-lg);
+      padding: 1.8rem 1.6rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: transform 0.3s var(--ease), box-shadow 0.3s ease;
+    }
+    .feat:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.09); }
+    .feat .icon {
+      width: 42px; height: 42px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; margin-bottom: 1rem;
+    }
+    .feat h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .feat p { font-size: 0.88rem; color: var(--text-light); }
+
+    /* ---- curriculum ---- */
+    .parts { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 20px; }
+    .part-card {
+      background: var(--white); border-radius: var(--radius-lg);
+      padding: 1.6rem 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .part-card .part-label {
+      font-size: 0.78rem; font-weight: 800; letter-spacing: 0.14em;
+      text-transform: uppercase; margin-bottom: 0.3rem;
+    }
+    .part-card h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: 0.9rem; }
+    .part-card ol { list-style: none; }
+    .part-card li { margin-bottom: 0.45rem; }
+    .part-card a {
+      display: flex; gap: 0.6rem; align-items: baseline;
+      color: var(--text-2); text-decoration: none; font-size: 0.9rem;
+      padding: 0.28rem 0.5rem; border-radius: 6px;
+      transition: background 0.25s ease, color 0.25s ease;
+    }
+    .part-card a:hover { background: var(--bg); color: var(--text); }
+    .part-card .num {
+      font-weight: 800; font-size: 0.8rem; color: var(--text-light);
+      min-width: 1.4em; text-align: right;
+    }
+
+    /* ---- run demo note ---- */
+    .runnote {
+      background: var(--text); color: #EDEDED; border-radius: var(--radius-lg);
+      padding: 2.4rem 2rem; display: flex; gap: 2rem; align-items: center;
+      flex-wrap: wrap;
+    }
+    .runnote h3 { font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 0.5rem; }
+    .runnote p { font-size: 0.92rem; color: #C9C9C9; max-width: 46em; }
+    .runnote .cta { margin-left: auto; }
+
+    /* ---- footer ---- */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.2rem 2rem; text-align: center;
+      font-size: 0.85rem; color: var(--text-light);
+    }
+    footer a { color: var(--text-2); }
+
+    @media (max-width: 700px) {
+      .header nav a:not(.gh) { display: none; }
+      .hero { padding-top: 110px; }
+      .runnote .cta { margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <a class="logo" href="#">AI <em>크리에이티브</em></a>
+  <nav>
+    <a href="#features">특징</a>
+    <a href="#curriculum">목차</a>
+    <a href="book/front.html">책 읽기</a>
+    <a href="book/apxa.html">도구 비교표</a>
+    <a class="gh" href="https://github.com/dknife/AIContents" target="_blank">GitHub</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-text">
+      <div class="eyebrow">Create with AI</div>
+      <h1>AI<br><span class="accent">크리에이티브</span></h1>
+      <p class="subtitle">인공지능으로 만드는 이미지 · 글 · 음악 · 영상</p>
+      <p class="authors"><strong>강영민</strong> 지음</p>
+      <div class="badges">
+        <span class="badge">코딩 없이</span>
+        <span class="badge">무료 도구 우선</span>
+        <span class="badge">프롬프트 실습</span>
+        <span class="badge">13개 장</span>
+        <span class="badge">15주 강의용</span>
+      </div>
+      <div class="cta-row">
+        <a class="cta orange" href="book/front.html">지금 읽기 시작 →</a>
+        <a class="cta ghost" href="book/apxa.html">도구부터 둘러보기</a>
+      </div>
+    </div>
+    <div class="hero-cover">
+      <a href="book/front.html"><img src="book/img/cover.png" alt="AI 크리에이티브 표지"></a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="features">
+  <h2>이 책의 <em>특징</em></h2>
+  <div class="feat-grid">
+    <div class="feat">
+      <div class="icon" style="background:#FFF083;">↗</div>
+      <h3>프롬프트를 복사해 바로 실습</h3>
+      <p>본문의 모든 프롬프트에 [복사] 버튼과 [도구에서 열기] 버튼이 붙어 있습니다.
+        읽다가 곧바로 도구 창을 열어 결과를 확인하고, 프롬프트를 고쳐 가며 실험할 수 있습니다.</p>
+    </div>
+    <div class="feat">
+      <div class="icon" style="background:#7BDCB5;">◐</div>
+      <h3>원리를 눈으로 확인</h3>
+      <p>언어 모델이 다음 낱말을 고르는 방식, 노이즈에서 형상이 떠오르는 과정을
+        직접 조작해 보는 체험 위젯으로 익힙니다. 수식도 코드도 나오지 않습니다.</p>
+    </div>
+    <div class="feat">
+      <div class="icon" style="background:#0693E3; color:#fff;">₩</div>
+      <h3>무료로 끝까지 갈 수 있게</h3>
+      <p>모든 실습과 과제는 돈을 내지 않고 완주할 수 있도록 설계했습니다.
+        동시에 유료로 넘어가면 무엇이 어떻게 좋아지는지도 정직하게 밝혀 두었습니다.</p>
+    </div>
+    <div class="feat">
+      <div class="icon" style="background:#FA5D29; color:#fff;">✦</div>
+      <h3>도구가 바뀌어도 남는 것</h3>
+      <p>서비스의 이름과 화면은 계속 바뀝니다. 이 책은 버튼 위치 대신
+        좋은 프롬프트를 쓰는 법, 결과를 비평하는 눈, 저작권을 지키는 태도를 가르칩니다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="curriculum">
+  <h2>목차 <em>— 3부 13장</em></h2>
+  <div class="parts">
+    <div class="part-card">
+      <div class="part-label" style="color:#0693E3;">Part I</div>
+      <h3>AI 이해하기</h3>
+      <ol>
+        <li><a href="book/ch01.html"><span class="num">01</span>AI와 디지털 아츠의 세계</a></li>
+        <li><a href="book/ch02.html"><span class="num">02</span>기계는 어떻게 배우는가</a></li>
+        <li><a href="book/ch03.html"><span class="num">03</span>생성형 AI는 어떻게 창작하는가</a></li>
+        <li><a href="book/ch04.html"><span class="num">04</span>프롬프트 엔지니어링</a></li>
+        <li><a href="book/ch05.html"><span class="num">05</span>AI 윤리와 저작권</a></li>
+      </ol>
+    </div>
+    <div class="part-card">
+      <div class="part-label" style="color:#FA5D29;">Part II</div>
+      <h3>창작 실무</h3>
+      <ol>
+        <li><a href="book/ch06.html"><span class="num">06</span>AI 이미지 생성</a></li>
+        <li><a href="book/ch07.html"><span class="num">07</span>이미지 제어와 편집</a></li>
+        <li><a href="book/ch08.html"><span class="num">08</span>AI 글쓰기와 스토리텔링</a></li>
+        <li><a href="book/ch09.html"><span class="num">09</span>웹툰형 콘텐츠 프로젝트</a></li>
+        <li><a href="book/ch10.html"><span class="num">10</span>AI 음악과 사운드</a></li>
+        <li><a href="book/ch11.html"><span class="num">11</span>AI 영상 만들기</a></li>
+        <li><a href="book/ch12.html"><span class="num">12</span>AI 에이전트와 워크플로 자동화</a></li>
+      </ol>
+    </div>
+    <div class="part-card">
+      <div class="part-label" style="color:#7BDCB5;">Part III</div>
+      <h3>프로젝트</h3>
+      <ol>
+        <li><a href="book/ch13.html"><span class="num">13</span>기획·제작·발표·포트폴리오</a></li>
+      </ol>
+      <div class="part-label" style="color:#B58A00; margin-top:1.2rem;">부록</div>
+      <ol>
+        <li><a href="book/apxa.html"><span class="num">A</span>무료·유료 도구 총정리</a></li>
+        <li><a href="book/apxb.html"><span class="num">B</span>프롬프트 사전</a></li>
+        <li><a href="book/apxc.html"><span class="num">C</span>저작권 체크리스트</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="runnote">
+    <div>
+      <h3>읽어서는 늘지 않습니다</h3>
+      <p>이 분야는 이해한 양이 아니라 만들어 본 양에 비례해 실력이 늡니다.
+        책을 펼친 채 도구 창을 함께 열어 두고, 프롬프트를 바꿔 가며 결과가 어떻게
+        달라지는지 확인해 보세요. 1장에서 계정 만들기부터 첫 생성까지 함께 합니다.</p>
+    </div>
+    <a class="cta orange" href="book/ch01.html">1장 시작하기 →</a>
+  </div>
+</section>
+
+<footer>
+  © 강영민 · <a href="https://github.com/dknife/AIContents" target="_blank">github.com/dknife/AIContents</a> ·
+  이 사이트는 『AI 크리에이티브』의 웹 에디션입니다.<br>
+  본문에 소개한 인공지능 서비스의 이름·요금·기능은 각 제공자의 정책에 따라 수시로 바뀝니다.
+</footer>
+
+</body>
+</html>

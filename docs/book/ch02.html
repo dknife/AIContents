@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2장 기계는 어떻게 배우는가 — AI 크리에이티브</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="book.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+<script>MathJax = {tex: {inlineMath: [['\\(', '\\)']]}, svg: {fontCache: 'global'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="home" href="../index.html">&#8962; 홈</a>
+  <span class="book-title">AI 크리에이티브</span>
+  <span class="ch-indicator">2장 기계는 어떻게 배우는가</span>
+  <button class="nav-toggle" onclick="document.body.classList.toggle('nav-open')">목차</button>
+</header>
+<div class="layout">
+<nav class="sidebar">
+<div class="nav-ch"><a class="nav-ch-link" href="front.html"><span class="nav-num">&#128214;</span> 표지·머릿말</a></div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch01.html"><span class="nav-num">01</span> AI와 디지털 아츠의 세계</a>
+</div>
+<div class="nav-ch current"><a class="nav-ch-link" href="ch02.html"><span class="nav-num">02</span> 기계는 어떻게 배우는가</a>
+<div class="nav-secs"><a class="nav-sec" href="ch02.html#sec1">2.1 학습이란 무엇인가</a><a class="nav-sec" href="ch02.html#sec2">2.2 신경망: 단순한 계산의 거대한 반복</a><a class="nav-sec" href="ch02.html#sec3">2.3 학습의 세 가지 방식</a><a class="nav-sec" href="ch02.html#sec4">2.4 무엇이 이 시대를 열었나</a><a class="nav-sec" href="ch02.html#sec5">2.5 잘 배운 모델과 잘못 배운 모델</a><a class="nav-sec" href="ch02.html#labs">실습을 통한 개념 정리</a><a class="nav-sec" href="ch02.html#summary">2장 요약</a><a class="nav-sec" href="ch02.html#exercises">연습문제</a></div>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch03.html"><span class="nav-num">03</span> 생성형 AI는 어떻게 창작하는가</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch04.html"><span class="nav-num">04</span> 프롬프트 엔지니어링</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch05.html"><span class="nav-num">05</span> AI 윤리와 저작권</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch06.html"><span class="nav-num">06</span> AI 이미지 생성</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch07.html"><span class="nav-num">07</span> 이미지 제어와 편집</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch08.html"><span class="nav-num">08</span> AI 글쓰기와 스토리텔링</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch09.html"><span class="nav-num">09</span> 웹툰형 콘텐츠 프로젝트</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch10.html"><span class="nav-num">10</span> AI 음악과 사운드</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch11.html"><span class="nav-num">11</span> AI 영상 만들기</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch12.html"><span class="nav-num">12</span> AI 에이전트와 워크플로 자동화</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch13.html"><span class="nav-num">13</span> 기획·제작·발표·포트폴리오</a>
+</div>
+<div class="nav-part">부록</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">A</span> 무료·유료 도구 총정리</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxb.html"><span class="nav-num">B</span> 프롬프트 사전</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxc.html"><span class="nav-num">C</span> 저작권·이용약관 체크리스트</a>
+</div>
+<div class="nav-part">부가 자료</div>
+<div class="nav-ch"><a class="nav-ch-link" href="references.html"><span class="nav-num">&#128218;</span> 참고문헌</a></div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">&#128295;</span> 도구 비교표</a></div>
+</nav>
+<main class="content">
+<div class="chapter-head">
+  <div class="ch-label">CHAPTER 02</div>
+  <h1>기계는 어떻게 배우는가</h1>
+</div>
+<div class="center"><details class="box goals"><summary class="box-head">이 장을 마치면</summary><div class="goals-body"><ul>
+<li>학습이라는 말이 기계에게 무엇을 뜻하는지 설명할 수 있다.</li>
+<li>신경망이 아주 단순한 계산의 반복으로 이루어져 있음을 이해한다.</li>
+<li>지도학습·비지도학습·강화학습의 차이를 예를 들어 구분할 수 있다.</li>
+<li>지금의 인공지능을 가능하게 한 세 가지 조건을 설명할 수 있다.</li>
+<li>학습 데이터의 편향이 결과물에 어떻게 드러나는지 직접 확인할 수 있다.</li>
+</ul></div></details></div>
+<p>인공지능이 만든 그림이 마음에 들지 않을 때, 무엇을 바꿔야 할지 아는 사람과 모르는 사람의 차이는 결국 이 기계가 어떻게 작동하는지를 아느냐에서 갈린다. 이 장에서는 수식이나 코드 없이 기계학습의 작동 원리를 살펴본다. 목표는 인공지능을 만들 수 있게 되는 것이 아니라, 인공지능이 왜 그런 결과를 내놓는지 짐작할 수 있게 되는 것이다.</p>
+<h2 id="sec1">2.1 학습이란 무엇인가</h2>
+<div class="stub"><span class="chip">집필 예정</span>규칙을 사람이 적어 주는 방식(전문가 시스템)의 한계에서 출발한다. 고양이를 규칙으로 정의해 보게 시키는 짧은 활동을 넣는다. 그다음 ’예를 잔뜩 보여 주고 공통점을 찾게 한다’는 전환을 설명한다. 핵심 용어: 학습 데이터, 특징, 일반화. ML_AI_참고/DeepLearningText/ch01의 전문가 시스템 서술을 참고하되 수식·구현은 전부 걷어낸다.</div>
+<h2 id="sec2">2.2 신경망: 단순한 계산의 거대한 반복</h2>
+<div class="stub"><span class="chip">집필 예정</span>뉴런 하나가 하는 일(입력에 가중치를 곱해 더하고, 문턱을 넘으면 신호를 낸다)을 그림으로 설명한다. 층을 쌓으면 왜 복잡한 것을 알아보게 되는지 — 앞쪽 층은 선과 색, 뒤쪽 층은 눈·코·얼굴 — 을 이미지 인식 예로 보인다. 가중치를 조금씩 고쳐 가는 것이 ’학습’임을 직관적으로 설명한다. 역전파는 이름과 아이디어(틀린 만큼 거꾸로 책임을 나눠 고친다)만 언급하고 수식은 넣지 않는다. 그림: 뉴런 하나 도식, 층별 특징 시각화 도식.</div>
+<h2 id="sec3">2.3 학습의 세 가지 방식</h2>
+<div class="stub"><span class="chip">집필 예정</span>지도학습(정답이 붙은 데이터), 비지도학습(정답 없이 구조 발견), 강화학습(시행착오와 보상)을 각각 창작 분야의 예로 설명한다. 특히 강화학습은 대화형 AI를 사람 취향에 맞추는 데 쓰인다는 점을 언급하여 3장·4장과 연결한다(RLHF는 이름만). 표로 세 방식을 비교한다.</div>
+<h2 id="sec4">2.4 무엇이 이 시대를 열었나</h2>
+<div class="stub"><span class="chip">집필 예정</span>데이터·연산·알고리즘 세 가지 조건. 인터넷이 만든 데이터의 규모, GPU의 병렬 처리, 트랜스포머를 비롯한 구조의 발전. 창작자에게 의미 있는 함의로 마무리한다 — ’인터넷에 올라간 창작물이 학습 재료가 되었다’는 사실이 5장 저작권 논의로 이어진다.</div>
+<h2 id="sec5">2.5 잘 배운 모델과 잘못 배운 모델</h2>
+<div class="stub"><span class="chip">집필 예정</span>과적합(외워 버리기)과 편향을 다룬다. 편향은 이 책에서 특히 중요하므로 실제로 확인해 보게 한다: ’a doctor’, ’a nurse’, ’a CEO’를 각각 생성해 성별·인종 분포를 세어 보는 활동. 왜 이런 일이 생기는지(데이터가 세상의 거울이 아니라 인터넷의 거울이라는 점)를 설명하고, 창작자가 취할 수 있는 대응(명시적 지정, 결과 검토)을 제시한다.</div>
+<p><span id="labs"></span><div class="box lab"><div class="lab-title">이 장의 실습</div><div class="stub"><span class="chip">집필 예정</span>2장 실습 — 본문 집필 후 작성한다. 수업 주차별 과제와 대응시킬 것.</div></div></p>
+<details class="box summary" id="summary"><summary class="box-head">2장 요약</summary><div class="sum-body"><div class="stub"><span class="chip">집필 예정</span>2장 요약 — 본문 집필 후 작성한다. 각 절의 핵심을 항목 하나씩.</div></div></details>
+<details class="box exercise" id="exercises"><summary class="box-head">2장 연습문제</summary><div class="ex-body"><div class="stub"><span class="chip">집필 예정</span>2장 연습문제 — 본문 집필 후 작성한다. \ diffitem 난이도 1 3을 섞을 것.</div></div></details>
+<div class="pager-row"><a class="pager prev" href="ch01.html">&larr; 1장</a><a class="pager next" href="ch03.html">3장 &rarr;</a></div>
+</main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-c.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-glsl.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+<script src="book.js"></script>
+</body>
+</html>

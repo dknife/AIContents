@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>8장 AI 글쓰기와 스토리텔링 — AI 크리에이티브</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="book.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+<script>MathJax = {tex: {inlineMath: [['\\(', '\\)']]}, svg: {fontCache: 'global'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="home" href="../index.html">&#8962; 홈</a>
+  <span class="book-title">AI 크리에이티브</span>
+  <span class="ch-indicator">8장 AI 글쓰기와 스토리텔링</span>
+  <button class="nav-toggle" onclick="document.body.classList.toggle('nav-open')">목차</button>
+</header>
+<div class="layout">
+<nav class="sidebar">
+<div class="nav-ch"><a class="nav-ch-link" href="front.html"><span class="nav-num">&#128214;</span> 표지·머릿말</a></div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch01.html"><span class="nav-num">01</span> AI와 디지털 아츠의 세계</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch02.html"><span class="nav-num">02</span> 기계는 어떻게 배우는가</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch03.html"><span class="nav-num">03</span> 생성형 AI는 어떻게 창작하는가</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch04.html"><span class="nav-num">04</span> 프롬프트 엔지니어링</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch05.html"><span class="nav-num">05</span> AI 윤리와 저작권</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch06.html"><span class="nav-num">06</span> AI 이미지 생성</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch07.html"><span class="nav-num">07</span> 이미지 제어와 편집</a>
+</div>
+<div class="nav-ch current"><a class="nav-ch-link" href="ch08.html"><span class="nav-num">08</span> AI 글쓰기와 스토리텔링</a>
+<div class="nav-secs"><a class="nav-sec" href="ch08.html#sec1">8.1 언어 모델을 창작 파트너로</a><a class="nav-sec" href="ch08.html#sec2">8.2 아이디어 확장과 세계관 설정</a><a class="nav-sec" href="ch08.html#sec3">8.3 이야기 구조 설계하기</a><a class="nav-sec" href="ch08.html#sec4">8.4 대사와 문체</a><a class="nav-sec" href="ch08.html#sec5">8.5 시 쓰기: 규칙과 파괴</a><a class="nav-sec" href="ch08.html#sec6">8.6 AI가 쓴 글 비평하기</a><a class="nav-sec" href="ch08.html#labs">실습을 통한 개념 정리</a><a class="nav-sec" href="ch08.html#summary">8장 요약</a><a class="nav-sec" href="ch08.html#exercises">연습문제</a></div>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch09.html"><span class="nav-num">09</span> 웹툰형 콘텐츠 프로젝트</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch10.html"><span class="nav-num">10</span> AI 음악과 사운드</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch11.html"><span class="nav-num">11</span> AI 영상 만들기</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch12.html"><span class="nav-num">12</span> AI 에이전트와 워크플로 자동화</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch13.html"><span class="nav-num">13</span> 기획·제작·발표·포트폴리오</a>
+</div>
+<div class="nav-part">부록</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">A</span> 무료·유료 도구 총정리</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxb.html"><span class="nav-num">B</span> 프롬프트 사전</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxc.html"><span class="nav-num">C</span> 저작권·이용약관 체크리스트</a>
+</div>
+<div class="nav-part">부가 자료</div>
+<div class="nav-ch"><a class="nav-ch-link" href="references.html"><span class="nav-num">&#128218;</span> 참고문헌</a></div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">&#128295;</span> 도구 비교표</a></div>
+</nav>
+<main class="content">
+<div class="chapter-head">
+  <div class="ch-label">CHAPTER 08</div>
+  <h1>AI 글쓰기와 스토리텔링</h1>
+</div>
+<div class="center"><details class="box goals"><summary class="box-head">이 장을 마치면</summary><div class="goals-body"><ul>
+<li>언어 모델을 창작 파트너로 삼는 작업 방식을 익힌다.</li>
+<li>아이디어를 확장하고 세계관을 설정할 수 있다.</li>
+<li>이야기의 구조를 설계하고 AI에게 채우게 할 수 있다.</li>
+<li>인물별로 구분되는 대사와 문체를 만들 수 있다.</li>
+<li>AI가 쓴 글의 약점을 찾아 비평하고 고칠 수 있다.</li>
+</ul></div></details></div>
+<p>글쓰기에서 가장 어려운 것은 흔히 첫 문장이라고 한다. 언어 모델은 그 첫 문장을 무한히 만들어 준다. 그러나 무한한 초고가 좋은 작품을 보장하지는 않는다. 이 장에서는 AI를 ’대신 써 주는 기계’가 아니라 ’함께 궁리하는 상대’로 쓰는 법을 익히고, 무엇보다 AI가 쓴 글의 특유한 무난함을 알아보고 깨는 훈련을 한다.</p>
+<h2 id="sec1">8.1 언어 모델을 창작 파트너로</h2>
+<div class="stub"><span class="chip">집필 예정</span>대신 쓰게 하기와 함께 쓰기의 차이. 후자가 왜 결과가 좋은지. 작업 단위를 쪼개는 방법(전체 소설이 아니라 한 장면씩). 대화를 이어 가며 문맥을 쌓는 요령과, 문맥이 흐려졌을 때 다시 잡는 방법. 4장 프롬프트 기법의 창작 분야 적용.</div>
+<h2 id="sec2">8.2 아이디어 확장과 세계관 설정</h2>
+<div class="stub"><span class="chip">집필 예정</span>하나의 씨앗에서 스무 개의 갈래를 만들고 고르는 작업. ’더 이상한 것으로’, ’정반대로’, ’한 가지 조건만 바꿔서’ 같은 확장 지시어. 세계관 설정 문답 기법 — AI에게 질문을 던지게 해서 설정의 구멍을 찾는 방법. 설정 문서를 만들어 계속 참조시키기.</div>
+<h2 id="sec3">8.3 이야기 구조 설계하기</h2>
+<div class="stub"><span class="chip">집필 예정</span>3막 구조, 기승전결, 영웅 서사 등 구조 틀을 사람이 정하고 AI에게 채우게 하는 방식. 왜 구조를 AI에게 맡기면 안 되는지(가장 평균적인 구조로 수렴한다). 웹툰형 콘텐츠에 맞는 짧은 구조(훅-전개-반전-마무리)를 9장으로 연결한다.</div>
+<h2 id="sec4">8.4 대사와 문체</h2>
+<div class="stub"><span class="chip">집필 예정</span>인물마다 말투가 구분되게 만드는 방법 — 어휘 수준, 문장 길이, 말버릇, 회피하는 주제. 인물 카드를 만들어 지시에 포함시키기. 문체 지정 실습: 같은 장면을 세 문체로 써 보게 하기. AI가 잘 못하는 것: 침묵, 말줄임, 서브텍스트 — 이 부분이 사람의 몫으로 남는다.</div>
+<h2 id="sec5">8.5 시 쓰기: 규칙과 파괴</h2>
+<div class="stub"><span class="chip">집필 예정</span>정형(운율·행수)을 지시하는 것은 AI가 잘한다. 반면 시의 핵심인 ’낯설게 하기’는 약하다. AI에게 재료(이미지·낱말·상황)를 만들게 하고 사람이 배치하는 방식을 제안한다. 수업의 시 창작·상호 평가 활동과 연결. 좋은 시와 그럴듯한 시를 구분하는 눈.</div>
+<h2 id="sec6">8.6 AI가 쓴 글 비평하기</h2>
+<div class="stub"><span class="chip">집필 예정</span>AI 글의 전형적 징후: 균형 잡힌 결론, 과도한 부사, 반복되는 문형, 구체성의 부재, 감정 대신 감정을 설명하는 문장. 이를 찾아내 고치는 실습. AI에게 자기 글을 비평하게 하는 기법과 그 한계. 상호 평가 활동의 진행 방식.</div>
+<p><span id="labs"></span><div class="box lab"><div class="lab-title">이 장의 실습</div><div class="stub"><span class="chip">집필 예정</span>8장 실습 — 본문 집필 후 작성한다. 수업 주차별 과제와 대응시킬 것.</div></div></p>
+<details class="box summary" id="summary"><summary class="box-head">8장 요약</summary><div class="sum-body"><div class="stub"><span class="chip">집필 예정</span>8장 요약 — 본문 집필 후 작성한다. 각 절의 핵심을 항목 하나씩.</div></div></details>
+<details class="box exercise" id="exercises"><summary class="box-head">8장 연습문제</summary><div class="ex-body"><div class="stub"><span class="chip">집필 예정</span>8장 연습문제 — 본문 집필 후 작성한다. \ diffitem 난이도 1 3을 섞을 것.</div></div></details>
+<div class="pager-row"><a class="pager prev" href="ch07.html">&larr; 7장</a><a class="pager next" href="ch09.html">9장 &rarr;</a></div>
+</main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-c.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-glsl.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+<script src="book.js"></script>
+</body>
+</html>

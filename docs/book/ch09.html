@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9장 웹툰형 콘텐츠 프로젝트 — AI 크리에이티브</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="book.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+<script>MathJax = {tex: {inlineMath: [['\\(', '\\)']]}, svg: {fontCache: 'global'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="home" href="../index.html">&#8962; 홈</a>
+  <span class="book-title">AI 크리에이티브</span>
+  <span class="ch-indicator">9장 웹툰형 콘텐츠 프로젝트</span>
+  <button class="nav-toggle" onclick="document.body.classList.toggle('nav-open')">목차</button>
+</header>
+<div class="layout">
+<nav class="sidebar">
+<div class="nav-ch"><a class="nav-ch-link" href="front.html"><span class="nav-num">&#128214;</span> 표지·머릿말</a></div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch01.html"><span class="nav-num">01</span> AI와 디지털 아츠의 세계</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch02.html"><span class="nav-num">02</span> 기계는 어떻게 배우는가</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch03.html"><span class="nav-num">03</span> 생성형 AI는 어떻게 창작하는가</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch04.html"><span class="nav-num">04</span> 프롬프트 엔지니어링</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch05.html"><span class="nav-num">05</span> AI 윤리와 저작권</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch06.html"><span class="nav-num">06</span> AI 이미지 생성</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch07.html"><span class="nav-num">07</span> 이미지 제어와 편집</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch08.html"><span class="nav-num">08</span> AI 글쓰기와 스토리텔링</a>
+</div>
+<div class="nav-ch current"><a class="nav-ch-link" href="ch09.html"><span class="nav-num">09</span> 웹툰형 콘텐츠 프로젝트</a>
+<div class="nav-secs"><a class="nav-sec" href="ch09.html#sec1">9.1 왜 웹툰형인가</a><a class="nav-sec" href="ch09.html#sec2">9.2 기획: 무엇을 누구에게</a><a class="nav-sec" href="ch09.html#sec3">9.3 시나리오와 콘티</a><a class="nav-sec" href="ch09.html#sec4">9.4 캐릭터 시트 만들기</a><a class="nav-sec" href="ch09.html#sec5">9.5 컷 생성과 일관성 관리</a><a class="nav-sec" href="ch09.html#sec6">9.6 말풍선, 글자, 레이아웃</a><a class="nav-sec" href="ch09.html#sec7">9.7 완성과 배포</a><a class="nav-sec" href="ch09.html#labs">실습을 통한 개념 정리</a><a class="nav-sec" href="ch09.html#summary">9장 요약</a><a class="nav-sec" href="ch09.html#exercises">연습문제</a></div>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch10.html"><span class="nav-num">10</span> AI 음악과 사운드</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch11.html"><span class="nav-num">11</span> AI 영상 만들기</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch12.html"><span class="nav-num">12</span> AI 에이전트와 워크플로 자동화</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch13.html"><span class="nav-num">13</span> 기획·제작·발표·포트폴리오</a>
+</div>
+<div class="nav-part">부록</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">A</span> 무료·유료 도구 총정리</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxb.html"><span class="nav-num">B</span> 프롬프트 사전</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxc.html"><span class="nav-num">C</span> 저작권·이용약관 체크리스트</a>
+</div>
+<div class="nav-part">부가 자료</div>
+<div class="nav-ch"><a class="nav-ch-link" href="references.html"><span class="nav-num">&#128218;</span> 참고문헌</a></div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">&#128295;</span> 도구 비교표</a></div>
+</nav>
+<main class="content">
+<div class="chapter-head">
+  <div class="ch-label">CHAPTER 09</div>
+  <h1>웹툰형 콘텐츠 프로젝트</h1>
+</div>
+<div class="center"><details class="box goals"><summary class="box-head">이 장을 마치면</summary><div class="goals-body"><ul>
+<li>기획 의도와 목표 독자를 정의하고 콘텐츠 방향을 정할 수 있다.</li>
+<li>짧은 서사를 컷 단위로 분할하여 콘티를 작성할 수 있다.</li>
+<li>캐릭터 시트를 만들고 여러 컷에 일관되게 적용할 수 있다.</li>
+<li>말풍선·글자·레이아웃을 갖춘 완성된 결과물을 만들 수 있다.</li>
+<li>완성한 콘텐츠를 목적에 맞는 형식으로 내보내고 공개할 수 있다.</li>
+</ul></div></details></div>
+<p>이 장은 앞의 여러 장을 한 편의 작업으로 묶는 프로젝트 장이다. 주제는 ’마케팅을 위한 웹툰형 콘텐츠’로, 학과나 동아리, 지역 가게, 사회적 메시지 등 실제로 알리고 싶은 무언가를 고른다. 분량은 8컷에서 12컷 정도로, 두 주 안에 끝낼 수 있는 규모다.</p>
+<h2 id="sec1">9.1 왜 웹툰형인가</h2>
+<div class="stub"><span class="chip">집필 예정</span>웹툰형 콘텐츠가 학습 과제로 좋은 이유: 글·그림·구성·타이포가 모두 필요하고, 분량이 통제 가능하며, 결과물이 바로 쓸 수 있는 형태다. 실제 마케팅 사례 분석 (카드뉴스, 인스타 캐러셀, 브랜드 웹툰). 성공한 콘텐츠의 공통점 분석.</div>
+<h2 id="sec2">9.2 기획: 무엇을 누구에게</h2>
+<div class="stub"><span class="chip">집필 예정</span>기획서 한 장 작성. 목표 독자, 전하려는 메시지 한 문장, 원하는 행동, 톤앤매너. AI를 기획 단계에서 쓰는 법 — 타깃 분석, 경쟁 콘텐츠 조사, 아이디어 확장. 기획서 템플릿 제공. 8주차 중간 발표가 이 기획안 발표임을 안내.</div>
+<h2 id="sec3">9.3 시나리오와 콘티</h2>
+<div class="stub"><span class="chip">집필 예정</span>8~12컷으로 이야기를 나누는 방법. 첫 컷의 훅, 마지막 컷의 행동 유도. 컷별 시나리오 표(컷 번호 / 장면 설명 / 대사 / 이미지 프롬프트 초안). 8장의 구조 설계를 이 형식에 적용한다.</div>
+<h2 id="sec4">9.4 캐릭터 시트 만들기</h2>
+<div class="stub"><span class="chip">집필 예정</span>7.5절의 일관성 기법을 실제로 적용한다. 캐릭터 설정(외모 특징을 프롬프트 문장으로 고정), 정면·측면·표정 변화 시트 생성, 이 시트를 이후 모든 컷의 참조로 쓰기. 실패했을 때의 대안(얼굴이 잘 안 보이는 구도, 실루엣, 후면 컷 섞기).</div>
+<h2 id="sec5">9.5 컷 생성과 일관성 관리</h2>
+<div class="stub"><span class="chip">집필 예정</span>배경 일관성(같은 장소가 컷마다 달라지는 문제), 색조 통일, 시간대 유지. 생성 순서 전략 — 어려운 컷부터, 또는 기준 컷을 먼저 확정하고 나머지를 맞추기. 생성이 끝난 뒤 전체를 나란히 놓고 톤을 맞추는 후보정.</div>
+<h2 id="sec6">9.6 말풍선, 글자, 레이아웃</h2>
+<div class="stub"><span class="chip">집필 예정</span>6장에서 확인한 ’글자는 생성으로 안 된다’의 해결. Canva/Photopea로 말풍선과 대사 얹기. 가독성 있는 글자 크기와 대비, 한글 서체 선택(무료 폰트와 라이선스), 세로 스크롤 배치와 컷 사이 여백. 모바일에서 읽히는 것을 전제로 한 설계.</div>
+<h2 id="sec7">9.7 완성과 배포</h2>
+<div class="stub"><span class="chip">집필 예정</span>내보내기 형식과 크기, 파일 이름 규칙. 플랫폼별 규격(인스타그램, 블로그, 학교 게시판). AI 사용 사실 표기 방법(5.6절 연결). 반응을 확인하고 다음 작업에 반영하기.</div>
+<p><span id="labs"></span><div class="box lab"><div class="lab-title">이 장의 실습</div><div class="stub"><span class="chip">집필 예정</span>9장 실습 — 본문 집필 후 작성한다. 수업 주차별 과제와 대응시킬 것.</div></div></p>
+<details class="box summary" id="summary"><summary class="box-head">9장 요약</summary><div class="sum-body"><div class="stub"><span class="chip">집필 예정</span>9장 요약 — 본문 집필 후 작성한다. 각 절의 핵심을 항목 하나씩.</div></div></details>
+<details class="box exercise" id="exercises"><summary class="box-head">9장 연습문제</summary><div class="ex-body"><div class="stub"><span class="chip">집필 예정</span>9장 연습문제 — 본문 집필 후 작성한다. \ diffitem 난이도 1 3을 섞을 것.</div></div></details>
+<div class="pager-row"><a class="pager prev" href="ch08.html">&larr; 8장</a><a class="pager next" href="ch10.html">10장 &rarr;</a></div>
+</main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-c.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-glsl.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+<script src="book.js"></script>
+</body>
+</html>

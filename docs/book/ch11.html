@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>11장 AI 영상 만들기 — AI 크리에이티브</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="book.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+<script>MathJax = {tex: {inlineMath: [['\\(', '\\)']]}, svg: {fontCache: 'global'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="home" href="../index.html">&#8962; 홈</a>
+  <span class="book-title">AI 크리에이티브</span>
+  <span class="ch-indicator">11장 AI 영상 만들기</span>
+  <button class="nav-toggle" onclick="document.body.classList.toggle('nav-open')">목차</button>
+</header>
+<div class="layout">
+<nav class="sidebar">
+<div class="nav-ch"><a class="nav-ch-link" href="front.html"><span class="nav-num">&#128214;</span> 표지·머릿말</a></div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch01.html"><span class="nav-num">01</span> AI와 디지털 아츠의 세계</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch02.html"><span class="nav-num">02</span> 기계는 어떻게 배우는가</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch03.html"><span class="nav-num">03</span> 생성형 AI는 어떻게 창작하는가</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch04.html"><span class="nav-num">04</span> 프롬프트 엔지니어링</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch05.html"><span class="nav-num">05</span> AI 윤리와 저작권</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch06.html"><span class="nav-num">06</span> AI 이미지 생성</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch07.html"><span class="nav-num">07</span> 이미지 제어와 편집</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch08.html"><span class="nav-num">08</span> AI 글쓰기와 스토리텔링</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch09.html"><span class="nav-num">09</span> 웹툰형 콘텐츠 프로젝트</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch10.html"><span class="nav-num">10</span> AI 음악과 사운드</a>
+</div>
+<div class="nav-ch current"><a class="nav-ch-link" href="ch11.html"><span class="nav-num">11</span> AI 영상 만들기</a>
+<div class="nav-secs"><a class="nav-sec" href="ch11.html#sec1">11.1 영상 생성의 원리와 한계</a><a class="nav-sec" href="ch11.html#sec2">11.2 도구 지형과 크레딧 관리</a><a class="nav-sec" href="ch11.html#sec3">11.3 이미지를 움직이게 하기</a><a class="nav-sec" href="ch11.html#sec4">11.4 문장으로 영상 만들기</a><a class="nav-sec" href="ch11.html#sec5">11.5 여러 클립을 이어 붙이기</a><a class="nav-sec" href="ch11.html#sec6">11.6 립싱크와 아바타</a><a class="nav-sec" href="ch11.html#sec7">11.7 자막, 음악, 마무리</a><a class="nav-sec" href="ch11.html#labs">실습을 통한 개념 정리</a><a class="nav-sec" href="ch11.html#summary">11장 요약</a><a class="nav-sec" href="ch11.html#exercises">연습문제</a></div>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch12.html"><span class="nav-num">12</span> AI 에이전트와 워크플로 자동화</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch13.html"><span class="nav-num">13</span> 기획·제작·발표·포트폴리오</a>
+</div>
+<div class="nav-part">부록</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">A</span> 무료·유료 도구 총정리</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxb.html"><span class="nav-num">B</span> 프롬프트 사전</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxc.html"><span class="nav-num">C</span> 저작권·이용약관 체크리스트</a>
+</div>
+<div class="nav-part">부가 자료</div>
+<div class="nav-ch"><a class="nav-ch-link" href="references.html"><span class="nav-num">&#128218;</span> 참고문헌</a></div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">&#128295;</span> 도구 비교표</a></div>
+</nav>
+<main class="content">
+<div class="chapter-head">
+  <div class="ch-label">CHAPTER 11</div>
+  <h1>AI 영상 만들기</h1>
+</div>
+<div class="center"><details class="box goals"><summary class="box-head">이 장을 마치면</summary><div class="goals-body"><ul>
+<li>영상 생성의 원리와 현재의 한계를 설명할 수 있다.</li>
+<li>무료 크레딧을 효율적으로 쓰는 작업 계획을 세울 수 있다.</li>
+<li>정지 이미지를 의도한 방향으로 움직이게 할 수 있다.</li>
+<li>여러 클립을 편집으로 이어 하나의 영상을 완성할 수 있다.</li>
+<li>자막·음악·내레이션을 더해 마무리할 수 있다.</li>
+</ul></div></details></div>
+<p>영상은 이 책이 다루는 매체 가운데 가장 비싸고 가장 빠르게 변한다. 무료 크레딧은 몇 번 시도하면 동나고, 결과는 매번 예측하기 어렵다. 그래서 이 장은 다른 장보다 계획과 절약에 많은 지면을 쓴다. 아무 생각 없이 생성 버튼을 누르는 것이 가장 비싼 방법이다.</p>
+<h2 id="sec1">11.1 영상 생성의 원리와 한계</h2>
+<div class="stub"><span class="chip">집필 예정</span>확산 모델을 시간 축으로 확장한 것이라는 개념. 왜 길어질수록 일관성이 무너지는가. 현재 가능한 길이와 품질의 현실적 범위. text-to-video와 image-to-video의 차이와 왜 후자가 훨씬 통제하기 쉬운지(그래서 실무의 표준인지).</div>
+<h2 id="sec2">11.2 도구 지형과 크레딧 관리</h2>
+<div class="stub"><span class="chip">집필 예정</span>무료 크레딧을 주는 도구들과 회복 주기. 한 번의 생성에 드는 비용. 크레딧을 아끼는 방법: 이미지 단계에서 충분히 확정한 뒤 영상으로 넘어가기, 저해상도로 먼저 시험하기, 실패할 프롬프트를 미리 걸러내기. 작업 계획표 양식.</div>
+<h2 id="sec3">11.3 이미지를 움직이게 하기</h2>
+<div class="stub"><span class="chip">집필 예정</span>6~7장에서 만든 이미지를 출발점으로 삼는 작업. 모션 프롬프트 쓰기 — 카메라 움직임(팬·줌·돌리)과 피사체 움직임을 구분해 지시하기. 움직임의 세기 조절. 잘 움직이는 이미지와 안 움직이는 이미지의 차이.</div>
+<h2 id="sec4">11.4 문장으로 영상 만들기</h2>
+<div class="stub"><span class="chip">집필 예정</span>text-to-video의 프롬프트 구성. 장면 묘사 + 카메라 + 조명 + 움직임. 일관성을 위해 같은 묘사를 유지하는 방법. 실패 유형과 재시도 판단.</div>
+<h2 id="sec5">11.5 여러 클립을 이어 붙이기</h2>
+<div class="stub"><span class="chip">집필 예정</span>무료 편집 도구(CapCut, Canva, 클립챔프 등) 사용. 컷 편집의 기본 — 액션 매치, 점프컷 피하기, 리듬. 클립 간 색조 통일. 짧은 클립들로 30초~1분 영상을 구성하는 설계.</div>
+<h2 id="sec6">11.6 립싱크와 아바타</h2>
+<div class="stub"><span class="chip">집필 예정</span>인물이 말하는 영상 만들기. 음성 합성(10.5절)과 결합. 5.4절의 초상권 경고를 반드시 다시 강조 — 실존 인물 금지, 본인 얼굴 또는 생성 인물만. 교육·홍보 영상에서의 활용.</div>
+<h2 id="sec7">11.7 자막, 음악, 마무리</h2>
+<div class="stub"><span class="chip">집필 예정</span>자동 자막 생성과 교정, 가독성 있는 자막 디자인. 10장에서 만든 음악 얹기, 오디오 레벨 맞추기. 내보내기 설정(플랫폼별 해상도·비율·용량). 완성 영상의 자기 점검 목록.</div>
+<p><span id="labs"></span><div class="box lab"><div class="lab-title">이 장의 실습</div><div class="stub"><span class="chip">집필 예정</span>11장 실습 — 본문 집필 후 작성한다. 수업 주차별 과제와 대응시킬 것.</div></div></p>
+<details class="box summary" id="summary"><summary class="box-head">11장 요약</summary><div class="sum-body"><div class="stub"><span class="chip">집필 예정</span>11장 요약 — 본문 집필 후 작성한다. 각 절의 핵심을 항목 하나씩.</div></div></details>
+<details class="box exercise" id="exercises"><summary class="box-head">11장 연습문제</summary><div class="ex-body"><div class="stub"><span class="chip">집필 예정</span>11장 연습문제 — 본문 집필 후 작성한다. \ diffitem 난이도 1 3을 섞을 것.</div></div></details>
+<div class="pager-row"><a class="pager prev" href="ch10.html">&larr; 10장</a><a class="pager next" href="ch12.html">12장 &rarr;</a></div>
+</main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-c.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-glsl.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+<script src="book.js"></script>
+</body>
+</html>

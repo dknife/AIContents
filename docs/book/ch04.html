@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4장 프롬프트 엔지니어링 — AI 크리에이티브</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="book.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+<script>MathJax = {tex: {inlineMath: [['\\(', '\\)']]}, svg: {fontCache: 'global'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="home" href="../index.html">&#8962; 홈</a>
+  <span class="book-title">AI 크리에이티브</span>
+  <span class="ch-indicator">4장 프롬프트 엔지니어링</span>
+  <button class="nav-toggle" onclick="document.body.classList.toggle('nav-open')">목차</button>
+</header>
+<div class="layout">
+<nav class="sidebar">
+<div class="nav-ch"><a class="nav-ch-link" href="front.html"><span class="nav-num">&#128214;</span> 표지·머릿말</a></div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch01.html"><span class="nav-num">01</span> AI와 디지털 아츠의 세계</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch02.html"><span class="nav-num">02</span> 기계는 어떻게 배우는가</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch03.html"><span class="nav-num">03</span> 생성형 AI는 어떻게 창작하는가</a>
+</div>
+<div class="nav-ch current"><a class="nav-ch-link" href="ch04.html"><span class="nav-num">04</span> 프롬프트 엔지니어링</a>
+<div class="nav-secs"><a class="nav-sec" href="ch04.html#sec1">4.1 프롬프트란 무엇인가</a><a class="nav-sec" href="ch04.html#sec2">4.2 좋은 프롬프트의 다섯 요소</a><a class="nav-sec" href="ch04.html#sec3">4.3 이미지 프롬프트의 문법</a><a class="nav-sec" href="ch04.html#sec4">4.4 대화형 AI를 다루는 기술</a><a class="nav-sec" href="ch04.html#sec5">4.5 프롬프트를 자산으로 관리하기</a><a class="nav-sec" href="ch04.html#labs">실습을 통한 개념 정리</a><a class="nav-sec" href="ch04.html#summary">4장 요약</a><a class="nav-sec" href="ch04.html#exercises">연습문제</a></div>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch05.html"><span class="nav-num">05</span> AI 윤리와 저작권</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch06.html"><span class="nav-num">06</span> AI 이미지 생성</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch07.html"><span class="nav-num">07</span> 이미지 제어와 편집</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch08.html"><span class="nav-num">08</span> AI 글쓰기와 스토리텔링</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch09.html"><span class="nav-num">09</span> 웹툰형 콘텐츠 프로젝트</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch10.html"><span class="nav-num">10</span> AI 음악과 사운드</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch11.html"><span class="nav-num">11</span> AI 영상 만들기</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch12.html"><span class="nav-num">12</span> AI 에이전트와 워크플로 자동화</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch13.html"><span class="nav-num">13</span> 기획·제작·발표·포트폴리오</a>
+</div>
+<div class="nav-part">부록</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">A</span> 무료·유료 도구 총정리</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxb.html"><span class="nav-num">B</span> 프롬프트 사전</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxc.html"><span class="nav-num">C</span> 저작권·이용약관 체크리스트</a>
+</div>
+<div class="nav-part">부가 자료</div>
+<div class="nav-ch"><a class="nav-ch-link" href="references.html"><span class="nav-num">&#128218;</span> 참고문헌</a></div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">&#128295;</span> 도구 비교표</a></div>
+</nav>
+<main class="content">
+<div class="chapter-head">
+  <div class="ch-label">CHAPTER 04</div>
+  <h1>프롬프트 엔지니어링</h1>
+</div>
+<div class="center"><details class="box goals"><summary class="box-head">이 장을 마치면</summary><div class="goals-body"><ul>
+<li>프롬프트가 무엇이며 어떻게 처리되는지 설명할 수 있다.</li>
+<li>좋은 프롬프트가 갖추어야 할 요소를 알고 적용할 수 있다.</li>
+<li>이미지 프롬프트를 요소별로 구조화하여 작성할 수 있다.</li>
+<li>대화형 AI에게 역할·예시·단계를 지정하여 결과를 개선할 수 있다.</li>
+<li>쓸 만한 프롬프트를 자산으로 관리하는 체계를 만들 수 있다.</li>
+</ul></div></details></div>
+<p>프롬프트는 이 책의 ’코드’다. 그런데 프로그래밍 언어와 달리 프롬프트에는 문법이 정해져 있지 않다. 그래서 오히려 어렵다. 이 장에서는 막연히 ’잘 물어보기’가 아니라, 반복 가능하고 개선 가능한 방법으로 프롬프트를 다루는 법을 익힌다.</p>
+<h2 id="sec1">4.1 프롬프트란 무엇인가</h2>
+<div class="stub"><span class="chip">집필 예정</span>프롬프트를 ’지시문’이 아니라 ’문맥 만들기’로 재정의한다. 3장에서 배운 원리와 연결: 언어 모델에게 프롬프트는 ’이어 쓸 앞부분’이고, 이미지 모델에게는 ’도착할 좌표’다. 그래서 왜 명령형보다 묘사형이 잘 통하는지, 왜 부정문(~하지 마)이 잘 안 통하는지가 설명된다.</div>
+<h2 id="sec2">4.2 좋은 프롬프트의 다섯 요소</h2>
+<div class="stub"><span class="chip">집필 예정</span>주제, 세부 묘사, 스타일, 구성(구도·시점·조명), 제약(형식·길이·금지)의 다섯 축을 제시한다. 나쁜 프롬프트  -&gt;  좋은 프롬프트로 단계적으로 개선하는 실례를 badprompt/promptcap 대비로 보인다. 같은 대상을 다섯 요소를 하나씩 추가해 가며 생성한 결과를 나란히 배치.</div>
+<h2 id="sec3">4.3 이미지 프롬프트의 문법</h2>
+<div class="stub"><span class="chip">집필 예정</span>실무에서 통용되는 관행: 쉼표로 나열하는 방식, 앞쪽 단어가 더 큰 영향을 갖는 경향, 가중치 표기, 네거티브 프롬프트, 시드 고정. 도구마다 다르므로 ’원리  -&gt;  도구별 차이’ 순으로 쓴다. 화풍·매체·조명·렌즈·시대 어휘 목록을 소개하고 부록 B로 연결한다.</div>
+<h2 id="sec4">4.4 대화형 AI를 다루는 기술</h2>
+<div class="stub"><span class="chip">집필 예정</span>역할 부여, 예시 제공(few-shot), 단계적 사고 요청, 출력 형식 지정, 반복 개선 요청의 다섯 기법. 각각을 창작 상황의 실제 프롬프트로 보인다. ’내 프롬프트를 더 좋게 고쳐 줘’라고 AI에게 부탁하는 메타 기법도 소개한다. 긴 대화에서 문맥이 흐려질 때의 대처.</div>
+<h2 id="sec5">4.5 프롬프트를 자산으로 관리하기</h2>
+<div class="stub"><span class="chip">집필 예정</span>1장 실습의 프롬프트기록.txt를 체계화한다. 결과 이미지와 프롬프트를 짝지어 보관하는 방법, 변형 실험을 기록하는 표 형식, 팀 작업에서 프롬프트를 공유하는 방법. ’프롬프트는 지적 자산’이라는 관점과 그 한계(같은 프롬프트도 모델이 바뀌면 결과가 달라진다).</div>
+<p><span id="labs"></span><div class="box lab"><div class="lab-title">이 장의 실습</div><div class="stub"><span class="chip">집필 예정</span>4장 실습 — 본문 집필 후 작성한다. 수업 주차별 과제와 대응시킬 것.</div></div></p>
+<details class="box summary" id="summary"><summary class="box-head">4장 요약</summary><div class="sum-body"><div class="stub"><span class="chip">집필 예정</span>4장 요약 — 본문 집필 후 작성한다. 각 절의 핵심을 항목 하나씩.</div></div></details>
+<details class="box exercise" id="exercises"><summary class="box-head">4장 연습문제</summary><div class="ex-body"><div class="stub"><span class="chip">집필 예정</span>4장 연습문제 — 본문 집필 후 작성한다. \ diffitem 난이도 1 3을 섞을 것.</div></div></details>
+<div class="pager-row"><a class="pager prev" href="ch03.html">&larr; 3장</a><a class="pager next" href="ch05.html">5장 &rarr;</a></div>
+</main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-c.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-glsl.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+<script src="book.js"></script>
+</body>
+</html>

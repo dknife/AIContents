@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10장 AI 음악과 사운드 — AI 크리에이티브</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="book.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+<script>MathJax = {tex: {inlineMath: [['\\(', '\\)']]}, svg: {fontCache: 'global'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="home" href="../index.html">&#8962; 홈</a>
+  <span class="book-title">AI 크리에이티브</span>
+  <span class="ch-indicator">10장 AI 음악과 사운드</span>
+  <button class="nav-toggle" onclick="document.body.classList.toggle('nav-open')">목차</button>
+</header>
+<div class="layout">
+<nav class="sidebar">
+<div class="nav-ch"><a class="nav-ch-link" href="front.html"><span class="nav-num">&#128214;</span> 표지·머릿말</a></div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch01.html"><span class="nav-num">01</span> AI와 디지털 아츠의 세계</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch02.html"><span class="nav-num">02</span> 기계는 어떻게 배우는가</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch03.html"><span class="nav-num">03</span> 생성형 AI는 어떻게 창작하는가</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch04.html"><span class="nav-num">04</span> 프롬프트 엔지니어링</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch05.html"><span class="nav-num">05</span> AI 윤리와 저작권</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch06.html"><span class="nav-num">06</span> AI 이미지 생성</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch07.html"><span class="nav-num">07</span> 이미지 제어와 편집</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch08.html"><span class="nav-num">08</span> AI 글쓰기와 스토리텔링</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch09.html"><span class="nav-num">09</span> 웹툰형 콘텐츠 프로젝트</a>
+</div>
+<div class="nav-ch current"><a class="nav-ch-link" href="ch10.html"><span class="nav-num">10</span> AI 음악과 사운드</a>
+<div class="nav-secs"><a class="nav-sec" href="ch10.html#sec1">10.1 컴퓨터는 어떻게 작곡하는가</a><a class="nav-sec" href="ch10.html#sec2">10.2 음악 생성 도구 사용하기</a><a class="nav-sec" href="ch10.html#sec3">10.3 가사 쓰기와 보컬</a><a class="nav-sec" href="ch10.html#sec4">10.4 용도별 음악 만들기</a><a class="nav-sec" href="ch10.html#sec5">10.5 사운드 이펙트와 음성</a><a class="nav-sec" href="ch10.html#sec6">10.6 저작권과 상업적 이용</a><a class="nav-sec" href="ch10.html#labs">실습을 통한 개념 정리</a><a class="nav-sec" href="ch10.html#summary">10장 요약</a><a class="nav-sec" href="ch10.html#exercises">연습문제</a></div>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch11.html"><span class="nav-num">11</span> AI 영상 만들기</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch12.html"><span class="nav-num">12</span> AI 에이전트와 워크플로 자동화</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch13.html"><span class="nav-num">13</span> 기획·제작·발표·포트폴리오</a>
+</div>
+<div class="nav-part">부록</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">A</span> 무료·유료 도구 총정리</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxb.html"><span class="nav-num">B</span> 프롬프트 사전</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxc.html"><span class="nav-num">C</span> 저작권·이용약관 체크리스트</a>
+</div>
+<div class="nav-part">부가 자료</div>
+<div class="nav-ch"><a class="nav-ch-link" href="references.html"><span class="nav-num">&#128218;</span> 참고문헌</a></div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">&#128295;</span> 도구 비교표</a></div>
+</nav>
+<main class="content">
+<div class="chapter-head">
+  <div class="ch-label">CHAPTER 10</div>
+  <h1>AI 음악과 사운드</h1>
+</div>
+<div class="center"><details class="box goals"><summary class="box-head">이 장을 마치면</summary><div class="goals-body"><ul>
+<li>컴퓨터가 음악을 만들어 온 방식의 변화를 설명할 수 있다.</li>
+<li>음악 생성 도구로 의도한 분위기의 곡을 만들 수 있다.</li>
+<li>가사를 쓰고 보컬이 있는 곡을 완성할 수 있다.</li>
+<li>영상 배경음악 등 용도에 맞는 음악을 제작할 수 있다.</li>
+<li>생성한 음악의 저작권과 상업적 이용 조건을 판단할 수 있다.</li>
+</ul></div></details></div>
+<p>음악은 전공자와 비전공자의 격차가 가장 컸던 분야다. 악기를 다루고 화성을 알아야 무언가를 만들 수 있었기 때문이다. 생성형 AI는 그 문턱을 거의 없앴다. 이 장에서는 음악을 만드는 방법과 함께, 만들어진 음악을 판단하는 최소한의 귀를 기르는 데도 지면을 쓴다.</p>
+<h2 id="sec1">10.1 컴퓨터는 어떻게 작곡하는가</h2>
+<div class="stub"><span class="chip">집필 예정</span>규칙 기반 자동작곡(모차르트의 주사위 음악부터 알고리즘 작곡까지)에서 시작해, 기호 기반(악보를 만드는 방식)과 오디오 기반(소리 파형을 직접 만드는 방식)의 차이를 설명한다. 지금의 도구가 왜 후자이며 그래서 무엇이 되고 무엇이 안 되는지(마디 단위 수정이 어려운 이유). 3장 원리와 연결.</div>
+<h2 id="sec2">10.2 음악 생성 도구 사용하기</h2>
+<div class="stub"><span class="chip">집필 예정</span>도구 소개와 크레딧 관리. 프롬프트 구성 요소: 장르, 분위기, 악기 편성, 템포, 시대감, 레퍼런스 표현. 같은 프롬프트의 여러 결과를 듣고 고르는 훈련. 생성 결과를 이어서 확장하기, 특정 구간만 다시 만들기.</div>
+<h2 id="sec3">10.3 가사 쓰기와 보컬</h2>
+<div class="stub"><span class="chip">집필 예정</span>8장의 글쓰기 기법을 가사에 적용. 음절 수와 운율을 고려한 가사, 후렴의 반복. 보컬 스타일 지정. 한국어 가사의 발음 문제와 대처. 인스트루멘털 버전 만들기.</div>
+<h2 id="sec4">10.4 용도별 음악 만들기</h2>
+<div class="stub"><span class="chip">집필 예정</span>영상 배경음악(길이 맞추기, 페이드, 대사를 방해하지 않는 편성), 게임·앱용 루프 음악, 브랜드 시그널. 11장 영상 작업에서 쓸 음악을 여기서 미리 만들어 두게 한다. 무료 음원 사이트와의 비교 — 언제 생성하고 언제 기성 음원을 쓰는가.</div>
+<h2 id="sec5">10.5 사운드 이펙트와 음성</h2>
+<div class="stub"><span class="chip">집필 예정</span>효과음 생성, 음성 합성(TTS)과 내레이션, 목소리 복제 기술의 존재와 위험(5.4절 연결). 영상용 내레이션 만들기 실습. 한국어 음성 합성 도구의 현재 수준.</div>
+<h2 id="sec6">10.6 저작권과 상업적 이용</h2>
+<div class="stub"><span class="chip">집필 예정</span>생성 음악의 소유권이 서비스마다 다르다는 점(무료 플랜은 상업 이용 불가인 경우가 많다). 이용약관에서 확인할 항목. 유튜브 등 플랫폼의 저작권 검출 시스템과 AI 음악. 기존 곡과 유사하게 나왔을 때의 위험.</div>
+<p><span id="labs"></span><div class="box lab"><div class="lab-title">이 장의 실습</div><div class="stub"><span class="chip">집필 예정</span>10장 실습 — 본문 집필 후 작성한다. 수업 주차별 과제와 대응시킬 것.</div></div></p>
+<details class="box summary" id="summary"><summary class="box-head">10장 요약</summary><div class="sum-body"><div class="stub"><span class="chip">집필 예정</span>10장 요약 — 본문 집필 후 작성한다. 각 절의 핵심을 항목 하나씩.</div></div></details>
+<details class="box exercise" id="exercises"><summary class="box-head">10장 연습문제</summary><div class="ex-body"><div class="stub"><span class="chip">집필 예정</span>10장 연습문제 — 본문 집필 후 작성한다. \ diffitem 난이도 1 3을 섞을 것.</div></div></details>
+<div class="pager-row"><a class="pager prev" href="ch09.html">&larr; 9장</a><a class="pager next" href="ch11.html">11장 &rarr;</a></div>
+</main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-c.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-glsl.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+<script src="book.js"></script>
+</body>
+</html>
