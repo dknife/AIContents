@@ -788,3 +788,11 @@ table.tooltable tr:hover td { background: var(--bg); }
 table.tooltable a { color: var(--text); text-decoration: none; font-weight: 600; }
 table.tooltable a:hover { color: var(--accent); }
 .tooltable-empty { padding: 1.2rem; text-align: center; color: var(--text-light); }
+
+/* 표준 quote 환경 — 연습문제에서 논평 대상 진술을 인용할 때 */
+.content blockquote.plainquote {
+  margin: 0.9rem 0; padding: 0.6rem 0 0.6rem 1rem;
+  border-left: 3px solid var(--border);
+  color: var(--text-2); font-size: 0.92rem;
+}
+.content blockquote.plainquote p:last-child { margin-bottom: 0; }
