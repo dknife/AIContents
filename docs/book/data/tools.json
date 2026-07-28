@@ -4,7 +4,7 @@
   "tools": [
     {
       "name": "ChatGPT", "url": "https://chatgpt.com", "price": "freemium",
-      "cats": ["chat", "auto"], "ch": 1,
+      "cats": ["chat", "image", "auto"], "ch": 1,
       "free": "기본 모델 대화, 이미지 생성 소량",
       "note": "커스텀 어시스턴트(GPTs) 제작 가능"
     },
