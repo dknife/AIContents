@@ -27,10 +27,10 @@
       "note": "계정만 있으면 되어 수업 실습에 적합"
     },
     {
-      "name": "Google Labs (ImageFX 등)", "url": "https://labs.google/fx", "price": "free",
+      "name": "Ideogram", "url": "https://ideogram.ai", "price": "free",
       "cats": ["image"], "ch": 6,
-      "free": "이미지 생성, 실험 도구",
-      "note": "지역·계정에 따라 제공 범위가 다름"
+      "free": "하루 일정량 생성",
+      "note": "프롬프트 자동 확장이 어휘 학습에 좋음 — 한글 글자는 여전히 깨짐"
     },
     {
       "name": "Adobe Firefly", "url": "https://firefly.adobe.com", "price": "credit",

@@ -81,7 +81,7 @@
 <p><strong>무료 크레딧.</strong> 가입 시 또는 매일 일정량의 크레딧을 주고 소진하면 기다리거나 결제해야 한다. 고급 기능이 열려 있는 경우가 많아 실험용으로 좋다. 대신 <strong>크레딧을 언제 쓸지 계획</strong>해야 한다.</p>
 <p><strong>유료 전용.</strong> 월 구독으로 무제한에 가깝게 쓰거나 고급 제어 기능을 얻는다. 실무를 시작하면 결국 하나쯤 필요해진다.</p>
 <div class="toolcard"><div class="tool-head"><span class="tool-name">Microsoft Copilot</span><span class="price free">무료</span></div><div class="tool-addr">copilot.microsoft.com</div><p>계정만 있으면 이미지를 만들 수 있다. 하루 우선 처리 횟수가 정해져 있고 소진 후에도 느리게나마 생성된다. 프롬프트를 자연스러운 문장으로 써도 잘 알아듣는 편이며, 사진풍과 일러스트풍 모두 무난하다. <strong>이 책의 6장 실습 기본 도구</strong>로 삼는다.</p></div>
-<div class="toolcard"><div class="tool-head"><span class="tool-name">Google Labs (ImageFX 등)</span><span class="price free">무료</span></div><div class="tool-addr">labs.google/fx</div><p>구글의 실험적 이미지 도구 모음. 제공 범위가 지역·계정에 따라 달라 확인이 필요하다. 프롬프트의 낱말을 클릭해 대체어를 제안받는 기능이 있어 <strong>어휘를 늘리는 데 유용</strong>하다.</p></div>
+<div class="toolcard"><div class="tool-head"><span class="tool-name">Ideogram</span><span class="price free">무료</span></div><div class="tool-addr">ideogram.ai</div><p>계정을 만들면 하루 일정량을 무료로 쓸 수 있다. 짧게 적은 프롬프트를 상세한 묘사로 자동 확장해 보여 주는 기능이 있어, 그 문장을 읽는 것만으로 <strong>어휘를 늘리는 데 유용</strong>하다. 간판이나 로고처럼 짧은 영문 글자를 비교적 정확히 그려 넣는 편이지만 <strong>한글은 여전히 깨지므로</strong>, 6.6절의 원칙대로 최종 글자는 편집 도구에서 얹는다.</p></div>
 <div class="toolcard"><div class="tool-head"><span class="tool-name">Adobe Firefly</span><span class="price credit">무료 크레딧</span></div><div class="tool-addr">firefly.adobe.com</div><p>라이선스를 확보한 데이터로 학습했다고 밝힌 모델이다. 5.6절에서 말한 <strong>상업적 이용 부담이 적은 선택지</strong>이며, 결과물에 대한 면책 조항도 함께 제공한다. 표현의 폭은 다른 도구보다 좁을 수 있다.</p></div>
 <div class="toolcard"><div class="tool-head"><span class="tool-name">Leonardo.ai</span><span class="price credit">무료 크레딧</span></div><div class="tool-addr">leonardo.ai</div><p>매일 회복되는 토큰으로 쓴다. 7장에서 다룰 <strong>구조 지정과 캐릭터 참조 기능</strong>이 무료 범위에서도 상당 부분 열려 있어, 제어를 배우기에 적합하다.</p></div>
 <div class="toolcard"><div class="tool-head"><span class="tool-name">Krea</span><span class="price freemium">부분 무료</span></div><div class="tool-addr">krea.ai</div><p>그리는 동안 실시간으로 이미지가 따라오는 방식이 특징이다. <strong>스케치를 즉시 이미지로 바꾸는</strong> 작업에 강해, 손으로 그릴 수 있는 학생에게 특히 유리하다.</p></div>
@@ -123,7 +123,7 @@
 <h3>1단계. 생성: 많이 뽑는다</h3>
 <p>가장 흔한 실수는 <strong>두세 장 만들어 보고 실망하는</strong> 것이다. 1.4절에서 말했듯 이 도구를 쓰는 일은 한 번에 맞히기가 아니라 여러 번 뽑아 고르기다.</p>
 <p>첫 프롬프트는 짧게 시작한다. 4.2절의 다섯 축 중 <strong>주제와 세부</strong>만 넣는다.</p>
-<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://copilot.microsoft.com" target="_blank" rel="noopener">Copilot</a><a class="tool-open" href="https://labs.google/fx" target="_blank" rel="noopener">Google Labs</a></div><pre class="prompt"><code>university students working together on a creative project,
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://copilot.microsoft.com" target="_blank" rel="noopener">Copilot</a><a class="tool-open" href="https://ideogram.ai" target="_blank" rel="noopener">Ideogram</a></div><pre class="prompt"><code>university students working together on a creative project,
 sketches and screens on a large table, natural daylight</code></pre><div class="listing-caption">프롬프트 6.1: 탐색 단계의 첫 프롬프트</div></div>
 <p>이 프롬프트로 <strong>최소 열 장</strong>을 만든다. 목적은 좋은 결과를 얻는 것이 아니라 <strong>모델이 이 주제를 어떻게 이해하는지 보는</strong> 것이다. 어떤 요소가 저절로 따라오는지, 무엇이 자꾸 빠지는지 관찰한다.</p>
 <div class="box keypoint"><span class="chip">요점</span><p>탐색 단계의 결과는 <strong>전부 버릴 각오</strong>로 만든다. 여기서 얻는 것은 이미지가 아니라 정보다. 아깝다고 붙잡고 다듬기 시작하면 방향을 잘못 잡은 채 시간을 쓰게 된다.</p></div>
@@ -137,7 +137,7 @@ sketches and screens on a large table, natural daylight</code></pre><div class="
 <p>버린 이유가 다음 프롬프트의 재료가 된다. 위 기록에서 세 가지 개선점이 바로 나온다. <em>시선을 카메라에서 돌릴 것</em>, <em>책상 위를 정리할 것</em>, <em>나이대를 명시할 것</em>.</p>
 <h3>3단계. 변형: 축을 하나씩 더한다</h3>
 <p>선별에서 얻은 정보를 프롬프트에 반영한다. 4.2절의 나머지 축(스타일·구성·제약)을 여기서 채운다.</p>
-<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://copilot.microsoft.com" target="_blank" rel="noopener">Copilot</a><a class="tool-open" href="https://labs.google/fx" target="_blank" rel="noopener">Google Labs</a></div><pre class="prompt"><code>three university students in their early twenties
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://copilot.microsoft.com" target="_blank" rel="noopener">Copilot</a><a class="tool-open" href="https://ideogram.ai" target="_blank" rel="noopener">Ideogram</a></div><pre class="prompt"><code>three university students in their early twenties
 collaborating on a creative project,
 looking at their work rather than the camera,
 a few sketches and one open laptop on a clean wooden table,
@@ -197,7 +197,7 @@ risograph print   리소 인쇄. 어긋난 색, 거친 점 질감</code></pre></
 <h3>작가 이름 대신 특징 쓰기</h3>
 <p>5.3절의 원칙을 실제 프롬프트로 옮겨 보자. 다음은 어떤 화풍을 이름 없이 재현하는 예다.</p>
 <div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt bad"><code>in the style of [활동 중인 작가 이름], a quiet street</code></pre></div>
-<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://copilot.microsoft.com" target="_blank" rel="noopener">Copilot</a><a class="tool-open" href="https://labs.google/fx" target="_blank" rel="noopener">Google Labs</a></div><pre class="prompt"><code>a quiet residential street at dusk,
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://copilot.microsoft.com" target="_blank" rel="noopener">Copilot</a><a class="tool-open" href="https://ideogram.ai" target="_blank" rel="noopener">Ideogram</a></div><pre class="prompt"><code>a quiet residential street at dusk,
 gouache illustration with visible brush texture,
 limited palette: dusty blue, warm cream, muted terracotta,
 simplified architecture with soft rounded edges,
