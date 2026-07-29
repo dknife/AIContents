@@ -133,6 +133,15 @@ img.chapfig {
 }
 img.chapfig:hover { transform: scale(1.02); box-shadow: 0 8px 24px rgba(0,0,0,0.14); }
 
+/* 챕터·부록 오프너 대표 이미지 (인쇄판 챕터 표지 디자인의 웹 대응) */
+img.chapter-hero, img.appendix-hero {
+  display: block; width: 100%; max-width: 560px; height: auto;
+  margin: 0.4rem auto 2.4rem;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.14);
+}
+.chapter-head + img.chapter-hero, .chapter-head + img.appendix-hero { margin-top: 1.4rem; }
+
 /* ---- headings ---- */
 h2 {
   color: var(--text); font-size: 1.7rem; font-weight: 700;
