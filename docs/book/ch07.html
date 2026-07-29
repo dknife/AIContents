@@ -57,6 +57,8 @@
 </div>
 <div class="nav-ch"><a class="nav-ch-link" href="apxc.html"><span class="nav-num">C</span> 저작권·이용약관 체크리스트</a>
 </div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxd.html"><span class="nav-num">D</span> 바이브 코딩: 코드를 몰라도 만든다</a>
+</div>
 <div class="nav-part">부가 자료</div>
 <div class="nav-ch"><a class="nav-ch-link" href="references.html"><span class="nav-num">&#128218;</span> 참고문헌</a></div>
 <div class="nav-ch"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">&#128295;</span> 도구 비교표</a></div>
@@ -147,6 +149,12 @@ visible brush texture, simplified background</code></pre><div class="listing-cap
 <h3>색을 참조로 쓰기</h3>
 <p>작지만 유용한 요령이다. 원하는 색 조합이 있다면 <strong>색만 칠한 이미지</strong>를 만들어 스타일 참조로 준다. 색 다섯 개를 나란히 칠한 그림 한 장이면 충분하다.</p>
 <p>프롬프트로 색을 지정하는 것보다 훨씬 정확하다. <em>muted terracotta</em>라고 써도 모델이 어떤 색을 떠올릴지 알 수 없지만, 색 견본을 주면 그 근처로 간다. 학과나 브랜드의 지정 색이 있는 작업에서 특히 쓸모 있다.</p>
+<p>색 견본을 스타일 참조로 주면서 프롬프트로는 <strong>어디에 그 색을 쓸지</strong>만 안내한다. 견본이 색을, 프롬프트가 배치를 맡는 식으로 역할을 나눈다.</p>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://copilot.microsoft.com" target="_blank" rel="noopener">Copilot</a><a class="tool-open" href="https://ideogram.ai" target="_blank" rel="noopener">Ideogram</a><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></div><pre class="prompt"><code>a quiet cafe interior seen from a corner table,
+follow the color palette of the reference swatch,
+warm terracotta walls, cream tabletops, muted teal chairs,
+soft even lighting, flat illustration style</code></pre><div class="listing-caption">프롬프트 7.2: 색 견본을 스타일 참조로 함께 쓰는 프롬프트</div></div>
+<pre class="airesp">결과의 전체 색조가 견본의 다섯 색 안으로 수렴한다. \textbf{프롬프트에 색 이름을 함께 적은 것}은 견본과 프롬프트가 서로를 보강하도록 하기 위해서다. 다만 스타일 참조의 강도가 지나치게 높으면 견본의 배치까지 흉내 내 화면이 색 띠처럼 나뉘어 나오기도 한다. 그럴 때는 참조 강도를 한 단계 낮춘다.</pre>
 <h3>참조를 쓸 때의 함정</h3>
 <p><strong>원본이 그대로 나온다.</strong> 강도가 너무 낮으면 참조 이미지가 거의 그대로 나온다. 남의 이미지를 참조로 썼다면 이것은 명백한 문제가 된다. 반드시 결과가 충분히 달라졌는지 확인한다.</p>
 <p><strong>구도가 예상과 다르게 유지된다.</strong> 참조 이미지의 여백, 잘린 부분, 기울기까지 따라온다. 참조로 줄 이미지는 미리 필요한 비율로 잘라 두는 편이 좋다.</p>
@@ -175,11 +183,28 @@ visible brush texture, simplified background</code></pre><div class="listing-cap
 <h3>실무에서 자주 하는 인페인팅</h3>
 <div class="table-wrap"><div class="table-caption">표 7.3: 자주 쓰는 부분 수정</div><table><tr><th> 상황</th><th> 요령</th></tr><tr><td>손가락이 이상하다</td><td>손목까지 포함해 칠하고, 손의 자세를 구체적으로 묘사</td></tr><tr><td>배경에 방해 요소가 있다</td><td>그 자리에 <em>있어야 할 배경</em>을 묘사한다</td></tr><tr><td>표정을 바꾸고 싶다</td><td>얼굴 전체를 칠한다. 눈만 칠하면 표정이 어긋난다</td></tr><tr><td>소품을 넣거나 뺀다</td><td>그림자가 남지 않도록 주변까지 넉넉히</td></tr><tr><td>글자를 지운다</td><td>지운 자리의 재질을 묘사 (<em>plain brick wall</em>)</td></tr><tr><td>옷의 색을 바꾼다</td><td>옷 전체를 칠하고 새 색과 재질을 묘사</td></tr></table></div>
 <p>표 7.3에서 다섯째 줄에 주목하자. 6.6절에서 글자는 편집 도구에서 얹으라고 했는데, <strong>생성된 이미지에 깨진 글자가 이미 들어 있는</strong> 경우가 많다. 인페인팅으로 지운 뒤 편집 도구에서 제대로 된 글자를 얹는 것이 표준 절차다.</p>
+<p>둘째 줄, 배경에서 방해 요소를 지우는 경우를 예로 들어 보자. 골목을 걷는 인물 뒤에 표지판이 걸려 시선을 흐트러뜨린다고 하자. 표지판과 그 그림자까지 넉넉히 마스크로 칠한 뒤, 그 자리에 <em>있어야 할 것</em>을 적는다. <em>지워 줘</em>가 아니라 <strong>빈 벽을 묘사</strong>하는 것이다.</p>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://copilot.microsoft.com" target="_blank" rel="noopener">Copilot</a><a class="tool-open" href="https://ideogram.ai" target="_blank" rel="noopener">Ideogram</a><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></div><pre class="prompt"><code>a continuous weathered red brick wall,
+same lighting and perspective as the surrounding wall,
+no signs, no text, no objects,
+soft afternoon shadow consistent with the scene</code></pre><div class="listing-caption">프롬프트 7.3: 물체를 지우는 인페인팅 프롬프트</div></div>
+<pre class="airesp">표지판이 사라지고 그 자리를 주변과 같은 벽돌 벽이 메운다. \textbf{같은 조명과 원근}을 명시했기 때문에 이어 붙인 자국이 거의 보이지 않는다. 다만 마스크를 표지판에 딱 맞춰 칠했다면 그림자가 남아 어색해지므로, 결과를 보고 그림자 영역까지 포함해 한 번 더 칠하는 경우가 많다.</pre>
+<p>반대로 없던 요소를 <strong>더해 넣을</strong> 때도 같은 원리다. 빈 테이블 위에 소품을 놓는다면, 놓을 자리를 칠하고 그 물체를 묘사하되 <strong>주변과 맞는 광원</strong>을 함께 지시한다.</p>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://copilot.microsoft.com" target="_blank" rel="noopener">Copilot</a><a class="tool-open" href="https://ideogram.ai" target="_blank" rel="noopener">Ideogram</a><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></div><pre class="prompt"><code>a ceramic coffee cup with faint steam,
+sitting on the wooden table,
+light coming from the left window,
+soft shadow falling to the right, matching the scene</code></pre><div class="listing-caption">프롬프트 7.4: 물체를 더하는 인페인팅 프롬프트</div></div>
 <h3>아웃페인팅: 바깥으로 넓힌다</h3>
 <p><strong class="term-ko">아웃페인팅</strong><sup class="term">outpainting</sup>은 이미지의 바깥쪽을 이어 그려 화면을 넓히는 기능이다. 쓸 일이 생각보다 많다.</p>
 <p><strong>비율을 바꿀 때.</strong> 세로로 만든 이미지를 가로 배너에 써야 한다면, 잘라 내는 대신 좌우로 넓힌다. 6.5절에서 <em>넓은 비율로 만들어 잘라 쓰라</em>고 했지만 이미 만들어 버린 경우의 해법이다.</p>
 <p><strong>여백이 필요할 때.</strong> 글자를 얹을 자리가 없을 때 위나 아래로 넓힌다.</p>
 <p><strong>화면을 넓게 보이고 싶을 때.</strong> 인물이 화면에 꽉 차 답답하다면 주변을 넓혀 숨통을 틔운다.</p>
+<p>아웃페인팅에도 프롬프트가 필요하다. <strong>새로 채워질 바깥 영역에 무엇이 있어야 하는지</strong>를 적는다. 세로 인물 사진을 가로 배너로 넓히는 경우라면 좌우로 이어질 배경을 묘사한다.</p>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://copilot.microsoft.com" target="_blank" rel="noopener">Copilot</a><a class="tool-open" href="https://ideogram.ai" target="_blank" rel="noopener">Ideogram</a><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></div><pre class="prompt"><code>extend the scene outward on both sides,
+same misty pine forest and overcast sky,
+keep the horizon line and color palette continuous,
+empty space on the left for text, no new characters</code></pre><div class="listing-caption">프롬프트 7.5: 화면을 좌우로 넓히는 아웃페인팅 프롬프트</div></div>
+<p><em>인물을 새로 넣지 말라</em>는 지시가 중요하다. 넓힌 자리에 모델이 멋대로 사람이나 사물을 채우는 일이 흔하기 때문이다. <em>글자 자리를 왼쪽에 비워 두라</em>처럼 <strong>비워 둘 곳</strong>까지 지정하면 뒤 작업이 편해진다.</p>
 <div class="box caution"><span class="chip">주의</span><p>아웃페인팅은 <strong>한 번에 조금씩</strong> 하는 것이 안전하다. 한 번에 두 배로 넓히면 새로 만들어진 부분이 원본과 따로 논다. 30% 정도씩 여러 번 나누어 넓히면 훨씬 자연스럽다.</p></div>
 <h3>무료로 하는 방법</h3>
 <p>전용 인페인팅 기능이 없는 도구를 쓴다면 우회로가 있다.</p>
@@ -207,7 +232,7 @@ visible brush texture, simplified background</code></pre><div class="listing-cap
 </ol>
 <div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://copilot.microsoft.com" target="_blank" rel="noopener">Copilot</a><a class="tool-open" href="https://ideogram.ai" target="_blank" rel="noopener">Ideogram</a><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></div><pre class="prompt"><code>a knight in worn leather armor standing on a cliff edge,
 wind blowing the cape, overcast sky,
-digital painting, muted earth tones, dramatic rim light</code></pre><div class="listing-caption">프롬프트 7.2: 포즈 조건과 함께 쓰는 프롬프트</div></div>
+digital painting, muted earth tones, dramatic rim light</code></pre><div class="listing-caption">프롬프트 7.6: 포즈 조건과 함께 쓰는 프롬프트</div></div>
 <figure class="fig"><img class="shot" src="img/ch07/ch07_img02.jpg" alt="figure"><figcaption>포즈 조건과 그것으로 만든 결과</figcaption></figure>
 <p>프롬프트 어디에도 자세에 대한 언급이 없다는 점에 주목하자. 자세는 조건이 담당하므로 프롬프트는 <strong>나머지에만 집중</strong>하면 된다. 이렇게 역할을 나누면 둘 다 정확해진다.</p>
 <h3>낙서로 배치 지정하기</h3>

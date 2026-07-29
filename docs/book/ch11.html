@@ -57,6 +57,8 @@
 </div>
 <div class="nav-ch"><a class="nav-ch-link" href="apxc.html"><span class="nav-num">C</span> 저작권·이용약관 체크리스트</a>
 </div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxd.html"><span class="nav-num">D</span> 바이브 코딩: 코드를 몰라도 만든다</a>
+</div>
 <div class="nav-part">부가 자료</div>
 <div class="nav-ch"><a class="nav-ch-link" href="references.html"><span class="nav-num">&#128218;</span> 참고문헌</a></div>
 <div class="nav-ch"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">&#128295;</span> 도구 비교표</a></div>
@@ -178,13 +180,24 @@ the person slowly turns their head  고개를 돌린다
 fabric fluttering                 천이 나부낀다
 water rippling                    물결이 인다</code></pre></div>
 <div class="box keypoint"><span class="chip">요점</span><p>피사체 움직임은 <strong>작고 반복적인 것</strong>이 잘 나온다. 김, 바람, 물결, 촛불처럼 형태가 크게 바뀌지 않는 움직임이다. 반면 걷기, 손동작, 표정 변화처럼 <strong>형태가 크게 바뀌는 움직임</strong>은 실패율이 높다.</p></div>
+<p>카메라만 움직이고 장면은 그대로 두는 지시가 가장 안전하다. 대상 주위를 도는 궤도 움직임은 정지 이미지에서 출발해도 깊이가 살아난다.</p>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://runwayml.com" target="_blank" rel="noopener">Runway</a><a class="tool-open" href="https://lumalabs.ai" target="_blank" rel="noopener">Luma</a><a class="tool-open" href="https://copilot.microsoft.com" target="_blank" rel="noopener">Copilot</a><a class="tool-open" href="https://ideogram.ai" target="_blank" rel="noopener">Ideogram</a><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></div><pre class="prompt"><code>slow orbit around the sculpture, moving to the left,
+the subject stays completely still,
+smooth and steady camera motion,
+no other movement in the scene</code></pre><div class="listing-caption">프롬프트 11.1: 카메라만 움직이는 지시 (궤도)</div></div>
+<pre class="airesp">(조각상은 제자리에 있고 카메라가 왼쪽으로 천천히 돌며 측면과 뒷면이 드러난다. 형태가 무너지지 않아 성공률이 높은 유형.)</pre>
+<p>피사체 움직임만 줄 때는 앞의 요령대로 <strong>작고 반복적인 것</strong> 하나로 좁힌다. 여러 개를 한꺼번에 지시하면 서로 간섭해 형태가 흔들린다.</p>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://runwayml.com" target="_blank" rel="noopener">Runway</a><a class="tool-open" href="https://lumalabs.ai" target="_blank" rel="noopener">Luma</a><a class="tool-open" href="https://copilot.microsoft.com" target="_blank" rel="noopener">Copilot</a><a class="tool-open" href="https://ideogram.ai" target="_blank" rel="noopener">Ideogram</a><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></div><pre class="prompt"><code>gentle wind moving through the tall grass,
+camera stays static,
+only the grass sways softly, nothing else moves,
+subtle and slow motion</code></pre><div class="listing-caption">프롬프트 11.2: 피사체 움직임만 지시하기 (작고 반복적인 것)</div></div>
 <h3>모션 프롬프트 쓰기</h3>
 <p>이미지가 이미 있으므로 프롬프트는 <strong>움직임에만</strong> 집중한다. 장면을 다시 묘사할 필요가 없다.</p>
 <div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://runwayml.com" target="_blank" rel="noopener">Runway</a><a class="tool-open" href="https://lumalabs.ai" target="_blank" rel="noopener">Luma</a><a class="tool-open" href="https://copilot.microsoft.com" target="_blank" rel="noopener">Copilot</a><a class="tool-open" href="https://ideogram.ai" target="_blank" rel="noopener">Ideogram</a><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></div><pre class="prompt"><code>slow zoom in toward the window,
 gentle steam rising from the coffee cup,
 soft rain streaking down the glass,
 everything else remains still,
-subtle and calm motion</code></pre><div class="listing-caption">프롬프트 11.1: 이미지에 움직임 지시하기</div></div>
+subtle and calm motion</code></pre><div class="listing-caption">프롬프트 11.3: 이미지에 움직임 지시하기</div></div>
 <figure class="fig"><img class="shot" src="img/ch11/ch11_img01.jpg" alt="figure"><figcaption>움직임을 지시한 클립에서 뽑은 한 프레임</figcaption></figure>
 <p><code>everything else remains still</code>이 유용하다. 지시하지 않은 부분까지 모델이 움직이려 드는 것을 막는다.</p>
 <div class="box caution"><span class="chip">주의</span><p><strong>한 클립에 움직임을 두세 개까지만</strong> 넣는다. 6.6절에서 이미지 프롬프트의 통제 요소가 대여섯 개가 한계라고 했는데, 영상에서는 그보다 적다. 카메라 하나 + 피사체 하나 정도가 안정적이다.</p></div>
@@ -204,6 +217,12 @@ subtle and calm motion</code></pre><div class="listing-caption">프롬프트 11.
 <p>일부 도구는 <strong>시작 이미지와 끝 이미지를 모두</strong> 받는다. 그 사이를 채워 주는 방식이다.</p>
 <p>이 기능이 있다면 통제력이 크게 올라간다. 예를 들어 같은 장면의 낮 이미지와 밤 이미지를 각각 만들어 주면, 시간이 흐르는 클립을 얻을 수 있다.</p>
 <p>7.2절에서 배운 이미지 제어 기술이 여기서 두 배로 쓰인다. 두 이미지의 구도가 일치할수록 결과가 자연스러우므로, <strong>같은 시드로 만들거나 하나를 다른 하나의 참조로</strong> 삼는다.</p>
+<p>두 이미지를 넣은 뒤 프롬프트는 <strong>그 사이에서 무엇이 변하는지</strong>만 짧게 적는다. 장면을 다시 묘사할 필요는 없다.</p>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://runwayml.com" target="_blank" rel="noopener">Runway</a><a class="tool-open" href="https://lumalabs.ai" target="_blank" rel="noopener">Luma</a><a class="tool-open" href="https://copilot.microsoft.com" target="_blank" rel="noopener">Copilot</a><a class="tool-open" href="https://ideogram.ai" target="_blank" rel="noopener">Ideogram</a><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></div><pre class="prompt"><code>transition smoothly from the first frame to the last frame,
+daylight slowly fading into evening,
+the camera holds the same framing,
+gradual and continuous change</code></pre><div class="listing-caption">프롬프트 11.4: 시작·끝 이미지 사이를 채우기</div></div>
+<pre class="airesp">(같은 구도의 낮 이미지에서 저녁 이미지로 빛과 색이 서서히 옮겨 간다. 구도가 고정되어 있어 시간의 흐름만 자연스럽게 표현된다.)</pre>
 <h3>실패했을 때의 판단</h3>
 <p>크레딧이 한정되어 있으므로 <em>언제 포기할지</em>를 정해 두어야 한다.</p>
 <div class="settingbox-wrap"><div class="setting-label">재시도 판단</div><pre class="settingbox"><code>1회차 결과를 보고
@@ -236,7 +255,7 @@ subtle and calm motion</code></pre><div class="listing-caption">프롬프트 11.
 wide shot, low angle, 35mm lens,
 soft blue morning light through a tall window,
 slow dolly forward, dust particles drifting gently,
-cinematic, muted color grading, subtle film grain</code></pre><div class="listing-caption">프롬프트 11.2: 다섯 층을 갖춘 영상 프롬프트</div></div>
+cinematic, muted color grading, subtle film grain</code></pre><div class="listing-caption">프롬프트 11.5: 다섯 층을 갖춘 영상 프롬프트</div></div>
 <figure class="fig"><img class="shot" src="img/ch11/ch11_img02.jpg" alt="figure"><figcaption>다섯 층 프롬프트로 만든 클립의 한 프레임</figcaption></figure>
 <p>6.4절에서 익힌 카메라·조명 어휘가 그대로 쓰인다는 점에 주목하자. <strong>이미지에서 쌓은 어휘가 영상에서 재사용된다.</strong></p>
 <h3>여러 클립의 통일성</h3>
@@ -247,6 +266,11 @@ cinematic, muted color grading, subtle film grain</code></pre><div class="listin
   subtle film grain, 35mm lens look, shallow depth of field
 
 각 클립의 프롬프트 = [장면 고유 묘사] + [공통 문구]</code></pre></div>
+<p>앞의 규칙을 실제 클립 하나에 적용하면 이렇게 된다. 첫 두 줄이 이 클립만의 장면과 움직임이고, 나머지가 모든 클립에 똑같이 붙는 공통 문구다.</p>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://runwayml.com" target="_blank" rel="noopener">Runway</a><a class="tool-open" href="https://lumalabs.ai" target="_blank" rel="noopener">Luma</a><a class="tool-open" href="https://copilot.microsoft.com" target="_blank" rel="noopener">Copilot</a><a class="tool-open" href="https://ideogram.ai" target="_blank" rel="noopener">Ideogram</a><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></div><pre class="prompt"><code>a quiet corridor with sunlight falling across the floor,
+slow pan to the right, dust drifting in the light,
+cinematic, muted color grading with cool shadows,
+subtle film grain, 35mm lens look, shallow depth of field</code></pre><div class="listing-caption">프롬프트 11.6: 장면 고유 묘사 + 공통 문구</div></div>
 <p><strong>그래도 남는 차이는 편집에서 잡는다.</strong> 9.5절에서 색조를 후보정으로 통일하라고 한 것이 여기서도 그대로 통한다. 편집 도구에서 모든 클립에 같은 색보정을 적용하면 훨씬 한 덩어리로 보인다.</p>
 <div class="box keypoint"><span class="chip">요점</span><p>클립 간 통일성을 생성 단계에서 완벽히 맞추려 하지 말자. <strong>시간과 크레딧이 몇 배로 든다.</strong> 대략 맞춰 놓고 편집에서 마무리하는 것이 실무의 순서다.</p></div>
 <h3>실패 유형</h3>
