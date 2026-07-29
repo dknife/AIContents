@@ -1,6 +1,5 @@
 /* AI 크리에이티브 — 웹 본문 읽기 페이지 (Sutera 디자인 시스템, 알짜파이썬/DESIGN.md)
  * 손으로 관리하는 파일. tex2html.py는 이 파일을 만들지 않는다. */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&display=swap');
 :root {
   --bg: #F8F8F8;
   --bg-2: #EDEDED;
@@ -19,27 +18,17 @@
   --radius-lg: 16px;
   --sidebar-w: 300px;
   --ease: cubic-bezier(0.25, 1, 0.5, 1);
-  /* 세리프 본문 + 산세리프 헤딩·UI (인쇄판 알짜파이썬식 세리프 중심 조판에 맞춤) */
-  --font-sans: 'Inter Tight', 'Pretendard', 'Noto Sans KR',
-    -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-serif: 'Noto Serif KR', 'Nanum Myeongjo', Georgia, serif;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
-  font-family: var(--font-serif);          /* 본문 = 세리프 (명조) */
+  font-family: 'Inter Tight', 'Pretendard', 'Noto Sans KR',
+    -apple-system, BlinkMacSystemFont, sans-serif;
   color: var(--text);
   background: var(--bg);
-  line-height: 1.7;
+  line-height: 1.65;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
-}
-/* 헤딩·내비게이션·박스 제목·표 등 UI 크롬은 산세리프 유지 */
-.topbar, .sidebar, .nav-toggle,
-h1, h2, h3, h4,
-.ch-label, .box-head, summary,
-button, .pager, table {
-  font-family: var(--font-sans);
 }
 
 /* ---- fixed top bar ---- */
