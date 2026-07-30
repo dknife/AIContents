@@ -442,6 +442,213 @@
       });
     });
 
+  /* ================================================================
+     5. 편집 모드 — Ctrl+E (로컬 편집 서버가 떠 있을 때만)
+
+     WebBook/editserver.py가 /__edit/ping에 응답하면 편집 UI가 살아난다.
+     GitHub Pages에는 그 서버가 없으므로 ping이 실패하고, 아래 코드는
+     아무것도 하지 않는다 — 배포된 사이트에서 Ctrl+E는 무반응이다.
+
+     저장하면 서버가 HTML을 LaTeX으로 되돌려 원고 .tex를 직접 고치고,
+     그 장만 다시 변환해 새 HTML 조각을 돌려준다. 문단이 늘거나 줄어
+     블록 구성이 바뀐 경우에는 reload를 요청해 페이지를 다시 읽는다.
+     ================================================================ */
+  var EDIT = { ready: false, on: false, open: null, bar: null };
+
+  // 로컬에서만 물어본다. 배포된 사이트에서 /__edit/ping을 때리면 콘솔에
+  // 404만 남을 뿐이므로 아예 요청하지 않는다.
+  if (/^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname)) {
+    fetch('/__edit/ping', { cache: 'no-store' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .catch(function () { return null; })
+      .then(function (info) {
+        if (!info || !info.ok) {
+          // 로컬인데 편집 서버가 아니다 — python -m http.server로 띄운 경우.
+          // Ctrl+E가 왜 안 먹는지 콘솔에서 알 수 있게 알려 준다.
+          console.info('[편집 모드] 꺼짐 — 정적 서버입니다. 원고를 고치려면 ' +
+                       'python WebBook/editserver.py 로 띄우세요.');
+          return;
+        }
+        EDIT.ready = true;
+        document.body.classList.add('can-edit');
+        document.addEventListener('keydown', editKey);
+        restoreScroll();
+        console.info('[편집 모드] Ctrl+E (맥 ⌘E) — 편집 블록 ' +
+                     info.blocks + '개');
+      });
+  }
+
+  function editKey(e) {
+    var k = (e.key || '').toLowerCase();
+    if ((e.ctrlKey || e.metaKey) && !e.altKey && k === 'e') {
+      var t = e.target || {};
+      if (t.tagName === 'TEXTAREA' || t.tagName === 'INPUT') return;
+      e.preventDefault();
+      toggleEdit();
+    }
+  }
+
+  function toggleEdit(force) {
+    EDIT.on = (force === undefined) ? !EDIT.on : !!force;
+    document.body.classList.toggle('edit-mode', EDIT.on);
+    if (EDIT.on) { attachEditButtons(); showBar(); }
+    else { closeEditor(); if (EDIT.bar) EDIT.bar.hidden = true; }
+  }
+
+  function attachEditButtons() {
+    document.querySelectorAll('.content [data-blk]').forEach(function (el) {
+      if (el.querySelector('.blk-edit')) return;
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'blk-edit';
+      b.title = el.getAttribute('data-blk');
+      b.textContent = '고치기';
+      b.addEventListener('click', function (ev) {
+        ev.preventDefault(); ev.stopPropagation();
+        openEditor(el);
+      });
+      // <ul>의 직계 자식 버튼은 표준 문법은 아니지만 position:absolute라
+      // 배치에 영향이 없고, 로컬 편집용이라 실용을 택했다.
+      el.appendChild(b);
+    });
+  }
+
+  function prettyHtml(el) {
+    var c = el.cloneNode(true);
+    c.querySelectorAll('.blk-edit').forEach(function (b) { b.remove(); });
+    c.classList.remove('blk-hidden');
+    if (!c.getAttribute('class')) c.removeAttribute('class');
+    var s = c.outerHTML.replace(/ data-blk="[^"]*"/, '');
+    if (/^<(ul|ol)\b/.test(s)) {                 // 목록은 항목마다 줄바꿈
+      s = s.replace(/(<\/li>|<(?:ul|ol)[^>]*>)(?=<)/g, '$1\n')
+           .replace(/(<\/(?:ul|ol)>)$/, '\n$1');
+    }
+    return s;
+  }
+
+  function openEditor(el) {
+    closeEditor();
+    var id = el.getAttribute('data-blk');
+    var box = document.createElement('div');
+    box.className = 'blk-editor';
+    box.innerHTML =
+      '<div class="blk-editor-head">' +
+        '<span class="blk-where">' + escapeHtml(id) + '</span>' +
+        '<span class="blk-hint">저장하면 원고에 반영됩니다 · ' +
+          '⌘/Ctrl+Enter 저장 · Esc 취소</span>' +
+      '</div>' +
+      '<textarea class="blk-src" spellcheck="false"></textarea>' +
+      '<div class="blk-editor-foot">' +
+        '<button type="button" class="blk-save">저장</button>' +
+        '<button type="button" class="blk-cancel">취소</button>' +
+        '<button type="button" class="blk-showtex">LaTeX 원본</button>' +
+        '<span class="blk-msg"></span>' +
+      '</div>' +
+      '<pre class="blk-tex" hidden></pre>';
+
+    var ta = box.querySelector('.blk-src');
+    ta.value = prettyHtml(el);
+    ta.rows = Math.min(24, Math.max(4, ta.value.split('\n').length +
+                                      Math.floor(ta.value.length / 90)));
+    el.parentNode.insertBefore(box, el);
+    el.classList.add('blk-hidden');
+    EDIT.open = { el: el, box: box, id: id };
+
+    box.querySelector('.blk-save').addEventListener('click', saveEditor);
+    box.querySelector('.blk-cancel').addEventListener('click', function () {
+      closeEditor();
+    });
+    box.querySelector('.blk-showtex').addEventListener('click', function () {
+      var pre = box.querySelector('.blk-tex');
+      if (!pre.hidden) { pre.hidden = true; return; }
+      fetch('/__edit/block?id=' + encodeURIComponent(id), { cache: 'no-store' })
+        .then(function (r) { return r.json(); })
+        .then(function (res) {
+          pre.textContent = res.ok
+            ? res.file + ':' + res.start + '–' + res.end + '\n\n' + res.latex
+            : (res.error || '불러오지 못했습니다');
+          pre.hidden = false;
+        });
+    });
+    ta.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { e.preventDefault(); closeEditor(); }
+      else if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+        e.preventDefault(); saveEditor();
+      }
+    });
+    ta.focus();
+  }
+
+  function closeEditor() {
+    var st = EDIT.open;
+    if (!st) return;
+    st.box.remove();
+    st.el.classList.remove('blk-hidden');
+    EDIT.open = null;
+  }
+
+  function saveEditor() {
+    var st = EDIT.open;
+    if (!st) return;
+    var msg = st.box.querySelector('.blk-msg');
+    msg.className = 'blk-msg';
+    msg.textContent = '저장 중…';
+    fetch('/__edit/save', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: st.id,
+                             html: st.box.querySelector('.blk-src').value })
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (res) {
+        if (!res.ok) {
+          msg.className = 'blk-msg bad';
+          msg.textContent = res.error || '저장하지 못했습니다';
+          return;
+        }
+        if (res.reload) { rememberScroll(); location.reload(); return; }
+        if (res.unchanged) { closeEditor(); return; }
+        var tmp = document.createElement('div');
+        tmp.innerHTML = res.html;
+        var fresh = tmp.firstElementChild;
+        st.el.parentNode.replaceChild(fresh, st.el);
+        st.box.remove();
+        EDIT.open = null;
+        attachEditButtons();
+        fresh.classList.add('blk-saved');
+        setTimeout(function () { fresh.classList.remove('blk-saved'); }, 1200);
+      })
+      .catch(function (err) {
+        msg.className = 'blk-msg bad';
+        msg.textContent = '편집 서버에 닿지 못했습니다: ' + err;
+      });
+  }
+
+  function showBar() {
+    if (EDIT.bar) { EDIT.bar.hidden = false; return; }
+    var b = document.createElement('div');
+    b.className = 'edit-bar';
+    b.innerHTML = '<span class="edit-dot"></span>편집 모드 — 고칠 문단에 ' +
+                  '마우스를 올리세요. <kbd>Ctrl</kbd>+<kbd>E</kbd>로 끄기';
+    document.body.appendChild(b);
+    EDIT.bar = b;
+  }
+
+  function rememberScroll() {
+    try { sessionStorage.setItem('blkScroll', String(window.scrollY)); }
+    catch (e) { /* 사파리 프라이빗 모드 등 */ }
+  }
+
+  function restoreScroll() {
+    try {
+      var y = sessionStorage.getItem('blkScroll');
+      if (y === null) return;
+      sessionStorage.removeItem('blkScroll');
+      window.scrollTo(0, +y);
+      toggleEdit(true);            // 저장 직후의 새로고침이면 편집 모드 유지
+    } catch (e) { /* 무시 */ }
+  }
+
   /* ---------------- utilities ---------------- */
   function escapeHtml(s) {
     return String(s).replace(/[&<>"']/g, function (c) {

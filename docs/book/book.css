@@ -815,3 +815,106 @@ table.tooltable a:hover { color: var(--accent); }
   color: var(--text-2); font-size: 0.92rem;
 }
 .content blockquote.plainquote p:last-child { margin-bottom: 0; }
+
+/* ================================================================
+   편집 모드 — Ctrl+E (로컬 편집 서버가 떠 있을 때만 나타난다)
+   WebBook/editserver.py 가 /__edit/ping 에 응답할 때 body에 .can-edit이
+   붙고, Ctrl+E로 .edit-mode가 토글된다. GitHub Pages에서는 둘 다 없다.
+   ================================================================ */
+.edit-bar {
+  position: fixed; left: 1rem; bottom: 1rem; z-index: 90;
+  display: flex; align-items: center; gap: 0.5rem;
+  background: var(--btn); color: #fff;
+  padding: 0.45rem 0.9rem; border-radius: 999px;
+  font-size: 0.8rem; box-shadow: 0 3px 14px rgba(0,0,0,0.25);
+}
+.edit-bar kbd {
+  background: rgba(255,255,255,0.18); border-radius: 4px;
+  padding: 0 0.3rem; font-family: inherit; font-size: 0.95em;
+}
+.edit-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--mint); flex: none;
+}
+
+/* 편집 가능한 블록 표시 — 왼쪽 여백에 얇은 눈금 */
+body.edit-mode .content [data-blk] {
+  position: relative;
+  outline: 1px dashed transparent;
+  outline-offset: 4px;
+  transition: outline-color 0.15s ease;
+}
+body.edit-mode .content [data-blk]::before {
+  content: ""; position: absolute;
+  left: -1.2rem; top: 0.15em; bottom: 0.15em; width: 2px;
+  background: var(--border);
+}
+body.edit-mode .content [data-blk]:hover { outline-color: var(--cyan); }
+body.edit-mode .content [data-blk]:hover::before { background: var(--cyan); }
+
+.blk-edit {
+  position: absolute; right: -0.4rem; top: -1.35rem; z-index: 5;
+  opacity: 0; pointer-events: none;
+  background: var(--cyan); color: #fff; border: none;
+  border-radius: var(--radius); cursor: pointer;
+  font: inherit; font-size: 0.72rem; font-weight: 600;
+  padding: 0.16rem 0.6rem;
+  transition: opacity 0.15s ease;
+}
+body.edit-mode [data-blk]:hover > .blk-edit,
+body.edit-mode .blk-edit:focus { opacity: 1; pointer-events: auto; }
+body:not(.edit-mode) .blk-edit { display: none; }
+
+.blk-hidden { display: none !important; }
+
+/* 편집창 */
+.blk-editor {
+  margin: 1rem 0; border: 1px solid var(--cyan);
+  border-radius: var(--radius); overflow: hidden;
+  background: var(--bg);
+}
+.blk-editor-head {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.7rem;
+  padding: 0.45rem 0.8rem; background: var(--bg-2);
+  border-bottom: 1px solid var(--border);
+}
+.blk-where {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem; font-weight: 700; color: var(--text-2);
+}
+.blk-hint { font-size: 0.72rem; color: var(--text-light); }
+textarea.blk-src {
+  display: block; width: 100%; box-sizing: border-box;
+  border: none; outline: none; resize: vertical;
+  padding: 0.8rem; background: var(--white); color: var(--text);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.82rem; line-height: 1.65;
+}
+.blk-editor-foot {
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.55rem 0.8rem; border-top: 1px solid var(--border);
+}
+.blk-editor-foot button {
+  border: none; border-radius: var(--radius); cursor: pointer;
+  font: inherit; font-size: 0.78rem; font-weight: 600;
+  padding: 0.3rem 0.85rem;
+  background: var(--bg-2); color: var(--text);
+  transition: background 0.2s ease;
+}
+.blk-editor-foot button:hover { background: var(--border); }
+.blk-editor-foot .blk-save { background: var(--btn); color: #fff; }
+.blk-editor-foot .blk-save:hover { background: var(--btn-hover); }
+.blk-msg { font-size: 0.76rem; color: var(--text-light); }
+.blk-msg.bad { color: #c35546; font-weight: 600; }
+pre.blk-tex {
+  margin: 0; padding: 0.8rem; background: #2b2b2b; color: #eee;
+  font-size: 0.78rem; line-height: 1.6; white-space: pre-wrap;
+  word-break: break-all; border-top: 1px solid var(--border);
+}
+
+/* 저장 직후 잠깐 강조 */
+.blk-saved { animation: blk-flash 1.2s ease; }
+@keyframes blk-flash {
+  0%   { background: rgba(123,220,181,0.55); }
+  100% { background: transparent; }
+}
