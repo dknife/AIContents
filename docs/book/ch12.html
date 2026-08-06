@@ -252,34 +252,51 @@
 경향을 정리해 줘. 그리고 내가 한 번도 안 써 본 방향을
 세 가지 제안해 줘. 기록에 있는 실제 프롬프트를 인용해서 설명해 줘.</code></pre><div class="listing-caption">프롬프트 12.3: 자기 자료를 근거로 답하게 하기</div></div>
 <p data-blk="chapters/ch12/sec03.tex#15"><strong>실제 프롬프트를 인용하라</strong>는 지시가 중요하다. 인용을 요구하면 모델이 자료를 실제로 참조하게 되고, 우리도 그 답이 자료에 근거한 것인지 확인할 수 있다.</p>
-<h3 data-blk="chapters/ch12/sec03.tex#16">환각을 더 줄이는 지시</h3>
-<p data-blk="chapters/ch12/sec03.tex#17">자료를 붙여도 모델은 아는 척을 할 수 있다. 지시로 막는다.</p>
+<h3 data-blk="chapters/ch12/sec03.tex#16">붙여 보면 무엇이 따라오는가</h3>
+<p data-blk="chapters/ch12/sec03.tex#17">말로만 들으면 감이 오지 않으니 실제로 붙여 본 결과를 보자. 아래는 한 학기 동안 웹툰 작업을 한 학생이 남긴 기록 묶음이다. 특별할 것 없이 이 책이 시킨 양식을 그대로 따랐을 뿐이다.</p>
+<div class="settingbox-wrap"><div class="setting-label">첨부한 자료 여덟 개</div><pre class="settingbox"><code>01 프롬프트기록.txt     이미지 생성 기록 14회분          (4.5절)
+02 변형실험표.txt       매체·조명·색 어휘 비교 실험 3건   (4.5절)
+03 나만의어휘목록.txt   좋아하는 이미지를 네 축으로 분해   (실습 4-6)
+04 톤앤매너.txt         기준값과 '피할 것'               (9.2절)
+05 인물카드.txt         두 인물의 어휘·문장·말버릇·회피   (실습 8-4)
+06 설정문서.txt         인물·장소·규칙·하지 않을 것       (8.1절)
+07 컷계획표.txt         8컷의 장면·대사·프롬프트 초안     (9.3절)
+08 점검목록.txt         공개 전 점검                     (5.6절)</code></pre></div>
+<p data-blk="chapters/ch12/sec03.tex#18">이 여덟 개를 붙여 둔 채 <strong>기록과 아무 상관 없는 새 이야기</strong>를 하나 시켰다. 기록 속 프로젝트는 그림을 못 그리게 된 미대생의 조용한 이야기였는데, 이번에는 도시의 밤을 배경으로 한 범죄물을 네 컷으로 그려 달라고 한 것이다. 그림체에 대해서는 한 마디도 하지 않았다.</p>
+<figure class="fig"><img class="shot" src="img/ch12/ch12_img02.jpg" alt="figure"><figcaption>여덟 개의 기록을 붙인 채 전혀 다른 이야기를 시킨 결과</figcaption></figure>
+<p data-blk="chapters/ch12/sec03.tex#20">눈여겨볼 것이 둘 있다.</p>
+<p data-blk="chapters/ch12/sec03.tex#21">첫째, <strong>그림체가 기록에서 그대로 따라왔다.</strong> 이번 요청에는 매체도 색도 조명도 적지 않았는데 결과는 과슈 질감에 채도를 낮춘 푸른 회색과 크림색, 눈높이 시점, 비 오는 날의 흐린 빛으로 나왔다. 이것은 01번 기록에서 열네 번에 걸쳐 반복된 조합이고, 04번 톤앤매너에 기준값으로 적혀 있던 바로 그 조합이다. <strong>프롬프트 기록은 취향의 기록이기도 하다.</strong> 붙여 두면 새 작업에도 자기 그림체가 따라온다. 4.5절에서 기록을 자산이라고 부른 이유가 여기서 눈에 보이는 형태로 나타난다.</p>
+<p data-blk="chapters/ch12/sec03.tex#22">둘째, <strong>따라오지 않은 것도 있다.</strong> 04번 톤앤매너의 <em>피할 것</em> 항목에는 <em>과장된 표정</em>이 분명히 적혀 있지만 마지막 칸의 인물은 입을 크게 벌리고 소리치고 있다. 06번 설정 문서의 인물도 장소도 이번 결과에는 하나도 쓰이지 않았다. 모델은 자료에서 <strong>스타일 축은 가져오고 제약과 설정은 흘려보냈다.</strong></p>
+<div class="box keypoint"><span class="chip">요점</span><p>자료를 붙였다고 자료가 지켜지는 것은 아니다. <strong>옮겨 오기 쉬운 것과 그렇지 않은 것이 있다.</strong> 매체·색·조명처럼 <em>여러 번 반복해서 적힌 값</em>은 잘 따라오고, <em>하지 말 것</em>처럼 부정형으로 한 번 적힌 제약은 잘 잊힌다. 4.1절에서 부정 지시가 긍정 지시보다 약하다고 한 이야기가 여기서 다시 나타난다. 그러므로 <strong>반드시 지켜야 할 제약은 자료에만 적어 두지 말고</strong> 12.2절 시스템 지시문의 [제약] 항목에 다시 적는다.</p></div>
+<p data-blk="chapters/ch12/sec03.tex#24">거꾸로 이 성질을 이용할 수도 있다. 자기 기록을 붙여 두면 <em>내 그림체로 그려 줘</em>라고 말할 필요가 없어진다. 말로 설명하기 어려웠던 자기 스타일이 <strong>기록이라는 형태로 이미 정리되어 있기</strong> 때문이다. 5.3절에서 남의 작가 이름 대신 특징을 쓰라고 했는데, 그 특징 목록을 스스로 쌓아 둔 것이 바로 이 기록이다.</p>
+<h3 data-blk="chapters/ch12/sec03.tex#25">환각을 더 줄이는 지시</h3>
+<p data-blk="chapters/ch12/sec03.tex#26">자료를 붙여도 모델은 아는 척을 할 수 있다. 지시로 막는다.</p>
 <div class="settingbox-wrap"><div class="setting-label">환각 억제 지시문</div><pre class="settingbox"><code>- 첨부한 자료에 없는 내용은 답하지 마라.
 - 자료에 없으면 "자료에 없습니다"라고 말하라.
 - 답변할 때 근거가 된 부분을 인용하라.
 - 추측이 섞였다면 그 부분을 명시하라.</code></pre></div>
-<p data-blk="chapters/ch12/sec03.tex#18">이 네 줄을 어시스턴트의 시스템 지시문에 넣어 두면 신뢰도가 크게 오른다.</p>
-<div class="box caution"><span class="chip">주의</span><p data-blk="chapters/ch12/sec03.tex#19"><strong>완전히 막히지는 않는다.</strong> 자료에 없는데도 그럴듯한 답을 만드는 경우가 여전히 있다. 사실이 중요한 작업에서는 3.1절의 원칙이 그대로 유효하다. <strong>확인할 수 없는 사실 진술은 그대로 쓰지 않는다.</strong></p>
+<p data-blk="chapters/ch12/sec03.tex#27">이 네 줄을 어시스턴트의 시스템 지시문에 넣어 두면 신뢰도가 크게 오른다.</p>
+<div class="box caution"><span class="chip">주의</span><p data-blk="chapters/ch12/sec03.tex#28"><strong>완전히 막히지는 않는다.</strong> 자료에 없는데도 그럴듯한 답을 만드는 경우가 여전히 있다. 사실이 중요한 작업에서는 3.1절의 원칙이 그대로 유효하다. <strong>확인할 수 없는 사실 진술은 그대로 쓰지 않는다.</strong></p>
 </div>
-<h3 data-blk="chapters/ch12/sec03.tex#20">자료를 잘 만드는 법</h3>
-<p data-blk="chapters/ch12/sec03.tex#21">넣는 자료가 정리되어 있을수록 답이 좋아진다.</p>
-<ul data-blk="chapters/ch12/sec03.tex#22">
+<h3 data-blk="chapters/ch12/sec03.tex#29">자료를 잘 만드는 법</h3>
+<p data-blk="chapters/ch12/sec03.tex#30">넣는 자료가 정리되어 있을수록 답이 좋아진다.</p>
+<ul data-blk="chapters/ch12/sec03.tex#31">
 <li><strong>제목과 항목을 명확히.</strong> 문단만 죽 이어진 글보다 항목으로 나뉜 문서가 낫다</li>
 <li><strong>한 파일에 한 주제.</strong> 여러 주제를 한 파일에 섞으면 엉뚱한 부분을 참조한다</li>
 <li><strong>최신본만 넣는다.</strong> 옛 버전이 함께 있으면 어느 것을 따를지 헷갈린다</li>
 <li><strong>용어를 통일한다.</strong> 같은 인물을 어떤 곳에서는 이름으로, 어떤 곳에서는 별명으로 쓰면 연결이 끊긴다</li>
 </ul>
-<div class="box keypoint"><span class="chip">요점</span><p data-blk="chapters/ch12/sec03.tex#23">이 조건들은 <strong>사람이 읽기 좋은 문서의 조건</strong>과 정확히 같다. 인공지능을 위해 따로 작업할 필요가 없고, 평소에 자료를 잘 정리하면 그대로 쓸모가 된다.</p>
+<div class="box keypoint"><span class="chip">요점</span><p data-blk="chapters/ch12/sec03.tex#32">이 조건들은 <strong>사람이 읽기 좋은 문서의 조건</strong>과 정확히 같다. 인공지능을 위해 따로 작업할 필요가 없고, 평소에 자료를 잘 정리하면 그대로 쓸모가 된다.</p>
 </div>
-<h3 data-blk="chapters/ch12/sec03.tex#24">개인 정보에 주의</h3>
-<p data-blk="chapters/ch12/sec03.tex#25">자료를 올린다는 것은 그 서비스에 자료를 넘긴다는 뜻이다. 5.2절에서 확인한 <strong>입력 자료의 학습 이용</strong> 조항이 여기서 실제 문제가 된다.</p>
-<ul data-blk="chapters/ch12/sec03.tex#26">
+<h3 data-blk="chapters/ch12/sec03.tex#33">개인 정보에 주의</h3>
+<p data-blk="chapters/ch12/sec03.tex#34">자료를 올린다는 것은 그 서비스에 자료를 넘긴다는 뜻이다. 5.2절에서 확인한 <strong>입력 자료의 학습 이용</strong> 조항이 여기서 실제 문제가 된다.</p>
+<ul data-blk="chapters/ch12/sec03.tex#35">
 <li>남의 개인 정보가 담긴 자료를 올리지 않는다</li>
 <li>미공개 작업물은 학습 이용 여부를 확인하고 올린다</li>
 <li>팀 프로젝트라면 팀원의 동의를 받는다</li>
 <li>학교나 기관의 내부 자료는 규정을 확인한다</li>
 </ul>
-<div class="box caution"><span class="chip">주의</span><p data-blk="chapters/ch12/sec03.tex#27">설문 응답, 인터뷰 녹취, 참여자 명단처럼 <strong>다른 사람의 정보가 담긴 자료</strong>는 특히 조심한다. 연구나 프로젝트에서 수집한 자료를 그대로 올리는 것은 동의 범위를 벗어나는 경우가 많다.</p>
+<div class="box caution"><span class="chip">주의</span><p data-blk="chapters/ch12/sec03.tex#36">설문 응답, 인터뷰 녹취, 참여자 명단처럼 <strong>다른 사람의 정보가 담긴 자료</strong>는 특히 조심한다. 연구나 프로젝트에서 수집한 자료를 그대로 올리는 것은 동의 범위를 벗어나는 경우가 많다.</p>
 </div>
 <h2 data-blk="chapters/ch12/sec04.tex#1" id="sec4">12.4 에이전트란 무엇인가</h2>
 <p data-blk="chapters/ch12/sec04.tex#2">요즘 자주 들리는 말이다. 개념을 정확히 알아 두면 과장된 이야기와 실제로 되는 것을 구분할 수 있다.</p>
